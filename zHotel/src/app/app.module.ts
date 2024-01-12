@@ -5,18 +5,28 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { RouterModule,Routes } from '@angular/router';
+import { ReservasComponent } from './reservas/reservas.component';
+import { ClientesComponent } from './clientes/clientes.component';
+const routes: Routes = [
+  {path: '', redirectTo: '', pathMatch: 'full'}
+];
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ReservasComponent,
+    ClientesComponent
 
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [
     provideClientHydration()
