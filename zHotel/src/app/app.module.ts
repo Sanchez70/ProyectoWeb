@@ -9,6 +9,10 @@ import { RouterModule,Routes } from '@angular/router';
 import { ReservasComponent } from './reservas/reservas.component';
 import { ClientesComponent } from './clientes/clientes.component';
 import { FormClienteComponent } from './clientes/form-cliente.component';
+import { FormsModule } from '@angular/forms';
+import { ClienteService } from './clientes/cliente.service';
+
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   {path: '', redirectTo: '', pathMatch: 'full'}
@@ -27,9 +31,12 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
     RouterModule.forRoot(routes)
   ],
   providers: [
+    ClienteService,
     provideClientHydration()
   ],
   bootstrap: [AppComponent]
