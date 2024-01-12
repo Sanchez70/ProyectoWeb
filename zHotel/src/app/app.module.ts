@@ -16,9 +16,15 @@ import { EncabezadoFacturaService } from './reservas/encabezado-factura.service'
 import { DetalleFacturaService } from './reservas/detalle-factura.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormReservasComponent } from './reservas/form-reservas.component';
-
+////agregados mios ///
+import { ServiciosComponent } from './servicios/servicios.component';
+import { ServicioService } from './servicios/servicio.service';
+import { FormComponent as ServiciosFormComponent } from './servicios/form.component';
 const routes: Routes = [
-  {path: '', redirectTo: '', pathMatch: 'full'}
+  {path: '', redirectTo: '', pathMatch: 'full'},
+  { path: 'servicios', component: ServiciosComponent },
+  { path: 'servicios/form', component: ServiciosFormComponent },
+  { path: 'servicios/form/:id', component: ServiciosFormComponent },
 ];
 
 
@@ -30,7 +36,8 @@ const routes: Routes = [
     ReservasComponent,
     ClientesComponent,
     FormClienteComponent,
-    FormReservasComponent
+    FormReservasComponent,
+    ServiciosComponent
   ],
   imports: [
     BrowserModule,
@@ -44,6 +51,7 @@ const routes: Routes = [
     ReservaService,
     EncabezadoFacturaService,
     DetalleFacturaService,
+    ServicioService,
     provideClientHydration()
   ],
   bootstrap: [AppComponent]
