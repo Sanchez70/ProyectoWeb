@@ -22,6 +22,9 @@ import { ServicioService } from './servicios/servicio.service';
 import { FormComponent as ServiciosFormComponent } from './servicios/form.component';
 import { HabitacionesComponent } from './habitaciones/habitaciones.component';
 import { HabitacionesService } from './habitaciones/habitaciones.service';
+import { PanelRecepcionComponent } from './panel-recepcion/panel-recepcion.component';
+import { PanelServiciosReservasComponent } from './panel-servicios-reservas/panel-servicios-reservas.component';
+
 const routes: Routes = [
   {path: '', redirectTo: '', pathMatch: 'full'},
   { path: 'servicios', component: ServiciosComponent },
@@ -43,6 +46,8 @@ const routes: Routes = [
     FormClienteComponent,
     FormReservasComponent,
     ServiciosComponent,
+    PanelRecepcionComponent,
+    PanelServiciosReservasComponent,
     HabitacionesComponent,
     HabitacionesComponent
   ],
