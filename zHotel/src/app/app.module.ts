@@ -8,10 +8,11 @@ import { FooterComponent } from './footer/footer.component';
 import { RouterModule,Routes } from '@angular/router';
 import { ReservasComponent } from './reservas/reservas.component';
 import { ClientesComponent } from './clientes/clientes.component';
+import { FormClienteComponent } from './clientes/form-cliente.component';
+
 const routes: Routes = [
   {path: '', redirectTo: '', pathMatch: 'full'}
 ];
-
 
 
 @NgModule({
@@ -20,8 +21,8 @@ const routes: Routes = [
     HeaderComponent,
     FooterComponent,
     ReservasComponent,
-    ClientesComponent
-
+    ClientesComponent,
+    FormClienteComponent
   ],
   imports: [
     BrowserModule,
