@@ -1,1 +1,65 @@
-<p>form-reservas works!</p>
+<form class="formulario" ngNativeValidate (ngSubmit)="create()">
+        <!--Numero personas-->
+        <div class="form_group" id="usuario_grupo">
+            <label for="nro_personas" class="label_form">Nro_Personas</label>
+            <div class="form_group_input">
+                <input type="text" class="form_input" name="nro_personas" id="nro_personas" placeholder="Ingrese una cantidad">
+                <i class="formulario_validacion"></i>
+            </div>
+            <p class="input_error">Ingrese una cantidad en enteros</p>
+        </div>
+
+        <!--Fecha entrada-->
+        <div class="form_group" id="fechain_grupo">
+            <label for="fecha_inicio" class="label_form">Fecha de Entrada</label>
+            <div class="form_group_input">
+                <input type="date" class="form_input" name="fecha_inicio" id="fecha_inicio" placeholder="Ingrese una cantidad">
+                <i class="formulario_validacion"></i>
+            </div>
+            
+        </div>
+
+        <!--Fecha salida-->
+        <div class="form_group" id="fechafin_grupo">
+            <label for="fecha_fin" class="label_form">Fecha de Salida</label>
+            <div class="form_group_input">
+                <input type="date" class="form_input" name="fecha_fin" id="fecha_fin" placeholder="Ingrese una cantidad">
+                <i class="formulario_validacion"></i>
+            </div>
+            
+        </div>
+
+        <!--Numero dias-->
+        <div class="form_group" id="dias_grupo">
+            <label for="nro_dias" class="label_form">Días total</label>
+            <div class="form_group_input">
+                <input type="text" class="form_input" name="nro_dias" id="nro_dias" placeholder="Total Días">
+                <i class="formulario_validacion"></i>
+            </div>
+            
+        </div>
+
+        <!--Método de pago-->
+        <div class="form_group" id="pago_grupo">
+            <label for="metodo_pago" class="label_form">METODO DE PAGO</label>
+            <div class="form_group_input">
+                <i class="formulario_validacion"></i>
+            </div>
+            
+        </div>
+
+        <!--Total-->
+        <div class="form_group" id="usuario_grupo">
+            <label for="total" class="label_form">TOTAL A PAGAR</label>
+            <div class="form_group_input">
+                <input type="text" class="form_input" name="total" id="total">
+                <i class="formulario_validacion"></i>
+            </div>            
+        </div>
+
+        <div class="form_group btn_reservar">
+            <button type="submit" class="form_btn">Reservar</button>
+            <p class="form_mensaje" id="mensaje_success">Enviado correctamente</p>
+        </div>
+
+    </form>
