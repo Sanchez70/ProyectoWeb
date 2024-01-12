@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UsuarioService } from './usuario.service'; // Asegúrate de importar el servicio correcto
+import { UsuarioService } from '../usuarios/usuario.service'; // Ajusta la ruta del servicio según tu estructura
 import { ActivatedRoute, Router } from '@angular/router';
-import { Usuario } from './usuario'; // Asegúrate de importar la clase de usuario correcta
+import { Cliente } from '../clientes/clientes'; // Ajusta la ruta de la clase Usuario según tu estructura
 import Swal from 'sweetalert2';
 
 @Component({
