@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule,Routes } from '@angular/router';
+import { ReservasComponent } from './reservas/reservas.component';
 const routes: Routes = [
   {path: '', redirectTo: '', pathMatch: 'full'}
 ];
@@ -15,7 +16,8 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ReservasComponent
 
   ],
   imports: [
