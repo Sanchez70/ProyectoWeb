@@ -20,9 +20,14 @@ import { FormReservasComponent } from './reservas/form-reservas.component';
 import { ServiciosComponent } from './servicios/servicios.component';
 import { ServicioService } from './servicios/servicio.service';
 import { FormComponent as ServiciosFormComponent } from './servicios/form.component';
+import { HabitacionesComponent } from './habitaciones/habitaciones.component';
+import { HabitacionesService } from './habitaciones/habitaciones.service';
 const routes: Routes = [
   {path: '', redirectTo: '', pathMatch: 'full'},
   { path: 'servicios', component: ServiciosComponent },
+  { path: 'habitaciones', component: HabitacionesService },
+  { path: 'servicios/form', component: HabitacionesComponent },
+  { path: 'servicios/form/:id', component: HabitacionesComponent },
   { path: 'servicios/form', component: ServiciosFormComponent },
   { path: 'servicios/form/:id', component: ServiciosFormComponent },
 ];
@@ -37,7 +42,9 @@ const routes: Routes = [
     ClientesComponent,
     FormClienteComponent,
     FormReservasComponent,
-    ServiciosComponent
+    ServiciosComponent,
+    HabitacionesComponent,
+    HabitacionesComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +59,7 @@ const routes: Routes = [
     EncabezadoFacturaService,
     DetalleFacturaService,
     ServicioService,
+    HabitacionesService,
     provideClientHydration()
   ],
   bootstrap: [AppComponent]
