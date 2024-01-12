@@ -11,8 +11,11 @@ import { ClientesComponent } from './clientes/clientes.component';
 import { FormClienteComponent } from './clientes/form-cliente.component';
 import { FormsModule } from '@angular/forms';
 import { ClienteService } from './clientes/cliente.service';
-
+import { ReservaService } from './reservas/reserva.service';
+import { EncabezadoFacturaService } from './reservas/encabezado-factura.service';
+import { DetalleFacturaService } from './reservas/detalle-factura.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { FormReservasComponent } from './reservas/form-reservas.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '', pathMatch: 'full'}
@@ -26,7 +29,8 @@ const routes: Routes = [
     FooterComponent,
     ReservasComponent,
     ClientesComponent,
-    FormClienteComponent
+    FormClienteComponent,
+    FormReservasComponent
   ],
   imports: [
     BrowserModule,
@@ -37,6 +41,9 @@ const routes: Routes = [
   ],
   providers: [
     ClienteService,
+    ReservaService,
+    EncabezadoFacturaService,
+    DetalleFacturaService,
     provideClientHydration()
   ],
   bootstrap: [AppComponent]
