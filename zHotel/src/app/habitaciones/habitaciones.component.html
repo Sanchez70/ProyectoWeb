@@ -1,10 +1,10 @@
-
+<button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/habitaciones/form']">Crear habitaciones</button>
     <div class="col" style="left: 5%;">
         <div class="card-container" style="display: flex; gap: 20px; overflow-x: auto; padding: 20px ;flex-wrap: wrap;">
-            <div class="card mb-3" style="max-width: 840px;">
+            <div class="card mb-3" style="max-width: 640px;" *ngFor="let habitaciones of habitaciones">
                 <div class="row g-0">
-                    <div class="col-md-4">
-                        <img src="https://mdbcdn.b-cdn.net/wp-content/uploads/2020/06/vertical.webp"
+                    <div class="col-md-4" >
+                        <img src="{{habitaciones.imagen}}"
                             alt="Trendy Pants and Shoes" class="img-fluid rounded-start" />
                     </div>
                     <div class="col-md-8">
@@ -12,15 +12,21 @@
                             <h5 class="card-title">Card title</h5>
                             <p class="card-text">
                                 This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.
+                                additional content. This content is a little bit longer.DFSDJFBSDJBFSJKFSBKJDSBJSD DDSNJFJDBFJ
+                                FNSDFBSJDFS
+                                DFSDJFBSDJBFSJKFSBKJDSBJSDSDFSDF
+                                SDF
                             </p>
                             <p class="card-text">
                                 <small class="text-muted">Last updated 3 mins ago</small>
                             </p>
+                            <div class="card mb-3" style="width: 12rem;left: 50%;">
+                                <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/habitaciones/form']">Reservar</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-
+               
             </div>                       
         </div>
     </div>

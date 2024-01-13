@@ -30,8 +30,8 @@ import { FormHbitacionesComponent } from './habitaciones/form-hbitaciones.compon
 const routes: Routes = [
   { path: '', redirectTo: '', pathMatch: 'full'},
   { path: 'habitaciones', component: HabitacionesComponent },
-   { path: 'habitaciones/form/:id', component: HabitacionesComponent },
-   { path: 'habitaciones/form', component: HabitacionesComponent },
+   { path: 'habitaciones/form/:id', component: FormHbitacionesComponent },
+   { path: 'habitaciones/form', component: FormHbitacionesComponent },
   { path: 'carrucel', component: CarrucelComponent },
   { path: 'servicios', component: ServiciosComponent },
   { path: 'servicios/form', component: ServiciosFormComponent },

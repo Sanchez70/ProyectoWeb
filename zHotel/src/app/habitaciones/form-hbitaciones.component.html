@@ -1,1 +1,46 @@
-<p>form-hbitaciones works!</p>
+<br>
+
+    <div  class="card bg-dark text-white" style="width: 50rem;top: 10%;left: 23%;">
+    <div class="card-header">{{titulo}}</div>
+    <form ngNativeValidate (ngSubmit)="createHabitacion()">
+        <div class="form-group row">
+            <label for="" class="col-form-label col-sm-2">Numero de habitacion</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" [(ngModel)]="habitaciones.nHabitacion" name="nHabitacion">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-form-label col-sm-2">Categoria</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" [(ngModel)]="habitaciones.idCategoria" name="idCategoria">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-form-label col-sm-2">Psio</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" [(ngModel)]="habitaciones.nPiso" name="nPiso">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-form-label col-sm-2">precio</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" [(ngModel)]="habitaciones.precio" name="precio">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-form-label col-sm-2">Imagen</label>
+            <div class="col-sm-6">
+                <input type="file" class="form-control" [(ngModel)]="habitaciones.imagen" name="imagen" (change)="onFileSelected($event)">
+                
+                <img [src]="previewImage" alt="Vista previa">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-6">
+                <button type="btn btn-primary"  class="btn btn-rounded btn-primary" role="button" (click)="convertToBase64()">Crear</button>
+                
+            </div>
+        </div>
+    </form>
+</div>
+

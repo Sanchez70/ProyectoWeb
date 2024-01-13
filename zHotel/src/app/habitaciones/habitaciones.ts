@@ -4,4 +4,5 @@ export class Habitaciones {
     nHabitacion: number = 0;
     nPiso: number = 0;
     idCategoria: number = 0;
+    imagen: string = '';
 }
