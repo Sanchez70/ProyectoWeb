@@ -30,7 +30,6 @@ export class FormComponent {
         })
       }
     })
-
   }
 
   public create(): void {

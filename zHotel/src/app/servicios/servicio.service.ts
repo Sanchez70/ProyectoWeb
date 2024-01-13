@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Servicio } from './servicio';
-import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 })
 export class ServicioService {
 
-  private urlEndPoint: string = 'http://localhost:8080/api/tipo_servicios';
+  private urlEndPoint: string = 'http://localhost:8081/api/tiposervicio';
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' })
   constructor(private http: HttpClient) { }
 

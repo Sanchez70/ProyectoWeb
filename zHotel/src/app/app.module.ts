@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { RouterModule,Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { ReservasComponent } from './reservas/reservas.component';
 import { ClientesComponent } from './clientes/clientes.component';
 import { FormClienteComponent } from './clientes/form-cliente.component';
@@ -28,10 +28,10 @@ import { FormHbitacionesComponent } from './habitaciones/form-hbitaciones.compon
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '', pathMatch: 'full'},
+  { path: '', redirectTo: '', pathMatch: 'full' },
   { path: 'habitaciones', component: HabitacionesComponent },
-   { path: 'habitaciones/form/:id', component: FormHbitacionesComponent },
-   { path: 'habitaciones/form', component: FormHbitacionesComponent },
+  { path: 'habitaciones/form/:id', component: FormHbitacionesComponent },
+  { path: 'habitaciones/form', component: FormHbitacionesComponent },
   { path: 'carrucel', component: CarrucelComponent },
   { path: 'servicios', component: ServiciosComponent },
   { path: 'servicios/form', component: ServiciosFormComponent },
@@ -56,7 +56,7 @@ const routes: Routes = [
     HabitacionesComponent,
     CarrucelComponent,
     FormHbitacionesComponent
-    
+
   ],
   imports: [
     BrowserModule,

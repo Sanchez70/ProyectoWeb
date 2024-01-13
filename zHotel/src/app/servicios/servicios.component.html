@@ -1,26 +1,61 @@
-<div class="my-2 text-left">
-    <div class="card-header">Servicios</div>
-    <div>
-      <h6 class="card-title">Listado de Servicios</h6>
-      <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/servicios/form']">Crear</button>
-    </div>
-    <div class="card-container" style="display: flex; gap: 20px; overflow-x: auto; padding: 20px ; flex-wrap: wrap;">
-      <div *ngFor="let servicio of Servicios" class="card" style="width: 18rem;">
-        <img [src]="servicio.foto" class="card-img-top" alt="">
-        <div class="card-body">
-          <h5 class="card-title">{{ servicio.titulo }}</h5>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Descripción: {{ servicio.descripccion }}</li>
+<button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/servicios/form']">Crear Ser</button>
+
+<div class="container">
+  <section class="mx-auto my-5" style="max-width: 23rem;">
+
+    <div class="card">
+      <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+        <img src="https://mdbootstrap.com/img/Photos/Horizontal/Food/8-col/img (5).jpg" class="img-fluid" />
+        <a href="#!">
+          <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+        </a>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title font-weight-bold"><a>La Sirena restaurant</a></h5>
+        <ul class="list-unstyled list-inline mb-0">
+          <li class="list-inline-item me-0">
+            <i class="fas fa-star text-warning fa-xs"> </i>
+          </li>
+          <li class="list-inline-item me-0">
+            <i class="fas fa-star text-warning fa-xs"></i>
+          </li>
+          <li class="list-inline-item me-0">
+            <i class="fas fa-star text-warning fa-xs"></i>
+          </li>
+          <li class="list-inline-item me-0">
+            <i class="fas fa-star text-warning fa-xs"></i>
+          </li>
+          <li class="list-inline-item">
+            <i class="fas fa-star-half-alt text-warning fa-xs"></i>
+          </li>
+          <li class="list-inline-item">
+            <p class="text-muted">4.5 (413)</p>
+          </li>
         </ul>
-        <div class="card-body">
-          <div style="display: flex; justify-content: space-between space-between; margin-left:4%; margin-right: 7%;">
-            <button type="button" name="button" [routerLink]="['/proveedores/form',servicio.id]"
-              style="background-color: rgb(13, 80, 237); color: white; width: 90px; height: 25px;">EDITAR</button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button type="button" name="button" (click)="delete(servicio)"
-              style="background-color: red; color: white; width: 90px; height: 25px;">ELIMINAR</button>
-          </div>
-        </div>
+        <p class="mb-2">$ • American, Restaurant</p>
+        <p class="card-text">
+          Some quick example text to build on the card title and make up the bulk of the
+          card's content.
+        </p>
+        <hr class="my-4" />
+        <p class="lead"><strong>Tonight's availability</strong></p>
+        <ul class="list-unstyled list-inline d-flex justify-content-between">
+          <li class="list-inline-item me-0">
+            <div class="chip me-0">5:30PM</div>
+          </li>
+          <li class="list-inline-item me-0">
+            <div class="chip bg-secondary text-white me-0">7:30PM</div>
+          </li>
+          <li class="list-inline-item me-0">
+            <div class="chip me-0">8:00PM</div>
+          </li>
+          <li class="list-inline-item me-0">
+            <div class="chip me-0">9:00PM</div>
+          </li>
+        </ul>
+        <a href="#!" class="btn btn-link link-secondary p-md-1 mb-0">Button</a>
       </div>
     </div>
+
+  </section>
+</div>
