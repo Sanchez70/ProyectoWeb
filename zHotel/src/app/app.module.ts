@@ -28,6 +28,8 @@ import { CarrucelComponent } from './carrucel/carrucel.component';
 const routes: Routes = [
   { path: '', redirectTo: '', pathMatch: 'full'},
   { path: 'habitaciones', component: HabitacionesComponent },
+  { path: 'carrucel', component: CarrucelComponent },
+  { path: 'carrucel/form', component: CarrucelComponent },
   { path: 'servicios', component: ServiciosComponent },
   { path: 'servicios/form', component: ServiciosFormComponent },
   { path: 'servicios/form/:id', component: ServiciosFormComponent }
