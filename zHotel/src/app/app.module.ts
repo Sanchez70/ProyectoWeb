@@ -23,6 +23,7 @@ import { HabitacionesComponent } from './habitaciones/habitaciones.component';
 import { HabitacionesService } from './habitaciones/habitaciones.service';
 import { PanelRecepcionComponent } from './panel-recepcion/panel-recepcion.component';
 import { PanelServiciosReservasComponent } from './panel-servicios-reservas/panel-servicios-reservas.component';
+import { CarrucelComponent } from './carrucel/carrucel.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '', pathMatch: 'full'},
@@ -47,7 +48,8 @@ const routes: Routes = [
     PanelRecepcionComponent,
     PanelServiciosReservasComponent,
     HabitacionesComponent,
-    HabitacionesComponent
+    HabitacionesComponent,
+    CarrucelComponent
   ],
   imports: [
     BrowserModule,
