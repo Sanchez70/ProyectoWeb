@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
+import { Servicio } from './servicio';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Servicio } from './servicio';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServicioService {
 
-  private urlEndPoint: string = 'http://localhost:8080/api/servicios';
+  private urlEndPoint: string = 'http://localhost:8080/api/tipo_servicios';
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' })
   constructor(private http: HttpClient) { }
 
@@ -19,15 +19,15 @@ export class ServicioService {
     );
   }
 
-  create(articulo: Servicio): Observable<Servicio> {
-    return this.http.post<Servicio>(this.urlEndPoint, articulo, { headers: this.httpHeaders })
+  create(servicio: Servicio): Observable<Servicio> {
+    return this.http.post<Servicio>(this.urlEndPoint, servicio, { headers: this.httpHeaders })
   }
 
-  getProveedorid(id: any): Observable<Servicio> {
+  getServicioid(id: any): Observable<Servicio> {
     return this.http.get<Servicio>(`${this.urlEndPoint}/${id}`);
   }
 
-  deleteProveedorid(id: any): Observable<Servicio> {
+  deleteServicioid(id: any): Observable<Servicio> {
     return this.http.delete<Servicio>(`${this.urlEndPoint}/${id}`);
   }
 }

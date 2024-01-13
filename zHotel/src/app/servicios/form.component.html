@@ -1,1 +1,33 @@
-<p>form works!</p>
+<div class="card bg-dark text-white">
+    <div class="card-header">VER SI CARGA</div>
+    <div class="card-body">        
+        <form ngNativeValidate (ngSubmit)="create()">
+            <div class="form-group row">
+                <label for="" class="col-form-label col-sm-2">TIPO DE SERVICIO</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" [(ngModel)]="servicio.titulo" name="titulo">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="col-form-label col-sm-2">DESCRIPCCION</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" [(ngModel)]="servicio.descripccion" name="descripcion">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="imagen" class="col-form-label col-sm-2">Imagen</label>
+                <div class="col-sm-6">
+                    <input type="file" class="form-control-file" (change)="onFileSelected($event)" accept="image/*"
+                        id="imagen" name="imagen">
+                    <!-- Agregar una vista previa de la imagen-->
+                    <img [src]="previewImage" alt="Vista previa de la imagen" class="img-thumbnail">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-6">
+                    <button class="btn btn-primary" role="button" (click)="convertfoto()">CREAR</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

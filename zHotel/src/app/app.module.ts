@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -16,7 +15,7 @@ import { EncabezadoFacturaService } from './reservas/encabezado-factura.service'
 import { DetalleFacturaService } from './reservas/detalle-factura.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormReservasComponent } from './reservas/form-reservas.component';
-////agregados mios ///
+////agregados mios  edisson///
 import { ServiciosComponent } from './servicios/servicios.component';
 import { ServicioService } from './servicios/servicio.service';
 import { FormComponent as ServiciosFormComponent } from './servicios/form.component';
@@ -26,13 +25,11 @@ import { PanelRecepcionComponent } from './panel-recepcion/panel-recepcion.compo
 import { PanelServiciosReservasComponent } from './panel-servicios-reservas/panel-servicios-reservas.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '', pathMatch: 'full'},
-  { path: 'servicios', component: ServiciosComponent },
+  { path: '', redirectTo: '', pathMatch: 'full'},
   { path: 'habitaciones', component: HabitacionesComponent },
-  { path: 'servicios/form', component: HabitacionesComponent },
-  { path: 'servicios/form/:id', component: HabitacionesComponent },
+  { path: 'servicios', component: ServiciosComponent },
   { path: 'servicios/form', component: ServiciosFormComponent },
-  { path: 'servicios/form/:id', component: ServiciosFormComponent },
+  { path: 'servicios/form/:id', component: ServiciosFormComponent }
 ];
 
 
@@ -46,6 +43,7 @@ const routes: Routes = [
     FormClienteComponent,
     FormReservasComponent,
     ServiciosComponent,
+    ServiciosFormComponent,
     PanelRecepcionComponent,
     PanelServiciosReservasComponent,
     HabitacionesComponent,

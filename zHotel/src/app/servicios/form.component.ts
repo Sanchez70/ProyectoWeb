@@ -21,6 +21,15 @@ export class FormComponent {
   }
 
   cargarServicios(): void {
+    this.activatedRoute.params.subscribe(params => {
+      let id = params['id']
+      if (id) {
+        this.servicioService.getServicioid(id).subscribe((servicio) => {
+          console.log(servicio);
+          this.servicio = servicio;
+        })
+      }
+    })
 
   }
 
@@ -28,7 +37,7 @@ export class FormComponent {
     this.servicioService.create(this.servicio)
       .subscribe(servicio => {
         this.router.navigate(['/servicios'])
-        Swal.fire('Servicio guardado', `Servicio ${servicio.nombre} Guardado con exito`, 'success')
+        Swal.fire('Servicio guardado', `Servicio ${servicio.titulo} Guardado con exito`, 'success')
       }
       )
   }
@@ -45,12 +54,12 @@ export class FormComponent {
 
     reader.readAsDataURL(file);
   }
-    previewImage: string | ArrayBuffer = '';
-    convertfoto(): void {
-      if (this.previewImage) {
-        const base64String = this.previewImage.toString();
-        console.log(base64String);
-        this.servicio.foto = base64String;
-      } 
+  previewImage: string | ArrayBuffer = '';
+  convertfoto(): void {
+    if (this.previewImage) {
+      const base64String = this.previewImage.toString();
+      console.log(base64String);
+      this.servicio.foto = base64String;
     }
+  }
 }
