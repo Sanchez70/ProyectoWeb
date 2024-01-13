@@ -24,12 +24,15 @@ import { HabitacionesService } from './habitaciones/habitaciones.service';
 import { PanelRecepcionComponent } from './panel-recepcion/panel-recepcion.component';
 import { PanelServiciosReservasComponent } from './panel-servicios-reservas/panel-servicios-reservas.component';
 import { CarrucelComponent } from './carrucel/carrucel.component';
+import { FormHbitacionesComponent } from './habitaciones/form-hbitaciones.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: '', pathMatch: 'full'},
   { path: 'habitaciones', component: HabitacionesComponent },
+   { path: 'habitaciones/form/:id', component: HabitacionesComponent },
+   { path: 'habitaciones/form', component: HabitacionesComponent },
   { path: 'carrucel', component: CarrucelComponent },
-  { path: 'carrucel/form', component: CarrucelComponent },
   { path: 'servicios', component: ServiciosComponent },
   { path: 'servicios/form', component: ServiciosFormComponent },
   { path: 'servicios/form/:id', component: ServiciosFormComponent }
@@ -51,7 +54,9 @@ const routes: Routes = [
     PanelServiciosReservasComponent,
     HabitacionesComponent,
     HabitacionesComponent,
-    CarrucelComponent
+    CarrucelComponent,
+    FormHbitacionesComponent
+    
   ],
   imports: [
     BrowserModule,
