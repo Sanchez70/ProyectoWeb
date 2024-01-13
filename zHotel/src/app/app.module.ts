@@ -28,7 +28,7 @@ import { PanelServiciosReservasComponent } from './panel-servicios-reservas/pane
 const routes: Routes = [
   {path: '', redirectTo: '', pathMatch: 'full'},
   { path: 'servicios', component: ServiciosComponent },
-  { path: 'habitaciones', component: HabitacionesService },
+  { path: 'habitaciones', component: HabitacionesComponent },
   { path: 'servicios/form', component: HabitacionesComponent },
   { path: 'servicios/form/:id', component: HabitacionesComponent },
   { path: 'servicios/form', component: ServiciosFormComponent },
