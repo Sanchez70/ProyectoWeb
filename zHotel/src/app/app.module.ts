@@ -13,7 +13,7 @@ import { ClienteService } from './clientes/cliente.service';
 import { ReservaService } from './reservas/reserva.service';
 import { EncabezadoFacturaService } from './reservas/encabezado-factura.service';
 import { DetalleFacturaService } from './reservas/detalle-factura.service';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { FormReservasComponent } from './reservas/form-reservas.component';
 ////agregados mios  edisson///
 import { ServiciosComponent } from './servicios/servicios.component';
@@ -35,7 +35,10 @@ const routes: Routes = [
   { path: 'carrucel', component: CarrucelComponent },
   { path: 'servicios', component: ServiciosComponent },
   { path: 'servicios/form', component: ServiciosFormComponent },
-  { path: 'servicios/form/:id', component: ServiciosFormComponent }
+  { path: 'servicios/form/:id', component: ServiciosFormComponent },
+  { path: 'clientes', component: ClientesComponent },
+  { path: 'clientes/form', component: FormClienteComponent },
+  { path: 'clientes/form/id', component: FormClienteComponent }
 ];
 
 
