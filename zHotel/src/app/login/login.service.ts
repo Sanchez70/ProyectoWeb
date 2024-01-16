@@ -8,7 +8,7 @@ import { Cliente } from '../clientes/cliente';
   providedIn: 'root'
 })
 export class LoginService {
-  private apiUrl = 'http://localhost:8081/api/cliente';
+  private apiUrl = 'http://localhost:8081/api/clientes';
 
   constructor(private http: HttpClient) {}
 
