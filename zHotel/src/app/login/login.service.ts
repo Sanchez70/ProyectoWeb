@@ -8,14 +8,14 @@ import { Cliente } from '../clientes/cliente';
   providedIn: 'root'
 })
 export class LoginService {
-  private apiUrl = 'http://localhost:8081/api/clientes';
+  private apiUrl = 'http://localhost:8081/api/cliente';
 
   constructor(private http: HttpClient) {}
 
-  login(usuario: string, password: string): Observable<Cliente> {
+  login(usuario: string, contrasena: string): Observable<Cliente> {
     const loginUrl = `${this.apiUrl}`;
 
-    const body = { usuario: usuario, password: password };
+    const body = { usuario: usuario, contrasena: contrasena };
 
     return this.http.post<Cliente>(loginUrl, body).pipe(
       catchError((error) => {
