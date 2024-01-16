@@ -17,7 +17,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormReservasComponent } from './reservas/form-reservas.component';
 ////agregados mios  edisson///
 import { ServiciosComponent } from './servicios/servicios.component';
+import { Servicios2Component } from './servicios2/servicios2.component';
 import { ServicioService } from './servicios/servicio.service';
+import { Servicio2Service } from './servicios2/servicio2.service';
 import { FormComponent as ServiciosFormComponent } from './servicios/form.component';
 import { HabitacionesComponent } from './habitaciones/habitaciones.component';
 import { HabitacionesService } from './habitaciones/habitaciones.service';
@@ -25,12 +27,12 @@ import { PanelRecepcionComponent } from './panel-recepcion/panel-recepcion.compo
 import { PanelServiciosReservasComponent } from './panel-servicios-reservas/panel-servicios-reservas.component';
 import { CarrucelComponent } from './carrucel/carrucel.component';
 import { FormHbitacionesComponent } from './habitaciones/form-hbitaciones.component';
-
+import { FormComponentServi as Servicios2FormComponent } from './servicios2/form.component';
 // B
 import { LoginComponent } from './login/login.component';
 import { LoginService } from './login/login.service';
 import { FormAComponent } from './login/formA.component';
-import { FormServiSoliComponent } from './servicios/form-servi-soli.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: '', pathMatch: 'full' },
@@ -41,8 +43,9 @@ const routes: Routes = [
   { path: 'servicios', component: ServiciosComponent },
   { path: 'servicios/form', component: ServiciosFormComponent },
   { path: 'servicios/form/:id', component: ServiciosFormComponent },
-  { path: 'servicios/form-servi-soli', component: FormServiSoliComponent },
-  { path: 'servicios/form-servi-soli/:id', component: FormServiSoliComponent },
+  { path: 'servicios2', component: Servicios2Component },
+  { path: 'servicios2/form', component: Servicios2FormComponent },
+  { path: 'servicios2/form/:id', component: Servicios2FormComponent },
   { path: 'reservas/form', component: FormReservasComponent },
   { path: 'clientes', component: ClientesComponent },
   { path: 'clientes/form', component: FormClienteComponent },
@@ -62,7 +65,7 @@ const routes: Routes = [
     FormReservasComponent,
     ServiciosComponent,
     ServiciosFormComponent,
-    FormServiSoliComponent,
+    Servicios2FormComponent,
     PanelRecepcionComponent,
     PanelServiciosReservasComponent,
     HabitacionesComponent,
@@ -70,7 +73,8 @@ const routes: Routes = [
     CarrucelComponent,
     FormHbitacionesComponent,
     LoginComponent,
-    FormAComponent
+    FormAComponent,
+    Servicios2Component,
 
   ],
   imports: [
@@ -86,6 +90,7 @@ const routes: Routes = [
     EncabezadoFacturaService,
     DetalleFacturaService,
     ServicioService,
+    Servicio2Service,
     HabitacionesService,
     LoginService,
     provideClientHydration()
