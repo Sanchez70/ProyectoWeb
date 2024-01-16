@@ -1,1 +1,51 @@
-<p>form-cliente works!</p>
+<div class="card text-bg-primary mb-3">
+    <div class="card-header"> {{title}} </div>
+    <div class="card-body">
+        <form ngNativeValidate (ngSubmit)="editU()">
+
+            <div class="form-group row">
+                <label for="" class="col-form-label col-sm-2">Foto</label>
+                <div class="col-sm-6">
+                    <input type="file" class="form-control" [(ngModel)]="cliente.foto" name="foto" (change)="onFileSelected($event)">
+                    
+                    <img [src]="previewImage" alt="Vista previa">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="" class="col-form-label col-sm-2">Nombre</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" [(ngModel)]="cliente.usuario" name="nombre" required>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="" class="col-form-label col-sm-2">Apellido</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" [(ngModel)]="cliente.contrasena" name="contrasena" required>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="" class="col-form-label col-sm-2">Descripción</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" [(ngModel)]="cliente.cedula_persona" name="cedula_persona" placeholder="Máximo 500 carcteres" required>
+                </div>
+            </div>
+
+            <!-- <div class="form-group row">
+                <label for="" class="col-form-label col-sm-2">Productos mas vendidos</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" [(ngModel)]="proveedores.producto1" name="producto1" placeholder="Producto1" required>
+                </div>
+            </div> -->
+
+            <div class="form-group row">
+                <div class="col-sm-6">
+                    <button class="btn btn-primary" role="button" style="background-color: goldenrod; color: black;" (click)="convertToBase64()"><strong>Crear</strong></button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>

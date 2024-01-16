@@ -14,7 +14,6 @@ export class ClienteService {
   constructor( private http: HttpClient) { }
 
   getClientes(): Observable<Cliente[]>{
-    //return of(CLIENTES);
 
     return this.http.get<Cliente[]>(this.urlEndPoint);
 
@@ -23,5 +22,9 @@ export class ClienteService {
 
   getCliente(idCliente: any):Observable<Cliente>{
     return this.http.get<Cliente>(`${this.urlEndPoint}/${idCliente}`);
+  }
+
+  edit(cliente:Cliente):Observable<Cliente>{
+    return this.http.post<Cliente>(this.urlEndPoint, cliente, {headers: this.httpHeaders})
   }
 }

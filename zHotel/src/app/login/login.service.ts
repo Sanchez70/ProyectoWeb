@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { Cliente } from '../clientes/cliente';
 
 @Injectable({
@@ -9,6 +9,7 @@ import { Cliente } from '../clientes/cliente';
 })
 export class LoginService {
   private apiUrl = 'http://localhost:8081/api/clientes';
+  private usuarioAutenticado: Cliente | null = null;
 
   constructor(private http: HttpClient) {}
 
@@ -20,7 +21,14 @@ export class LoginService {
     return this.http.post<Cliente>(loginUrl, body).pipe(
       catchError((error) => {
         return throwError(error); // Pasar el error al componente
+      }),
+      tap((cliente)=>{
+        this.usuarioAutenticado = cliente;
       })
     );
+  }
+
+  getUsuarioAutenticado(): Cliente | null {
+    return this.usuarioAutenticado;
   }
 }

@@ -1,15 +1,14 @@
-<div class="card border-primary mb-3" style="width: 30rem; align-content: center;" *ngFor="let cliente of clientes">
+<div class="card border-primary mb-3" style="width: 30rem; align-content: center; left: 30%;">
     <div class="card-header" >
         <h5 class="card-title" >{{cliente.usuario}}</h5>
         <img src="..." class="card-img-top" alt="...">
     </div>    
     
-    <ul class="list-group list-group-flush" >
+    <ul class="list-group list-group-item" >
       <li class="list-group-item">
         <h5>Nombre y apellido</h5>
-        <p></p>
+        <p>{{cliente.cedula_persona}}</p>
       </li>
-      <li></li>
       <li class="list-group-item" >
         <h5>Nombre de ususario</h5>
         <p>{{cliente.usuario}}</p>
