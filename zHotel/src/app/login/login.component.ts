@@ -20,7 +20,7 @@ export class LoginComponent {
     this.loginService.login(this.usuario, this.password).subscribe(
       (cliente) => {
         if (cliente) {
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['./carrucel']);
           this.showSuccessAlert(cliente);
         } else {
           this.showErrorAlert('Usuario o contraseña incorrectos');
