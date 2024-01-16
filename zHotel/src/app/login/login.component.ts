@@ -1,25 +1,53 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { LoginService } from './login.service';
-import { Login } from './login';
+import Swal from 'sweetalert2';
+import { Cliente } from '../clientes/cliente';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
 })
 export class LoginComponent {
-  model: Login = new Login('', '', ''); // Instancia del modelo Login
+  usuario: string = '';
+  password: string = '';
+  loginError: boolean = false;
 
-  constructor(private loginService: LoginService) {}
+  constructor(private loginService: LoginService, private router: Router) {}
 
-  login(): void {
-    // Utiliza this.model para acceder a los datos del formulario
-    this.loginService.login(this.model.usuario, this.model.contrasena, this.model.tipoUsuario).subscribe(
-      (response) => {
-        // Lógica de manejo de la respuesta
+  onSubmit() {
+    this.loginService.login(this.usuario, this.password).subscribe(
+      (cliente) => {
+        if (cliente) {
+          this.router.navigate(['/dashboard']);
+          this.showSuccessAlert(cliente);
+        } else {
+          this.showErrorAlert('Usuario o contraseña incorrectos');
+        }
       },
       (error) => {
-        // Lógica de manejo de errores
+        console.error(error);
+  
+        // Verificar si el error tiene un mensaje específico del backend
+        if (error.error && error.error.message) {
+          this.showErrorAlert(error.error.message);
+        } else {
+          this.showErrorAlert('Error desconocido'); // Mensaje genérico en caso de no haber mensaje específico
+        }
       }
     );
+  }
+  
+  showErrorAlert(errorMessage: string) {
+    Swal.fire('Inicio de Sesión Fallido', errorMessage, 'error');
+  }
+  
+  
+  
+
+  showSuccessAlert(cliente: Cliente) {
+    // Utiliza la información del cliente según tus necesidades
+    Swal.fire(`Bienvenido ${cliente.usuario}`, 'Inicio de Sesión Exitoso', 'success');
   }
 }

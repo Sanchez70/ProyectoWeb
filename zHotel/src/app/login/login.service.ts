@@ -1,19 +1,26 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { Cliente } from '../clientes/cliente';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class LoginService {
-  private urlEndPoint: string = 'http://localhost:8080/api/login'; // Ajusta la URL según tu backend
-  private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
+  private apiUrl = 'http://localhost:8081/api/login';
 
   constructor(private http: HttpClient) {}
 
-  login(usuario: string, contrasena: string, tipoUsuario: string): Observable<any> {
-    const credentials = { usuario, contrasena, tipoUsuario };
+  login(usuario: string, password: string): Observable<Cliente> {
+    const loginUrl = `${this.apiUrl}`;
 
-    return this.http.post<any>(this.urlEndPoint, credentials, { headers: this.httpHeaders });
+    const body = { usuario: usuario, password: password };
+
+    return this.http.post<Cliente>(loginUrl, body).pipe(
+      catchError((error) => {
+        return throwError(error); // Pasar el error al componente
+      })
+    );
   }
 }

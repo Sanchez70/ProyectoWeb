@@ -26,6 +26,9 @@ import { PanelServiciosReservasComponent } from './panel-servicios-reservas/pane
 import { CarrucelComponent } from './carrucel/carrucel.component';
 import { FormHbitacionesComponent } from './habitaciones/form-hbitaciones.component';
 
+// B
+import { LoginComponent } from './login/login.component';
+import { FormAComponent } from './login/formA.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '', pathMatch: 'full' },
@@ -38,7 +41,8 @@ const routes: Routes = [
   { path: 'servicios/form/:id', component: ServiciosFormComponent },
   { path: 'clientes', component: ClientesComponent },
   { path: 'clientes/form', component: FormClienteComponent },
-  { path: 'clientes/form/id', component: FormClienteComponent }
+  { path: 'clientes/form/id', component: FormClienteComponent },
+  { path: 'login', component: LoginComponent}
 ];
 
 
@@ -58,7 +62,9 @@ const routes: Routes = [
     HabitacionesComponent,
     HabitacionesComponent,
     CarrucelComponent,
-    FormHbitacionesComponent
+    FormHbitacionesComponent,
+    LoginComponent,
+    FormAComponent
 
   ],
   imports: [
