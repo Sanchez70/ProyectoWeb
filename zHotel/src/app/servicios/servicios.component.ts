@@ -33,7 +33,7 @@ export class ServiciosComponent implements OnInit {
       cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.servicioservice.deleteServicioid(servicio.id).subscribe(
+        this.servicioservice.deleteServicioid(servicio.idTipo_servicio).subscribe(
           () => {
             this.servicioservice.getServicios().subscribe(
               (servicios) => {

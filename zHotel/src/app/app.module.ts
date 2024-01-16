@@ -30,6 +30,7 @@ import { FormHbitacionesComponent } from './habitaciones/form-hbitaciones.compon
 import { LoginComponent } from './login/login.component';
 import { LoginService } from './login/login.service';
 import { FormAComponent } from './login/formA.component';
+import { FormServiSoliComponent } from './servicios/form-servi-soli.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '', pathMatch: 'full' },
@@ -40,6 +41,8 @@ const routes: Routes = [
   { path: 'servicios', component: ServiciosComponent },
   { path: 'servicios/form', component: ServiciosFormComponent },
   { path: 'servicios/form/:id', component: ServiciosFormComponent },
+  { path: 'servicios/form-servi-soli', component: FormServiSoliComponent },
+  { path: 'servicios/form-servi-soli/:id', component: FormServiSoliComponent },
   { path: 'reservas/form', component: FormReservasComponent },
   { path: 'clientes', component: ClientesComponent },
   { path: 'clientes/form', component: FormClienteComponent },
@@ -59,6 +62,7 @@ const routes: Routes = [
     FormReservasComponent,
     ServiciosComponent,
     ServiciosFormComponent,
+    FormServiSoliComponent,
     PanelRecepcionComponent,
     PanelServiciosReservasComponent,
     HabitacionesComponent,

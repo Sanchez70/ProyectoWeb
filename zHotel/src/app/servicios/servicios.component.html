@@ -1,5 +1,3 @@
-<button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/servicios/form']">Crear Ser</button>
-
 <div class="container">
   <section class="mx-auto my-4"
     style="max-width: 99%; display: flex; flex-wrap: wrap; justify-content: space-between;">
@@ -51,7 +49,7 @@
               <div class="chip me-0">9:00PM</div>
             </li>
           </ul>
-          <a href="#!" class="btn btn-link link-secondary p-md-1 mb-0">Button</a>
+          <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/servicios/form-servi-soli',servicio.idTipo_servicio]">Solicitar</button>
         </div>
       </div>
     </div>
