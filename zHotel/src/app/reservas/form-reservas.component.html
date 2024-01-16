@@ -1,22 +1,21 @@
 <div class="col" style="display: grid; grid-template-columns: 1fr 1fr; height: 100dvh;">
 <div style="display: flex; flex-direction: column;" >
     <img src="https://fastly.picsum.photos/id/1/5000/3333.jpg?hmac=Asv2DU3rA_5D1xSe22xZK47WEAN0wjWeFOhzd13ujW4" class="rounded float-left" style="width: 30cap; height: 30cap; justify-content: center;">
-    <p>This is a wider card with supporting text below as a natural lead-in to
-       .</p>
+    <p>[(ngModel)]="habitaciones.precio"</p>
 </div>
 <div class="col-md-8" style="justify-content: flex-start; align-items: flex-end; display: flex; flex-direction: column;">
 <form class="formulario" ngNativeValidate (ngSubmit)="create()">
         <!--Numero personas-->
         <label for="nro_personas" class="label_form">Número de personas</label>
         <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Número de personas" name="nro_personas" aria-label="Número de personas" aria-describedby="basic-addon1">
+            <input type="text" class="form-control" placeholder="Número de personas" [(ngModel)]="reserva.nPersona" name="nPersona" aria-label="Número de personas" aria-describedby="basic-addon1">
           </div>
 
         <!--Fecha entrada-->
         <div class="form_group" id="fechain_grupo">
             <label for="fecha_inicio" class="label_form">Fecha de Entrada</label>
             <div class="input-group mb-3">
-                <input type="date" class="form-control" placeholder="Fecha Inicio" name="fecha_inicio" aria-label="Fecha Inicio" aria-describedby="basic-addon1">
+                <input type="date" class="form-control" placeholder="Fecha Inicio" [(ngModel)]="reserva.fechaEntrada" name="fechaEntrada" aria-label="Fecha Inicio" aria-describedby="basic-addon1">
               </div>
             
         </div>
@@ -25,7 +24,7 @@
         <div class="form_group" id="fechafin_grupo">
             <label for="fecha_fin" class="label_form">Fecha de Salida</label>
             <div class="input-group mb-3">
-                <input type="date" class="form-control" placeholder="Fecha Fin" name="fecha_fin" aria-label="Fecha Fin" aria-describedby="basic-addon1">
+                <input type="date" class="form-control" placeholder="Fecha Fin" [(ngModel)]="reserva.fechaSalida" name="fechaSalida" aria-label="Fecha Fin" aria-describedby="basic-addon1">
               </div>
             
         </div>
@@ -34,7 +33,7 @@
         <div class="form_group" id="dias_grupo">
             <label for="nro_dias" class="label_form">Días total</label>
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Días" name="nro_dias" aria-label="Días" aria-describedby="basic-addon1">
+                <input type="text" class="form-control" placeholder="Días" [(ngModel)]="reserva.dias" name="dias" aria-label="Días" aria-describedby="basic-addon1">
               </div>
             
         </div>
@@ -52,7 +51,7 @@
         <div class="form_group" id="usuario_grupo">
             <label for="total" class="label_form">TOTAL A PAGAR</label>
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="TOTAL" name="total" aria-label="TOTAL" aria-describedby="basic-addon1">
+                <input type="text" class="form-control" placeholder="TOTAL" [(ngModel)]="reserva.dias" name="total" aria-label="TOTAL" aria-describedby="basic-addon1">
               </div>          
         </div>
 
