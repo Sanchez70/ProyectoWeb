@@ -1,0 +1,14 @@
+<!-- En tu formulario -->
+<form (ngSubmit)="onSubmit()">
+
+  <!-- Campo de usuario -->
+  <label for="usuario">Usuario:</label>
+  <input type="text" id="usuario" name="usuario" [(ngModel)]="usuario" required>
+
+  <!-- Campo de contraseña -->
+  <label for="contrasena">Contraseña:</label>
+  <input type="password" id="contrasena" name="contrasena" [(ngModel)]="contrasena" required>
+
+  <!-- Botón de enviar -->
+  <button type="submit">Iniciar Sesión</button>
+</form>
