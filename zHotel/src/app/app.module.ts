@@ -28,6 +28,7 @@ import { FormHbitacionesComponent } from './habitaciones/form-hbitaciones.compon
 
 // B
 import { LoginComponent } from './login/login.component';
+import { LoginService } from './login/login.service';
 
 const routes: Routes = [
   { path: '', redirectTo: '', pathMatch: 'full' },
@@ -80,6 +81,7 @@ const routes: Routes = [
     DetalleFacturaService,
     ServicioService,
     HabitacionesService,
+    LoginService,
     provideClientHydration()
   ],
   bootstrap: [AppComponent]
