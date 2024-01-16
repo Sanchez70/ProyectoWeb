@@ -29,6 +29,7 @@ import { FormHbitacionesComponent } from './habitaciones/form-hbitaciones.compon
 // B
 import { LoginComponent } from './login/login.component';
 import { LoginService } from './login/login.service';
+import { FormAComponent } from './login/formA.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '', pathMatch: 'full' },
@@ -64,7 +65,8 @@ const routes: Routes = [
     HabitacionesComponent,
     CarrucelComponent,
     FormHbitacionesComponent,
-    LoginComponent
+    LoginComponent,
+    FormAComponent
 
   ],
   imports: [
