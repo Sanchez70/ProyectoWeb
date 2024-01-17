@@ -30,7 +30,7 @@ export class LoginComponent {
     
     const usuario = this.searchForm.value.usuario;
     const contraneusu = this.searchForm.value.contraneusu;
-
+//hola
     this.clienteService.buscarCliente(usuario).subscribe(
       (result) => {
         if (Array.isArray(result) && result.length > 0) {
