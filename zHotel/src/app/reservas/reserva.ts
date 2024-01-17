@@ -1,8 +1,8 @@
 export class Reserva {
     idReserva : number=0;
     metodoPago : number=0;
-    fechaSalida : String='';
-    fechaEntrada : String='';
+    fechaSalida : Date=new Date();
+    fechaEntrada : Date=new Date();
     total : number= 0;
     idHabitaciones : number=0;
     idRecepcionista : number=0;

@@ -1,7 +1,7 @@
 <div class="col" style="display: grid; grid-template-columns: 1fr 1fr; height: 100dvh;">
 <div style="display: flex; flex-direction: column;" >
     <img src="https://fastly.picsum.photos/id/1/5000/3333.jpg?hmac=Asv2DU3rA_5D1xSe22xZK47WEAN0wjWeFOhzd13ujW4" class="rounded float-left" style="width: 30cap; height: 30cap; justify-content: center;">
-    <p>[(ngModel)]="habitaciones.precio"</p>
+    <input type="text" [(ngModel)]="habitaciones.precio">
 </div>
 <div class="col-md-8" style="justify-content: flex-start; align-items: flex-end; display: flex; flex-direction: column;">
 <form class="formulario" ngNativeValidate (ngSubmit)="create()">
@@ -15,7 +15,7 @@
         <div class="form_group" id="fechain_grupo">
             <label for="fecha_inicio" class="label_form">Fecha de Entrada</label>
             <div class="input-group mb-3">
-                <input type="date" class="form-control" placeholder="Fecha Inicio" [(ngModel)]="reserva.fechaEntrada" name="fechaEntrada" aria-label="Fecha Inicio" aria-describedby="basic-addon1">
+                <input type="date" class="form-control" placeholder="Fecha Inicio" [(ngModel)]="fechaEntrada" name="fechaEntrada" id="fechaEntrada"  aria-label="Fecha Inicio" (ngModelChange)="calcularDiferenciaDeDias()" aria-describedby="basic-addon1">
               </div>
             
         </div>
@@ -24,7 +24,7 @@
         <div class="form_group" id="fechafin_grupo">
             <label for="fecha_fin" class="label_form">Fecha de Salida</label>
             <div class="input-group mb-3">
-                <input type="date" class="form-control" placeholder="Fecha Fin" [(ngModel)]="reserva.fechaSalida" name="fechaSalida" aria-label="Fecha Fin" aria-describedby="basic-addon1">
+                <input type="date" class="form-control" placeholder="Fecha Fin" [(ngModel)]="fechaSalida" name="fechaSalida" aria-label="Fecha Fin" id="fechaSalida" (ngModelChange)="calcularDiferenciaDeDias()" aria-describedby="basic-addon1">
               </div>
             
         </div>
@@ -33,7 +33,7 @@
         <div class="form_group" id="dias_grupo">
             <label for="nro_dias" class="label_form">Días total</label>
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Días" [(ngModel)]="reserva.dias" name="dias" aria-label="Días" aria-describedby="basic-addon1">
+                <input type="text" class="form-control" placeholder="Días" [(ngModel)]="dias" name="dias" aria-label="Días" aria-describedby="basic-addon1" [value]="diferenciadias" (ngModelChange)="calcularTotal()">
               </div>
             
         </div>
@@ -51,7 +51,7 @@
         <div class="form_group" id="usuario_grupo">
             <label for="total" class="label_form">TOTAL A PAGAR</label>
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="TOTAL" [(ngModel)]="reserva.dias" name="total" aria-label="TOTAL" aria-describedby="basic-addon1">
+                <input type="text" class="form-control" placeholder="TOTAL" [(ngModel)]="total" name="total" aria-label="TOTAL" aria-describedby="basic-addon1" [value]="total">
               </div>          
         </div>
 
