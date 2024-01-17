@@ -17,7 +17,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class LoginComponent {
 
   public searchForm: FormGroup;
-
+  logeado:Boolean =false;
   constructor(private fb: FormBuilder, private clienteService: LoginService, private router: Router) {
     this.searchForm = this.fb.group({
       usuario: [''],
@@ -27,6 +27,7 @@ export class LoginComponent {
 
 
   onSubmit() {
+    
     const usuario = this.searchForm.value.usuario;
     const contraneusu = this.searchForm.value.contraneusu;
 
@@ -34,10 +35,10 @@ export class LoginComponent {
       (result) => {
         if (Array.isArray(result) && result.length > 0) {
           const clientesEncontrados = result as Cliente[];
-
           if (clientesEncontrados.some(cliente => cliente.contrasena === contraneusu)) {
             Swal.fire('Inicio de sesion correctos', 'Cliente', 'success');
             this.router.navigate(['./carrucel']);
+            this.logeado=true;
           } else {
             // La contraseña no coincide con ninguna en el array
             Swal.fire('Contraseña o usuario incorrectos', 'Cliente', 'error');
