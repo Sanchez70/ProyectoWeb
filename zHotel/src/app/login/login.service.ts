@@ -9,12 +9,22 @@ import { Cliente } from '../clientes/cliente';
 })
 export class LoginService {
 
-  private apiUrl = 'http://192.168.40.228:8081/api/clientes'; // Reemplaza con la URL correcta de tu backend
+  private apiUrlcli = 'http://192.168.40.228:8081/api/clientes';
+  private apiUrladm = 'http://192.168.40.228:8081/api/administrador';
+  private apiUrlrecep = 'http://192.168.40.228:8081/api/recepcionista';
 
   constructor(private http: HttpClient) {}
 
   buscarCliente(usuario: string): Observable<Cliente | Cliente[]> {
-    const url = `${this.apiUrl}/usuario/${usuario}`;
+    const url = `${this.apiUrlcli}/usuario/${usuario}`;
+    return this.http.get<Cliente | Cliente[]>(url);
+  }
+  buscarAdmin(usuario: string): Observable<Cliente | Cliente[]> {
+    const url = `${this.apiUrladm}/usuario/${usuario}`;
+    return this.http.get<Cliente | Cliente[]>(url);
+  }
+  buscarRecep(usuario: string): Observable<Cliente | Cliente[]> {
+    const url = `${this.apiUrlrecep}/usuario/${usuario}`;
     return this.http.get<Cliente | Cliente[]>(url);
   }
 
