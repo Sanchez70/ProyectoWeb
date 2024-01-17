@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ReservaService {
-  private urlEndPoint:string = 'http://localhost:8081/api/reservas';
+  private urlEndPoint:string = 'http://192.168.40.228:8081/api/reservas';
   private httpHeaders = new HttpHeaders({'Content-type':'application/json'})
   constructor(private http:HttpClient) { }
   getReserva(): Observable<Reserva[]>{

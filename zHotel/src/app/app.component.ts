@@ -7,4 +7,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'zHotel';
+  isLoggedIn = false;
+
+
+login() {
+
+  this.isLoggedIn = true;
+}
+
+logout() {
+
+  this.isLoggedIn = false;
+}
 }

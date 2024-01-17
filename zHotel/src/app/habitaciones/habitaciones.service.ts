@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class HabitacionesService {
-  private urlEndPoint: string = 'http://localhost:8081/api/habitaciones';
+  private urlEndPoint: string = 'http://192.168.40.228:8081/api/habitaciones';
   private httpHeaders = new HttpHeaders({'Content-Type':'application/json'})
   constructor(private http:HttpClient) { }
 

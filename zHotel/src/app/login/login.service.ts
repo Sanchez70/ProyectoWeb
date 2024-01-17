@@ -9,7 +9,7 @@ import { Cliente } from '../clientes/cliente';
 })
 export class LoginService {
 
-  private apiUrl = 'http://localhost:8081/api/clientes'; // Reemplaza con la URL correcta de tu backend
+  private apiUrl = 'http://192.168.40.228:8081/api/clientes'; // Reemplaza con la URL correcta de tu backend
 
   constructor(private http: HttpClient) {}
 
