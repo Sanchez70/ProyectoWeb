@@ -8,7 +8,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ReservasComponent } from './reservas/reservas.component';
 import { ClientesComponent } from './clientes/clientes.component';
 import { FormClienteComponent } from './clientes/form-cliente.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ClienteService } from './clientes/cliente.service';
 import { ReservaService } from './reservas/reserva.service';
 import { EncabezadoFacturaService } from './reservas/encabezado-factura.service';
@@ -82,6 +82,7 @@ const routes: Routes = [
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes)
   ],
   providers: [

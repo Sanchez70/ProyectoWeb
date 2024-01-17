@@ -18,10 +18,10 @@ export class ClientesComponent implements OnInit{
   ];
 
   constructor(private clienteService: ClienteService, private router:Router,
-    private activatedRoute: ActivatedRoute, private loginService:LoginService) { }
+    private activatedRoute: ActivatedRoute) { }
   
   ngOnInit(): void {
-    const usuarioAutenticado = this.loginService.getUsuarioAutenticado();
+   
   }
 
   cargarCliente(): void{

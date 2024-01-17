@@ -8,27 +8,16 @@ import { Cliente } from '../clientes/cliente';
   providedIn: 'root'
 })
 export class LoginService {
-  private apiUrl = 'http://localhost:8081/api/clientes';
-  private usuarioAutenticado: Cliente | null = null;
+
+  private apiUrl = 'http://localhost:8081/api/clientes'; // Reemplaza con la URL correcta de tu backend
 
   constructor(private http: HttpClient) {}
 
-  login(usuario: string, contrasena: string): Observable<Cliente> {
-    const loginUrl = `${this.apiUrl}`;
-
-    const body = { usuario: usuario, contrasena: contrasena };
-
-    return this.http.post<Cliente>(loginUrl, body).pipe(
-      catchError((error) => {
-        return throwError(error); // Pasar el error al componente
-      }),
-      tap((cliente)=>{
-        this.usuarioAutenticado = cliente;
-      })
-    );
+  buscarCliente(usuario: string): Observable<Cliente | Cliente[]> {
+    const url = `${this.apiUrl}/usuario/${usuario}`;
+    return this.http.get<Cliente | Cliente[]>(url);
   }
 
-  getUsuarioAutenticado(): Cliente | null {
-    return this.usuarioAutenticado;
-  }
+
+ 
 }

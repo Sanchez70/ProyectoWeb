@@ -2,52 +2,50 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from './login.service';
 import Swal from 'sweetalert2';
+import { HttpClient } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 import { Cliente } from '../clientes/cliente';
-import { HttpErrorResponse } from '@angular/common/http';
+import { ClienteService } from '../clientes/cliente.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
 })
 export class LoginComponent {
-  usuario: string = '';
-  password: string = '';
-  loginError: boolean = false;
 
-  constructor(private loginService: LoginService, private router: Router) {}
+  public searchForm: FormGroup;
+
+  constructor(private fb: FormBuilder, private clienteService: LoginService) {
+    this.searchForm = this.fb.group({
+      usuario: [''],
+      contraneusu: [''] // Este campo se relaciona con el nombre que deseas buscar
+    });
+  }
+
 
   onSubmit() {
-    this.loginService.login(this.usuario, this.password).subscribe(
-      (cliente) => {
-        if (cliente) {
-          this.router.navigate(['./carrucel']);
-          this.showSuccessAlert(cliente);
-        } else {
-          this.showErrorAlert('Usuario o contraseña incorrectos');
+    const usuario = this.searchForm.value.usuario;
+    const contraneusu = this.searchForm.value.contraneusu;
+
+    this.clienteService.buscarCliente(usuario).subscribe(
+      (result) => {
+        if (Array.isArray(result) && result.length > 0) {
+          const clientesEncontrados = result as Cliente[];
+
+          if (clientesEncontrados.some(cliente => cliente.contrasena === contraneusu)) {
+            Swal.fire('Contraseña correcta', 'Habitaciones', 'success');
+          } else {
+            // La contraseña no coincide con ninguna en el array
+            Swal.fire('Contraseña incorrecta', 'Habitaciones', 'error');
+          }
         }
       },
       (error) => {
+        Swal.fire('Cliente no encontrado', `No se encontraron clientes con el nombre ${usuario}`, 'error');
         console.error(error);
-  
-        // Verificar si el error tiene un mensaje específico del backend
-        if (error.error && error.error.message) {
-          this.showErrorAlert(error.error.message);
-        } else {
-          this.showErrorAlert('Error desconocido'); // Mensaje genérico en caso de no haber mensaje específico
-        }
       }
     );
-  }
-  
-  showErrorAlert(errorMessage: string) {
-    Swal.fire('Inicio de Sesión Fallido', errorMessage, 'error');
-  }
-  
-  
-  
-
-  showSuccessAlert(cliente: Cliente) {
-    // Utiliza la información del cliente según tus necesidades
-    Swal.fire(`Bienvenido ${cliente.usuario}`, 'Inicio de Sesión Exitoso', 'success');
   }
 }
