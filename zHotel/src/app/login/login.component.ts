@@ -46,7 +46,7 @@ export class LoginComponent {
         }
       },
       (error) => {
-        Swal.fire('Cliente no encontrado', `No se encontraron clientes con el nombre ${usuario}`, 'error');
+        Swal.fire('Usuario Invalido', `No se encontro el usuario ${usuario}`, 'error');
         console.error(error);
       }
     );
