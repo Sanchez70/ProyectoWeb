@@ -54,8 +54,16 @@ export class LoginComponent {
         }
       },
       (error) => {
-        Swal.fire('Usuario Invalido', `No se encontro el usuario ${usuario}`, 'error');
-        console.error(error);
+         this.loginService.buscarAdmin(usuario).subscribe(
+          (resultAdmin)=>{
+            if(Array.isArray(resultAdmin) && resultAdmin.length > 0){
+              const adminEcontrados = resultAdmin => Admi
+
+            }
+          },
+          (error) =>{
+
+          }
       }
     );
   }
