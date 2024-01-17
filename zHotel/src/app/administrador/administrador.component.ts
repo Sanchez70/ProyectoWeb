@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Administrador } from './administrador';
 
 @Component({
   selector: 'app-administrador',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrl: './administrador.component.css'
 })
 export class AdministradorComponent {
-
+  public admin:Administrador = new Administrador()
+  administrador: Administrador[]=[];
 }

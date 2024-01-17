@@ -10,6 +10,8 @@ import { ClienteService } from '../clientes/cliente.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AppComponent } from '../app.component';
 import { UserService } from '../user.service';
+import { Administrador } from '../administrador/administrador';
+import { Recepcionista } from '../recepcionista/recepcionista';
 
 @Component({
   selector: 'app-login',
@@ -19,13 +21,13 @@ import { UserService } from '../user.service';
 export class LoginComponent {
 
   public searchForm: FormGroup;
-  logeado:Boolean =false;
+  logeado: Boolean = false;
   constructor(
-    private fb: FormBuilder, 
+    private fb: FormBuilder,
     private loginService: LoginService,
     private router: Router,
-    private inicio:AppComponent,
-    private userService:UserService) {
+    private inicio: AppComponent,
+    private userService: UserService) {
     this.searchForm = this.fb.group({
       usuario: [''],
       contraneusu: [''] // Este campo se relaciona con el nombre que deseas buscar
@@ -34,10 +36,10 @@ export class LoginComponent {
 
 
   onSubmit() {
-    
+
     const usuario = this.searchForm.value.usuario;
     const contraneusu = this.searchForm.value.contraneusu;
-//hola
+    //hola
     this.loginService.buscarCliente(usuario).subscribe(
       (result) => {
         if (Array.isArray(result) && result.length > 0) {
@@ -54,16 +56,43 @@ export class LoginComponent {
         }
       },
       (error) => {
-         this.loginService.buscarAdmin(usuario).subscribe(
-          (resultAdmin)=>{
-            if(Array.isArray(resultAdmin) && resultAdmin.length > 0){
-              const adminEcontrados = resultAdmin => Admi
+        this.loginService.buscarAdmin(usuario).subscribe(
+          (resultAdmin) => {
+            if (Array.isArray(resultAdmin) && resultAdmin.length > 0) {
+              const adminEcontrados = resultAdmin as Administrador[];
+              if(adminEcontrados.some(admin=> admin.contrasena === contraneusu)){
+                Swal.fire(`Bienvenid@ ${usuario}`, 'Inicio de sesion correcto', 'success');
+                this.router.navigate(['./carrucel']);
+                this.inicio.login();
+              }else {
+                Swal.fire('Contraseña  incorrectos', 'Cliente', 'error');
+              }
 
             }
           },
-          (error) =>{
+          (error) => {
+            Swal.fire('Usuario incorrectos', 'Cliente', 'error');
+            this.loginService.buscarRecep(usuario).subscribe(
+              (resultRecep) => {
+                if (Array.isArray(resultRecep) && resultRecep.length > 0) {
+                  const recepEcontrados = resultRecep as Recepcionista[];
+                  if(recepEcontrados.some(recep=> recep.contrasena === contraneusu)){
+                    Swal.fire(`Bienvenid@ ${usuario}`, 'Inicio de sesion correcto', 'success');
+                    this.router.navigate(['./carrucel']);
+                    this.inicio.login();
+                  }else {
+                    Swal.fire('Contraseña  incorrectos', 'Cliente', 'error');
+                  }
+    
+                }
+              },
+              (error) => {
+                Swal.fire('Usuario incorrectos', 'Cliente', 'error');
+              }
+            );
 
           }
+        );
       }
     );
   }
