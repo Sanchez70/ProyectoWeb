@@ -2,34 +2,39 @@ import { Component, OnInit } from '@angular/core';
 import { Cliente } from './cliente';
 import { ClienteService } from './cliente.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { LoginService } from '../login/login.service';
-import { Login } from '../login/login';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-clientes',
   templateUrl: './clientes.component.html',
 })
 export class ClientesComponent implements OnInit{
+  usuarioLogeado: any;
 
   public cliente:Cliente = new Cliente()
-  clientes:Cliente[]=[
-    {idCliente: 1, usuario:'Santana', contrasena: '1234', cedula_persona:'0106130586', foto: ''},
-    {idCliente: 1, usuario:'Carlos', contrasena: '1234', cedula_persona:'0106130586', foto: ''}
-  ];
+  clientes:Cliente[]=[];
 
-  constructor(private clienteService: ClienteService, private router:Router,
-    private activatedRoute: ActivatedRoute) { }
+  constructor(
+    private clienteService: ClienteService, 
+    private router:Router,
+    private activatedRoute: ActivatedRoute, 
+    private userService: UserService) { }
   
   ngOnInit(): void {
-   
+    this.usuarioLogeado = this.userService.getCurrentUser();
+    this.cargarCliente();
   }
 
-  cargarCliente(): void{
-    this.activatedRoute.params.subscribe(params =>{
-      let id = params['idCliente/usuario']
-      if(id){
-        this.clienteService.getCliente(id).subscribe((cliente) => this.cliente = cliente)
+  cargarCliente(): void {
+    const usuario = this.usuarioLogeado.usuario;
+
+    this.clienteService.getClienteByUsuario(usuario).subscribe(
+      (cliente) => {
+        this.cliente = cliente;
+      },
+      (error) => {
+        console.error(error);
       }
-    })
+    );
   }
 }

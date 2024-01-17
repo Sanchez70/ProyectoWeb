@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule, Routes } from '@angular/router';
+import { UserService } from './user.service';
 import { ReservasComponent } from './reservas/reservas.component';
 import { ClientesComponent } from './clientes/clientes.component';
 import { FormClienteComponent } from './clientes/form-cliente.component';
@@ -87,6 +88,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes)
   ],
   providers: [
+    UserService,
     ClienteService,
     ReservaService,
     EncabezadoFacturaService,

@@ -23,6 +23,10 @@ export class ClienteService {
   getCliente(idCliente: any):Observable<Cliente>{
     return this.http.get<Cliente>(`${this.urlEndPoint}/${idCliente}`);
   }
+  getClienteByUsuario(usuario: string): Observable<Cliente> {
+    const url = `${this.urlEndPoint}/usuario/${usuario}`;
+    return this.http.get<Cliente>(url);
+  }
 
   edit(cliente:Cliente):Observable<Cliente>{
     return this.http.post<Cliente>(this.urlEndPoint, cliente, {headers: this.httpHeaders})

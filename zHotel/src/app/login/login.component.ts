@@ -9,6 +9,7 @@ import { Cliente } from '../clientes/cliente';
 import { ClienteService } from '../clientes/cliente.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AppComponent } from '../app.component';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,12 @@ export class LoginComponent {
 
   public searchForm: FormGroup;
   logeado:Boolean =false;
-  constructor(private fb: FormBuilder, private clienteService: LoginService, private router: Router,private inicio:AppComponent) {
+  constructor(
+    private fb: FormBuilder, 
+    private loginService: LoginService,
+    private router: Router,
+    private inicio:AppComponent,
+    private userService:UserService) {
     this.searchForm = this.fb.group({
       usuario: [''],
       contraneusu: [''] // Este campo se relaciona con el nombre que deseas buscar
@@ -32,12 +38,13 @@ export class LoginComponent {
     const usuario = this.searchForm.value.usuario;
     const contraneusu = this.searchForm.value.contraneusu;
 //hola
-    this.clienteService.buscarCliente(usuario).subscribe(
+    this.loginService.buscarCliente(usuario).subscribe(
       (result) => {
         if (Array.isArray(result) && result.length > 0) {
           const clientesEncontrados = result as Cliente[];
           if (clientesEncontrados.some(cliente => cliente.contrasena === contraneusu)) {
-            Swal.fire('Inicio de sesion correctos', 'Cliente', 'success');
+            Swal.fire(`Bienvenid@ ${usuario}`, 'Inicio de sesion correcto', 'success');
+            this.userService.setUser(clientesEncontrados.find(cliente => cliente.contrasena === contraneusu));
             this.router.navigate(['./carrucel']);
             this.inicio.login();
           } else {
