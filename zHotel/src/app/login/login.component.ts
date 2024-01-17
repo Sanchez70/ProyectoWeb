@@ -8,6 +8,7 @@ import { catchError, tap } from 'rxjs/operators';
 import { Cliente } from '../clientes/cliente';
 import { ClienteService } from '../clientes/cliente.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,7 @@ export class LoginComponent {
 
   public searchForm: FormGroup;
   logeado:Boolean =false;
-  constructor(private fb: FormBuilder, private clienteService: LoginService, private router: Router) {
+  constructor(private fb: FormBuilder, private clienteService: LoginService, private router: Router,private inicio:AppComponent) {
     this.searchForm = this.fb.group({
       usuario: [''],
       contraneusu: [''] // Este campo se relaciona con el nombre que deseas buscar
@@ -38,7 +39,7 @@ export class LoginComponent {
           if (clientesEncontrados.some(cliente => cliente.contrasena === contraneusu)) {
             Swal.fire('Inicio de sesion correctos', 'Cliente', 'success');
             this.router.navigate(['./carrucel']);
-            this.logeado=true;
+            this.inicio.login();
           } else {
             // La contraseña no coincide con ninguna en el array
             Swal.fire('Contraseña o usuario incorrectos', 'Cliente', 'error');
