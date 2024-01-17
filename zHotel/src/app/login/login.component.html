@@ -1,12 +1,20 @@
-
-<form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
-    <label for="" class="col-form-label col-sm-2" for="usuario">Nombre:</label>
-    <input class="form-control" type="text" id="usuario" formControlName="usuario" />
-    <label for="" class="col-form-label col-sm-2" for="contraneusu">Contraseña:</label>
-    <input class="form-control" type="text" id="contraneusu" formControlName="contraneusu" />
-    <div class="form-group row">
-        <div class="col-sm-6">
-    <button type="btn btn-primary"  class="btn btn-rounded btn-primary" role="button" type="submit">Buscar</button>
+<div class="login-container">
+    <div class="login-card">
+      <img src="tu-ruta-para-la-imagen/logo.png" alt="Logo" class="logo">
+      
+      <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="usuario">Nombre:</label>
+          <input class="form-control" type="text" id="usuario" formControlName="usuario" />
         </div>
-    </div>  
-</form>
+        
+        <div class="form-group">
+          <label for="contraneusu">Contraseña:</label>
+          <input class="form-control" type="password" id="contraneusu" formControlName="contraneusu" />
+        </div>
+  
+        <button type="submit" class="btn btn-primary btn-rounded">Buscar</button>
+      </form>
+    </div>
+  </div>
+  

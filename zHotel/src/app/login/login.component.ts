@@ -12,13 +12,13 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  //styleUrl: './login.component.css'
+  styleUrl: './login.component.css'
 })
 export class LoginComponent {
 
   public searchForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private clienteService: LoginService) {
+  constructor(private fb: FormBuilder, private clienteService: LoginService, private router: Router) {
     this.searchForm = this.fb.group({
       usuario: [''],
       contraneusu: [''] // Este campo se relaciona con el nombre que deseas buscar
@@ -36,10 +36,11 @@ export class LoginComponent {
           const clientesEncontrados = result as Cliente[];
 
           if (clientesEncontrados.some(cliente => cliente.contrasena === contraneusu)) {
-            Swal.fire('Contraseña correcta', 'Habitaciones', 'success');
+            Swal.fire('Inicio de sesion correctos', 'Cliente', 'success');
+            this.router.navigate(['./carrucel']);
           } else {
             // La contraseña no coincide con ninguna en el array
-            Swal.fire('Contraseña incorrecta', 'Habitaciones', 'error');
+            Swal.fire('Contraseña o usuario incorrectos', 'Cliente', 'error');
           }
         }
       },
