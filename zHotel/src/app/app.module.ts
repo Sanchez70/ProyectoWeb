@@ -47,7 +47,7 @@ const routes: Routes = [
   { path: 'servicios2', component: Servicios2Component },
   { path: 'servicios2/form', component: Servicios2FormComponent },
   { path: 'servicios2/form/:id', component: Servicios2FormComponent },
-  { path: 'reservas/form', component: FormReservasComponent },
+  { path: 'reservas/form-reservas/:id', component: FormReservasComponent },
   { path: 'clientes', component: ClientesComponent },
   { path: 'clientes/form', component: FormClienteComponent },
   { path: 'clientes/form/id', component: FormClienteComponent },
