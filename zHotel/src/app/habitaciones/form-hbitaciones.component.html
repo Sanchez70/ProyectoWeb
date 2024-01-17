@@ -27,10 +27,17 @@
                 <input type="text" class="form-control" [(ngModel)]="habitaciones.precio" name="precio">
             </div>
         </div>
+
+        <div class="form-group row">
+            <label for="" class="col-form-label col-sm-2">Descripcion</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" [(ngModel)]="habitaciones.descriphabi" name="descriphabi">
+            </div>
+        </div>
         <div class="form-group row">
             <label for="" class="col-form-label col-sm-2">Imagen</label>
             <div class="col-sm-6">
-                <input type="file" class="form-control" [(ngModel)]="habitaciones.imagen" name="imagen" (change)="onFileSelected($event)">
+                <input type="file" class="form-control" [(ngModel)]="habitaciones.foto" name="foto" (change)="onFileSelected($event)">
                 
                 <img [src]="previewImage" alt="Vista previa">
             </div>

@@ -60,7 +60,7 @@ export class FormHbitacionesComponent {
         const base64String = this.previewImage.toString();
         console.log(base64String);
   
-        this.habitaciones.imagen = base64String;
+        this.habitaciones.foto = base64String;
       } 
     }
   

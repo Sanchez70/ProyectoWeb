@@ -1,7 +1,8 @@
+<button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/servicios/form']">Crear Servivcios</button>
 <div class="container">
   <section class="mx-auto my-4"
     style="max-width: 99%; display: flex; flex-wrap: wrap; justify-content: space-between;">
-    <div *ngFor="let servicio of Servicios" style="flex: 1 0 40%; margin: 1%;">
+    <div *ngFor="let servicio of Servicios" style="flex: 1 0 30%; margin: 1%;">
       <div class="card">
         <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
           <img [src]="servicio.foto" class="img-fluid" />
@@ -32,7 +33,7 @@
             </li>
           </ul>
           <p class="mb-2">$ • zHotel, Restaurant</p>
-          <p class="card-text">{{servicio.descripcion}}</p>
+          <p class="card-text">{{servicio.descripciontipo}}</p>
           <hr class="my-4" />
           <p class="lead"><strong>Tonight's availability</strong></p>
           <ul class="list-unstyled list-inline d-flex justify-content-between">
