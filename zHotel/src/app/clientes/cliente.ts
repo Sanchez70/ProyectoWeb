@@ -4,6 +4,7 @@ export class Cliente {
     contrasena: string = '';
     cedula_persona: string = '';
     foto: string = '';
-    // nombre: string ='';
-    // apellido: string ='';
+    nombre: string ='';
+    apellido: string ='';
+    fecha_nacimiento: string = '';
 }

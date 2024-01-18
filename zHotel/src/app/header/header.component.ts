@@ -16,6 +16,5 @@ export class HeaderComponent {
     this.router.navigate(['./login']);
     this.inicio.logout()
   }
-  usuario: number =  this.inicio.usuario;
-
+  usuario: any =  this.inicio.usuario;
 }
