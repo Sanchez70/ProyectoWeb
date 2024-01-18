@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule, Routes } from '@angular/router';
-import { UserService } from './user.service';
 import { ReservasComponent } from './reservas/reservas.component';
 import { ClientesComponent } from './clientes/clientes.component';
 import { FormClienteComponent } from './clientes/form-cliente.component';
@@ -49,10 +48,8 @@ const routes: Routes = [
   { path: 'servicios2/form', component: Servicios2FormComponent },
   { path: 'servicios2/form/:id', component: Servicios2FormComponent },
   { path: 'reservas/form-reservas/:id', component: FormReservasComponent },
-  { path: 'clientes', component: ClientesComponent },
-  { path: 'clientes/:usuario', component: ClientesComponent },
-  { path: 'clientes/form', component: FormClienteComponent },
-  { path: 'clientes/form/:usuario', component: FormClienteComponent },
+  { path: 'clientes/:id', component: ClientesComponent },
+  { path: 'clientes/form/:id', component: FormClienteComponent },
   { path: 'login', component: LoginComponent}
 ];
 
@@ -63,7 +60,6 @@ const routes: Routes = [
     HeaderComponent,
     FooterComponent,
     ReservasComponent,
-    ClientesComponent,
     FormClienteComponent,
     FormReservasComponent,
     ServiciosComponent,
@@ -89,7 +85,6 @@ const routes: Routes = [
     RouterModule.forRoot(routes)
   ],
   providers: [
-    UserService,
     ClienteService,
     ReservaService,
     EncabezadoFacturaService,
