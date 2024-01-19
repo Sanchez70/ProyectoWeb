@@ -64,6 +64,7 @@ const routes: Routes = [
     FooterComponent,
     ReservasComponent,
     ClientesComponent,
+    FormClienteComponent,
     FormReservasComponent,
     ServiciosComponent,
     ServiciosFormComponent,
