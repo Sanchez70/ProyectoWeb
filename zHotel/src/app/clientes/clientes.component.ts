@@ -21,8 +21,12 @@ export class ClientesComponent implements OnInit{
     private userService: UserService) { }
   
   ngOnInit(): void {
+<<<<<<< Updated upstream
     this.usuarioLogeado = this.userService.getCurrentUser();
     this.cargarCliente();
+=======
+    this.cargarCliente()
+>>>>>>> Stashed changes
   }
 
   cargarCliente(): void {
