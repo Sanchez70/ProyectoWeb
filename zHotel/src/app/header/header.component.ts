@@ -16,8 +16,7 @@ export class HeaderComponent {
     this.router.navigate(['./login']);
     this.inicio.logout()
   }
-<<<<<<< Updated upstream
-=======
+
   usuario: number =  this.inicio.usuario;
->>>>>>> Stashed changes
+
 }

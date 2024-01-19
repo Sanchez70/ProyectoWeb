@@ -50,9 +50,9 @@ const routes: Routes = [
   { path: 'servicios2/form/:id', component: Servicios2FormComponent },
   { path: 'reservas/form-reservas/:id', component: FormReservasComponent },
   { path: 'clientes', component: ClientesComponent },
-  { path: 'clientes/:usuario', component: ClientesComponent },
+  { path: 'clientes/:id', component: ClientesComponent },
   { path: 'clientes/form', component: FormClienteComponent },
-  { path: 'clientes/form/:usuario', component: FormClienteComponent },
+  { path: 'clientes/form/:id', component: FormClienteComponent },
   { path: 'login', component: LoginComponent}
 ];
 
@@ -64,7 +64,6 @@ const routes: Routes = [
     FooterComponent,
     ReservasComponent,
     ClientesComponent,
-    FormClienteComponent,
     FormReservasComponent,
     ServiciosComponent,
     ServiciosFormComponent,
@@ -103,3 +102,4 @@ const routes: Routes = [
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

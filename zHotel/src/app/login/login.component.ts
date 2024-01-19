@@ -44,11 +44,14 @@ export class LoginComponent {
       (result) => {
         if (Array.isArray(result) && result.length > 0) {
           const clientesEncontrados = result as Cliente[];
-          if (clientesEncontrados.some(cliente => cliente.contrasena === contraneusu)) {
-            Swal.fire(`Bienvenid@ ${usuario}`, 'Inicio de sesion correcto', 'success');
-            this.userService.setUser(clientesEncontrados.find(cliente => cliente.contrasena === contraneusu));
-            this.router.navigate(['./carrucel']);
-            this.inicio.login();
+          const clienteEncontrado = clientesEncontrados.find(cliente => cliente.contrasena === contraneusu);
+            if (clienteEncontrado) {
+              // Asignar el idCliente al atributo usuario de AppComponent
+              this.inicio.usuario = clienteEncontrado.idCliente;
+              Swal.fire(`Bienvenid@ ${usuario}`, 'Inicio de sesion correcto', 'success');
+              this.router.navigate(['./carrucel']);
+              this.inicio.login();
+              console.log(this.inicio.usuario)
           } else {
             // La contraseña no coincide con ninguna en el array
             Swal.fire('Contraseña o usuario incorrectos', 'Cliente', 'error');

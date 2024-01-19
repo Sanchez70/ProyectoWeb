@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'zHotel';
   isLoggedIn = false;
+  usuario:number=0;
 
 
 login() {
