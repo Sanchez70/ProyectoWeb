@@ -1,0 +1,9 @@
+<div *ngFor="let provincia of provincias">
+  <h3>{{ provincia.nombre }}</h3>
+  <ul>
+    <li *ngFor="let canton of cantones">
+      <!-- Aquí puedes mostrar las propiedades del cantón según tus necesidades -->
+      {{ canton.nombre }} - {{ canton.id_provincia }}
+    </li>
+  </ul>
+</div>

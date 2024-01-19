@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Cliente } from './cliente';
-import { Observable } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, catchError, throwError } from 'rxjs';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +23,6 @@ export class ClienteService {
   getCliente(idCliente: any):Observable<Cliente>{
     return this.http.get<Cliente>(`${this.urlEndPoint}/${idCliente}`);
   }
-  
   getClienteByUsuario(id: number): Observable<Cliente> {
     const url = `${this.urlEndPoint}/${id}`;
     return this.http.get<Cliente>(url);
@@ -32,4 +31,33 @@ export class ClienteService {
   edit(cliente:Cliente):Observable<Cliente>{
     return this.http.post<Cliente>(this.urlEndPoint, cliente, {headers: this.httpHeaders})
   }
+
+  //addBF
+  obtenerDatosPersonaPorCedula(cedula: string): Observable<any> {
+    const url = `${this.urlEndPoint}/ruta-donde-obtener-datos-persona/${cedula}`;
+
+    return this.http.get<any>(url).pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.error('Error al obtener datos de persona:', error);
+        return throwError('Ocurrió un error al obtener datos de persona. Por favor, inténtalo nuevamente.');
+      })
+    );
+  }
+
+  registrarCliente(datosCliente: any): Observable<any> {
+    const url = `${this.urlEndPoint}`;
+
+    return this.http.post<any>(url, datosCliente, { headers: this.httpHeaders }).pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.error('Error al registrar cliente:', error);
+
+        if (error.status === 500) {
+          return throwError('Ocurrió un error interno en el servidor. Por favor, inténtalo nuevamente más tarde.');
+        } else {
+          return throwError('Ocurrió un error. Por favor, verifica tus datos e inténtalo nuevamente.');
+        }
+      })
+    );
+  }
 }
+

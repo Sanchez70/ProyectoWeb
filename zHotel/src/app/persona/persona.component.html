@@ -1,0 +1,11 @@
+<!-- persona.component.html -->
+<h2>Listado de Personas</h2>
+
+<ul>
+  <li *ngFor="let persona of personas">
+    {{ persona.nombre }} {{ persona.apellido }} - <button (click)="eliminarPersona(persona.cedula_persona)">Eliminar</button>
+  </li>
+</ul>
+
+<!-- Agrega enlaces o botones para redireccionar al formulario de creación/edición -->
+<a routerLink="/persona/form">Crear Persona</a>

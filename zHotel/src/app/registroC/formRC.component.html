@@ -1,0 +1,29 @@
+<div>
+  <h2>Registro de Cliente</h2>
+  <form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
+
+    <!-- Campos del formulario -->
+    <div>
+      <label for="usuario">Usuario:</label>
+      <input type="text" id="usuario" formControlName="usuario" required>
+    </div>
+
+    <div>
+      <label for="contrasena">Contraseña:</label>
+      <input type="password" id="contrasena" formControlName="contrasena" required>
+    </div>
+
+    <div>
+      <label for="cedula_persona">Cédula Persona:</label>
+      <input type="text" id="cedula_persona" formControlName="cedula_persona" required>
+    </div>
+
+    <!-- Agrega más campos según tus necesidades -->
+
+    <!-- Botones -->
+    <div>
+      <button type="button" (click)="buscarDatosPersona()">Buscar Datos Persona</button>
+      <button type="submit">Registrar Cliente</button>
+    </div>
+  </form>
+</div>
