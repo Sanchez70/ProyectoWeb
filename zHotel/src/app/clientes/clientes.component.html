@@ -1,5 +1,5 @@
 <div class="card border-primary mb-3" style="width: 30rem; align-content: center; left: 30%;">
-    <div class="card-header" style="align-items: center;" >
+    <div class="card-header" >
         <h5 class="card-title" >{{cliente.usuario}}</h5>
         <img src="..." class="card-img-top" alt="...">
     </div>    
@@ -7,15 +7,11 @@
     <ul class="list-group list-group-item" >
       <li class="list-group-item">
         <h5>Nombre y apellido</h5>
-        <p>{{cliente.nombre}} {{cliente.apellido}}</p>
-      </li>
-      <li class="list-group-item" >
-        <h5>Cedula</h5>
         <p>{{cliente.cedula_persona}}</p>
       </li>
       <li class="list-group-item" >
-        <h5>Fecha de nacimiento</h5>
-        <p>{{cliente.fecha_nacimiento}}</p>
+        <h5>Nombre de ususario</h5>
+        <p>{{cliente.usuario}}</p>
       </li>
       <li class="list-group-item">
         <h5>Contraseña</h5>
@@ -23,6 +19,8 @@
       </li>
     </ul>
     <div class="card-body">
-      <button type="button" name="buttonEdit" [] class="btn btn-primary">Editar</button>
+
+      <a href="#" class="card-link"></a>
+      <a href="#" class="card-link">Another link</a>
     </div>
   </div>

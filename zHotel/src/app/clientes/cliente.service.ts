@@ -23,8 +23,8 @@ export class ClienteService {
   getCliente(idCliente: any):Observable<Cliente>{
     return this.http.get<Cliente>(`${this.urlEndPoint}/${idCliente}`);
   }
-  getClienteByUsuario(id: number): Observable<Cliente> {
-    const url = `${this.urlEndPoint}/${id}`;
+  getClienteByUsuario(usuario: string): Observable<Cliente> {
+    const url = `${this.urlEndPoint}/usuario/${usuario}`;
     return this.http.get<Cliente>(url);
   }
 

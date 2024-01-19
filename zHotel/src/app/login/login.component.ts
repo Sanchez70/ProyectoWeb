@@ -9,6 +9,7 @@ import { Cliente } from '../clientes/cliente';
 import { ClienteService } from '../clientes/cliente.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AppComponent } from '../app.component';
+import { UserService } from '../user.service';
 import { Administrador } from '../administrador/administrador';
 import { Recepcionista } from '../recepcionista/recepcionista';
 
@@ -25,7 +26,8 @@ export class LoginComponent {
     private fb: FormBuilder,
     private loginService: LoginService,
     private router: Router,
-    private inicio: AppComponent) {
+    private inicio: AppComponent,
+    private userService: UserService) {
     this.searchForm = this.fb.group({
       usuario: [''],
       contraneusu: [''] // Este campo se relaciona con el nombre que deseas buscar
@@ -42,18 +44,15 @@ export class LoginComponent {
       (result) => {
         if (Array.isArray(result) && result.length > 0) {
           const clientesEncontrados = result as Cliente[];
-          const clienteEncontrado = clientesEncontrados.find(cliente => cliente.contrasena === contraneusu);
-            if (clienteEncontrado) {
-              // Asignar el idCliente al atributo usuario de AppComponent
-              this.inicio.usuario = clienteEncontrado.idCliente;
-              Swal.fire(`Bienvenid@ ${usuario}`, 'Inicio de sesion correcto', 'success');
-              this.router.navigate(['./carrucel']);
-              this.inicio.login();
-              console.log(this.inicio.usuario)
-            }else {
-              // La contraseña no coincide con ninguna en el array
-              Swal.fire('Contraseña o usuario incorrectos', 'Cliente', 'error');
-            }        
+          if (clientesEncontrados.some(cliente => cliente.contrasena === contraneusu)) {
+            Swal.fire(`Bienvenid@ ${usuario}`, 'Inicio de sesion correcto', 'success');
+            this.userService.setUser(clientesEncontrados.find(cliente => cliente.contrasena === contraneusu));
+            this.router.navigate(['./carrucel']);
+            this.inicio.login();
+          } else {
+            // La contraseña no coincide con ninguna en el array
+            Swal.fire('Contraseña o usuario incorrectos', 'Cliente', 'error');
+          }
         }
       },
       (error) => {
