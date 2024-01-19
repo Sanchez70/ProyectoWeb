@@ -34,17 +34,17 @@ export class FormRCComponent implements OnInit {
   onSubmit(): void {
     const cedulaPersona = this.registroForm.get('cedula_persona')?.value;
 
-    if (cedulaPersona) {
-      this.registroCService.obtenerDatosPersonaPorCedula(cedulaPersona).subscribe(
-        (datosPersona) => {
-          // Puedes realizar acciones con los datos de persona si es necesario
-        },
-        (error) => {
-          console.error('Error al obtener datos de persona:', error);
-          // Puedes manejar el error según tus necesidades
-        }
-      );
-    }
+    // if (cedulaPersona) {
+    //   this.registroCService.obtenerDatosPersonaPorCedula(cedulaPersona).subscribe(
+    //     (datosPersona) => {
+    //       // Puedes realizar acciones con los datos de persona si es necesario
+    //     },
+    //     (error) => {
+    //       console.error('Error al obtener datos de persona:', error);
+    //       // Puedes manejar el error según tus necesidades
+    //     }
+    //   );
+    // }
 
     const datosCliente = {
       usuario: this.registroForm.get('usuario')?.value,

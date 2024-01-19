@@ -32,9 +32,9 @@ export class RegistroCService {
   }
 }
 
-  obtenerDatosPersonaPorCedula(cedula: string): Observable<any> {
-    const url = `${this.apiUrl}/obtenerDatosPersona/${cedula}`;
-    return this.http.get<any>(url);
-  }
+  // obtenerDatosPersonaPorCedula(cedula: string): Observable<any> {
+  //   const url = `${this.apiUrl}/obtenerDatosPersona/${cedula}`;
+  //   return this.http.get<any>(url);
+  // }
   // Puedes agregar más métodos según sea necesario
-}
+
