@@ -9,7 +9,6 @@ import { Cliente } from '../clientes/cliente';
 import { ClienteService } from '../clientes/cliente.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AppComponent } from '../app.component';
-import { UserService } from '../user.service';
 import { Administrador } from '../administrador/administrador';
 import { Recepcionista } from '../recepcionista/recepcionista';
 
@@ -26,8 +25,7 @@ export class LoginComponent {
     private fb: FormBuilder,
     private loginService: LoginService,
     private router: Router,
-    private inicio: AppComponent,
-    private userService: UserService) {
+    private inicio: AppComponent) {
     this.searchForm = this.fb.group({
       usuario: [''],
       contraneusu: [''] // Este campo se relaciona con el nombre que deseas buscar

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Cliente } from './cliente';
 import { ClienteService } from './cliente.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { UserService } from '../user.service';
 import { AppComponent } from '../app.component';
 
 @Component({
@@ -18,8 +17,7 @@ export class ClientesComponent implements OnInit{
   constructor(
     private clienteService: ClienteService, 
     private router:Router,
-    private activatedRoute: ActivatedRoute, 
-    private userService: UserService,
+    private activatedRoute: ActivatedRoute,
     private inicio: AppComponent) { }
   
   ngOnInit(): void {

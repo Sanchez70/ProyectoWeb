@@ -1,9 +1,7 @@
 export class Cliente {
-    idCliente: number = 0;
+    idCliente:any;
     usuario: string = '';
     contrasena: string = '';
     cedula_persona: string = '';
     foto: string = '';
-    // nombre: string ='';
-    // apellido: string ='';
 }

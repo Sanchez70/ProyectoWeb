@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule, Routes } from '@angular/router';
-import { UserService } from './user.service';
 import { ReservasComponent } from './reservas/reservas.component';
 import { ClientesComponent } from './clientes/clientes.component';
 import { FormClienteComponent } from './clientes/form-cliente.component';
@@ -34,17 +33,6 @@ import { LoginComponent } from './login/login.component';
 import { LoginService } from './login/login.service';
 import { FormAComponent } from './login/formA.component';
 
-import { PersonaService } from './persona/persona.service';
-import { PersonaComponent } from './persona/persona.component';
-import { FormPComponent } from './persona/formP.component';
-import { ProvinciasComponent } from './provincias/provincias.component';
-import { CantonesComponent } from './cantones/cantones.component';
-import { CantonService } from './cantones/canton.service';
-import { ProvinciaService } from './provincias/provincia.service';
-import { RegistroCComponent } from './registroC/registroC.component';
-import { RegistroCService } from './registroC/registroC.service';
-import { FormRCComponent } from './registroC/formRC.component';
-
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -64,14 +52,7 @@ const routes: Routes = [
   { path: 'clientes/:id', component: ClientesComponent },
   { path: 'clientes/form', component: FormClienteComponent },
   { path: 'clientes/form/:id', component: FormClienteComponent },
-  { path: 'login', component: LoginComponent},
-  { path: 'persona', component: PersonaComponent},
-  { path: 'persona/form', component: FormPComponent },
-  { path: 'persona/form/:id', component: FormPComponent },
-  { path: 'provincias', component: ProvinciasComponent},
-  { path: 'cantones', component: CantonesComponent},
-  {path: 'registroC', component: RegistroCComponent},
-  {path: 'registro/form', component: FormRCComponent}
+  { path: 'login', component: LoginComponent}
 ];
 
 
@@ -96,12 +77,6 @@ const routes: Routes = [
     LoginComponent,
     FormAComponent,
     Servicios2Component,
-    PersonaComponent,
-    FormPComponent,
-    ProvinciasComponent,
-    CantonesComponent,
-    RegistroCComponent,
-    FormRCComponent
 
   ],
   imports: [
@@ -113,7 +88,6 @@ const routes: Routes = [
     RouterModule.forRoot(routes)
   ],
   providers: [
-    UserService,
     ClienteService,
     ReservaService,
     EncabezadoFacturaService,
@@ -122,10 +96,6 @@ const routes: Routes = [
     Servicio2Service,
     HabitacionesService,
     LoginService,
-    PersonaService,
-    ProvinciaService,
-    CantonService,
-    RegistroCService,
     provideClientHydration()
   ],
   bootstrap: [AppComponent]
