@@ -20,10 +20,7 @@ export class ClienteService {
     //return this.http.get(this.urlEndPoint).pipe(map(response=>response as Cliente[]));
   }
 
-  getCliente(idCliente: any):Observable<Cliente>{
-    return this.http.get<Cliente>(`${this.urlEndPoint}/${idCliente}`);
-  }
-  getClienteByUsuario(id: number): Observable<Cliente> {
+  getCliente(id: number): Observable<Cliente> {
     const url = `${this.urlEndPoint}/${id}`;
     return this.http.get<Cliente>(url);
   }

@@ -50,7 +50,6 @@ const routes: Routes = [
   { path: 'reservas/form-reservas/:id', component: FormReservasComponent },
   { path: 'clientes', component: ClientesComponent },
   { path: 'clientes/:id', component: ClientesComponent },
-  { path: 'clientes/form', component: FormClienteComponent },
   { path: 'clientes/form/:id', component: FormClienteComponent },
   { path: 'login', component: LoginComponent}
 ];

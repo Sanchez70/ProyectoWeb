@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Cliente } from './cliente';
 import { ClienteService } from './cliente.service';
+import { AppComponent } from '../app.component';
 import { Router, ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
 
@@ -13,21 +14,27 @@ export class FormClienteComponent implements OnInit{
   previewImage: string | ArrayBuffer = '';
   public cliente:Cliente = new Cliente()
   public title:string = "Editar Usuario"
+  id:number= this.inicio.idUsuario;
 
-  constructor(private clienteService:ClienteService, private router:Router,
-    private activatedRoute: ActivatedRoute) {}
+  constructor(private clienteService:ClienteService, 
+    private router:Router,
+    private activatedRoute: ActivatedRoute,
+    private inicio: AppComponent) {}
   
   ngOnInit(): void {
     this.cargarCliente()
   }
 
-  cargarCliente(): void{
-    this.activatedRoute.params.subscribe(params =>{
-      let id = params['idCliente']
-      if(id){
-        this.clienteService.getCliente(id).subscribe((cliente) => this.cliente = cliente)
+  cargarCliente(): void {
+
+    this.clienteService.getCliente(this.id).subscribe(
+      (cliente) => {
+        this.cliente = cliente;
+      },
+      (error) => {
+        console.error(error);
       }
-    })
+    );
   }
 
   public editU(): void{

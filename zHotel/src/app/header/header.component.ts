@@ -17,6 +17,7 @@ export class HeaderComponent {
     this.inicio.logout()
   }
 
-  usuario: number =  this.inicio.usuario;
+  id: number =  this.inicio.idUsuario;
+  cedula:any = this.inicio.cedulaUser;
 
 }

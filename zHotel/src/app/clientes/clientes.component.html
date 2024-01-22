@@ -1,26 +1,49 @@
-<div class="card border-primary mb-3" style="width: 30rem; align-content: center; left: 30%;">
-    <div class="card-header" style="align-content: center;">
-        <h5 class="card-title" >{{cliente.usuario}}</h5>
-        <img src="..." class="card-img-top" >
-    </div>    
+<div class="card-header" style="align-items: center; left: 40%;">
+  <h5 class="card-title" >{{cliente.usuario}}</h5>
+  <img src="..." class="card-img-top" >
+</div> 
+
+<div class="card border-primary mb-3" style="width: 30rem; align-content: center; left: 2%;">  
     
     <ul class="list-group list-group-item" >
       <li class="list-group-item">
-        <h5>Nombre y apellido</h5>
+        <h5>Nombres y apellidos</h5>
+        <p>{{persona.nombre}} {{persona.nombre2}} {{persona.apellido}} {{persona.apellido2}}</p>
+      </li>
+      <li class="list-group-item">
+        <h5>Cédula</h5>
         <p>{{cliente.cedula_persona}}</p>
       </li>
       <li class="list-group-item" >
-        <h5>Nombre de ususario</h5>
+        <h5>Correo</h5>
         <p>{{cliente.usuario}}</p>
       </li>
       <li class="list-group-item">
         <h5>Contraseña</h5>
         <p>{{cliente.contrasena}}</p>
       </li>
+      <li class="list-group-item">
+        <h5>Edad</h5>
+        <p>{{persona.edad}}</p>
+      </li>
+      <li class="list-group-item">
+        <h5>Género</h5>
+        <p>{{persona.edad}}</p>
+      </li>
+      <li class="list-group-item">
+        <h5>Teléfono</h5>
+        <p>{{persona.telefono}}</p>
+      </li>
+      <li class="list-group-item">
+        <h5>Dirección</h5>
+        <p>{{persona.direccion}}</p>
+      </li>
+      <li class="list-group-item">
+        <h5>Cantón</h5>
+        <p>{{persona.cantones}}</p>
+      </li>
     </ul>
     <div class="card-body">
-
-      <a href="#" class="card-link"></a>
-      <a href="#" class="card-link">Another link</a>
+      <button type="button" name="buttonEdit" [routerLink]="['/clientes/form', cliente.idCliente]" class="btn btn-primary">Editar</button>
     </div>
   </div>
