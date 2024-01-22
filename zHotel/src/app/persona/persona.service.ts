@@ -10,7 +10,8 @@ import { Cantones } from '../cantones/canton';
   providedIn: 'root',
 })
 export class PersonaService {
-  private apiUrl = 'http://localhost:8081/api';
+ // private apiUrl = 'http://192.168.40.228:8081/api';
+ private apiUrl = 'http://localhost:8081/api';
   private urlEndPoint = `${this.apiUrl}/personas`;
   private httpHeaders = { 'Content-Type': 'application/json' };
 
@@ -51,4 +52,6 @@ export class PersonaService {
   getCantones(): Observable<Cantones[]> {
     return this.http.get<Cantones[]>('http://localhost:8081/api/Cantons');
   }
+
+  
 }

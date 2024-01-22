@@ -5,7 +5,7 @@ import { PersonaService } from './persona.service';
 
 @Component({
   selector: 'app-persona',
-  templateUrl: './persona.component.html'
+  templateUrl: './persona.component.html',
 })
 export class PersonaComponent implements OnInit {
   personas: Persona[] = [];
@@ -28,4 +28,5 @@ export class PersonaComponent implements OnInit {
       this.cargarPersonas();
     });
   }
+
 }

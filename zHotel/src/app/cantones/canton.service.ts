@@ -7,6 +7,7 @@ import { Cantones } from './canton';
   providedIn: 'root',
 })
 export class CantonService {
+  //private apiUrl = 'http://192.168.40.228:8081/api';
   private apiUrl = 'http://localhost:8081/api';
 
   constructor(private http: HttpClient) {}

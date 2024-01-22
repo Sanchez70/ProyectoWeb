@@ -56,3 +56,17 @@ button:hover {
   color: #d32f2f; 
   margin-top: 10px;
 }
+
+.redirection-buttons {
+  /* Otros estilos para el contenedor si es necesario */
+}
+
+.register-link {
+  color: #4285f4; /* Cambia el color a uno de tu elección */
+  text-decoration: underline; /* Agrega subrayado al texto */
+  cursor: pointer; /* Cambia el cursor al estilo de un enlace */
+}
+
+.register-link:hover {
+  text-decoration: none; /* Elimina el subrayado al pasar el mouse sobre el enlace */
+}

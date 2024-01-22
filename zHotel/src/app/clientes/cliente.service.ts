@@ -8,7 +8,8 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 })
 export class ClienteService {
 
-  private urlEndPoint: string = 'http://192.168.40.228:8081/api/clientes';
+  //private urlEndPoint: string = 'http://192.168.40.228:8081/api/clientes';
+  private urlEndPoint = 'http://localhost:8081/api/clientes';
   private httpHeaders = new HttpHeaders({'Content-Type':'application/json'})
 
   constructor( private http: HttpClient) { }
@@ -30,31 +31,25 @@ export class ClienteService {
   }
 
   //addBF
-  obtenerDatosPersonaPorCedula(cedula: string): Observable<any> {
-    const url = `${this.urlEndPoint}/ruta-donde-obtener-datos-persona/${cedula}`;
-
-    return this.http.get<any>(url).pipe(
-      catchError((error: HttpErrorResponse) => {
-        console.error('Error al obtener datos de persona:', error);
-        return throwError('Ocurrió un error al obtener datos de persona. Por favor, inténtalo nuevamente.');
-      })
-    );
+  createCliente(cliente: Cliente): Observable<Cliente> {
+    // Elimina el campo idCliente antes de enviar la solicitud
+    const { idCliente, ...clienteSinId } = cliente;
+  
+    return this.http.post<Cliente>(this.urlEndPoint, clienteSinId, { headers: this.httpHeaders })
+      .pipe(
+        catchError((error: any) => {
+          console.error('Error al crear cliente:', error);
+  
+          if (error.status === 500) {
+            throw new Error('Ocurrió un error interno en el servidor. Por favor, inténtalo nuevamente más tarde.');
+          } else {
+            throw new Error('Ocurrió un error. Por favor, verifica tus datos e inténtalo nuevamente.');
+          }
+        })
+      );
   }
-
-  registrarCliente(datosCliente: any): Observable<any> {
-    const url = `${this.urlEndPoint}`;
-
-    return this.http.post<any>(url, datosCliente, { headers: this.httpHeaders }).pipe(
-      catchError((error: HttpErrorResponse) => {
-        console.error('Error al registrar cliente:', error);
-
-        if (error.status === 500) {
-          return throwError('Ocurrió un error interno en el servidor. Por favor, inténtalo nuevamente más tarde.');
-        } else {
-          return throwError('Ocurrió un error. Por favor, verifica tus datos e inténtalo nuevamente.');
-        }
-      })
-    );
-  }
+  
+  
+  
 }
 

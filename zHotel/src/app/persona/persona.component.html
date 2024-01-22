@@ -1,11 +1,14 @@
-<!-- persona.component.html -->
-<h2>Listado de Personas</h2>
-
-<ul>
-  <li *ngFor="let persona of personas">
-    {{ persona.nombre }} {{ persona.apellido }} - <button (click)="eliminarPersona(persona.cedula_persona)">Eliminar</button>
-  </li>
-</ul>
-
-<!-- Agrega enlaces o botones para redireccionar al formulario de creación/edición -->
 <a routerLink="/persona/form">Crear Persona</a>
+
+<!-- Agrega este código para redireccionar automáticamente al formulario de persona -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Obtén el enlace de "Crear Persona"
+    const crearPersonaLink = document.querySelector('a[routerLink="/persona/form"]');
+    
+    // Haz clic automáticamente en el enlace
+    if (crearPersonaLink) {
+      crearPersonaLink.click();
+    }
+  });
+</script>

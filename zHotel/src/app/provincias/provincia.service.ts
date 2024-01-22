@@ -8,8 +8,8 @@ import { Provincia } from './provincia';
   providedIn: 'root',
 })
 export class ProvinciaService {
+  //private apiUrl = 'http://192.168.40.228:8081/api/provincias';
   private apiUrl = 'http://localhost:8081/api/provincias';
-
   constructor(private http: HttpClient) {}
 
   getProvincias(): Observable<Provincia[]> {

@@ -1,39 +1,45 @@
-import { Component, OnInit } from '@angular/core';
+// formRC.component.ts
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { RegistroCService } from './registroC.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RegistroC } from './registroC';
+import { RegistroCService } from './registroC.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-formRC',
   templateUrl: './formRC.component.html',
+  styleUrl: './registroC.component.css'
 })
 export class FormRCComponent implements OnInit {
-
-  registroC: RegistroC;
-  registroForm: FormGroup;
+  @Input() formRC!: FormGroup;
+  public cedulaPersona: string = '';
+  public registroC: RegistroC = new RegistroC();  // Crea una instancia de RegistroC
 
   constructor(
     private fb: FormBuilder,
     private registroCService: RegistroCService,
+    private route: ActivatedRoute,
     private router: Router
-  ) {
-    this.registroForm = this.fb.group({
-      usuario: ['', Validators.required],
-      contrasena: ['', Validators.required],
-      cedula_persona: ['', Validators.required],
-      // Agrega más campos según tus necesidades y valida si es necesario
-    });
-    this.registroC = new RegistroC;
-  }
+  ) {}
 
   ngOnInit(): void {
-    // Puedes realizar inicializaciones aquí si es necesario
+    this.buildForm();
+    this.route.params.subscribe(params => {
+      this.cedulaPersona = params['cedula_persona'];
+    });
   }
 
-  onSubmit(): void {
-    const cedulaPersona = this.registroForm.get('cedula_persona')?.value;
+  buildForm(): void {
+    this.formRC = this.fb.group({
+      usuario: ['', Validators.required],
+      contrasena: ['', Validators.required],
+      foto: ['', Validators.required],
+      // Puedes agregar más campos según tus necesidades
+    });
+  }
 
+<<<<<<< Updated upstream
     // if (cedulaPersona) {
     //   this.registroCService.obtenerDatosPersonaPorCedula(cedulaPersona).subscribe(
     //     (datosPersona) => {
@@ -45,23 +51,23 @@ export class FormRCComponent implements OnInit {
     //     }
     //   );
     // }
+=======
+  registrarCliente(): void {
+    // Asigna los valores del formulario al objeto RegistroC
+    this.registroC = this.formRC.value;
+    this.registroC.cedula_persona = this.cedulaPersona;  // Asigna la cédula
+>>>>>>> Stashed changes
 
-    const datosCliente = {
-      usuario: this.registroForm.get('usuario')?.value,
-      contrasena: this.registroForm.get('contrasena')?.value,
-      cedula_persona: cedulaPersona,
-      // Agrega más campos según tus necesidades
-    };
-
-    // Lógica para registrar el cliente
-    this.registroCService.registrarCliente(datosCliente).subscribe(
+    // Llamada al servicio para registrar al cliente
+    this.registroCService.registrarCliente(this.registroC).subscribe(
       () => {
-        // Redirige a la ruta deseada después de registrar el cliente
-        this.router.navigate(['/ruta-donde-redirigir']);
+        Swal.fire('Cliente registrado', 'El cliente se ha registrado con éxito.', 'success');
+        // Puedes redirigir a donde desees después de registrar al cliente
+        this.router.navigate(['/']); // Por ejemplo, redirigir al inicio
       },
       (error) => {
         console.error('Error al registrar cliente:', error);
-        // Puedes manejar el error según tus necesidades
+        Swal.fire('Error', 'Ocurrió un error al intentar registrar al cliente.', 'error');
       }
     );
   }

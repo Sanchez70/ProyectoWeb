@@ -1,0 +1,55 @@
+/* formP.component.css */
+
+.registration-container {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ddd; /* Cambiado a un gris más claro */
+    border-radius: 10px; /* Aumenta el radio para bordes más redondeados */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra horizontalmente */
+    justify-content: center; /* Centra verticalmente */
+    margin-top: 50px; /* Ajusta el margen superior para centrar verticalmente */
+  }
+  
+  h2 {
+    text-align: center;
+    color: #4285f4; /* Google Blue */
+  }
+  
+  form {
+    width: 100%; /* Hace que el formulario ocupe todo el ancho del contenedor */
+  }
+  
+  label {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
+  input,
+  select,
+  textarea {
+    width: 100%;
+    padding: 12px; /* Ajustado el padding para más espacio */
+    margin-bottom: 12px; /* Ajustado el margin para más espacio */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Evita que el padding afecte el ancho total */
+  }
+  
+  button {
+    background-color: #4285f4; /* Google Blue */
+    color: #fff;
+    padding: 14px; /* Ajustado el padding para más espacio */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%; /* Hace que el botón ocupe todo el ancho del contenedor */
+  }
+  
+  button:hover {
+    background-color: #3c78d8; /* Google Dark Blue */
+  }

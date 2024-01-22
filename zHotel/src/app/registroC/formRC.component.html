@@ -1,23 +1,18 @@
-<div>
-  <h2>Registro de Cliente</h2>
-  <form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
+<!-- formRC.component.html -->
+<div class="registration-container">
+  <h2>REGISTRO</h2>
 
-    <!-- Campos del formulario -->
-    <div>
-      <label for="usuario">Usuario:</label>
-      <input type="text" id="usuario" formControlName="usuario" required>
-    </div>
+  <form [formGroup]="formRC">
+    <label for="usuario">Usuario:</label>
+    <input type="text" id="usuario" formControlName="usuario" required>
 
-    <div>
-      <label for="contrasena">Contraseña:</label>
-      <input type="password" id="contrasena" formControlName="contrasena" required>
-    </div>
+    <label for="contrasena">Contraseña:</label>
+    <input type="password" id="contrasena" formControlName="contrasena" required>
 
-    <div>
-      <label for="cedula_persona">Cédula Persona:</label>
-      <input type="text" id="cedula_persona" formControlName="cedula_persona" required>
-    </div>
+    <label for="foto">Foto:</label>
+    <input type="text" id="foto" formControlName="foto" required>
 
+<<<<<<< Updated upstream
     <!-- Agrega más campos según tus necesidades -->
 
     <!-- Botones -->
@@ -25,5 +20,9 @@
       <!-- <button type="button" (click)="buscarDatosPersona()">Buscar Datos Persona</button> -->
       <button type="submit">Registrar Cliente</button>
     </div>
+=======
+    <button type="button" (click)="registrarCliente()">Registrar Cliente</button>
+    <!-- Puedes agregar más campos aquí -->
+>>>>>>> Stashed changes
   </form>
 </div>

@@ -1,38 +1,12 @@
-<div class="registro-container">
-    <div class="registro-card">
-      <form [formGroup]="registroForm" (ngSubmit)="registrarCliente()">
-        <!-- Campos de registro de cliente -->
-        <div class="form-group">
-          <label for="usuario">Usuario:</label>
-          <input class="form-control" type="text" id="usuario" formControlName="usuario" required>
-        </div>
+<!-- registroC.component.html -->
+<div class="registration-container">
   
-        <div class="form-group">
-          <label for="contrasena">Contraseña:</label>
-          <input class="form-control" type="password" id="contrasena" formControlName="contrasena" required>
-        </div>
+  <!-- Insertar formulario de formRC.component.html -->
+  <app-formRC></app-formRC>
+
+  <!-- Agregar enlace para redireccionar al formulario de creación/edición -->
+  <!--<a routerLink="/registroC/form">Crear RegistroC</a>-->
   
-        <div class="form-group">
-          <label for="cedula_persona">Cédula de Persona:</label>
-          <input class="form-control" type="text" id="cedula_persona" formControlName="cedula_persona" required>
-        </div>
-  
-        <div class="form-group">
-          <label for="foto">Foto:</label>
-          <input class="form-control" type="text" id="foto" formControlName="foto">
-        </div>
-  
-        <!-- Otros campos según tu modelo de datos -->
-  
-        <!-- Botón de registrar -->
-        <button type="submit" class="btn btn-primary btn-rounded">REGISTRAR</button>
-      </form>
-    </div>
-    <div *ngIf="datosPersona">
-        <h3>Datos de Persona</h3>
-        <p><strong>Nombre:</strong> {{ datosPersona.nombre }}</p>
-        <p><strong>Apellido:</strong> {{ datosPersona.apellido }}</p>
-        <!-- Agrega más campos según tu modelo de datos de persona -->
-      </div>
-  </div>
-  
+  <!-- Botón para registrar al cliente -->
+  <!--<button type="button" (click)="registrarCliente()">Registrar Cliente</button>-->
+</div>

@@ -1,42 +1,45 @@
 <!-- formP.component.html -->
-<h2>{{ titulo }}</h2>
+<div class="registration-container">
+  <h2>{{ titulo }}</h2>
 
-<form (ngSubmit)="crearEditarPersona()">
-  <label for="cedula_persona">Cédula:</label>
-  <input type="text" id="cedula_persona" [(ngModel)]="persona.cedula_persona" name="cedula_persona" required>
+  <form (ngSubmit)="crearEditarPersona()">
+    <label for="cedula_persona">Cédula:</label>
+    <input type="text" id="cedula_persona" [(ngModel)]="persona.cedula_persona" name="cedula_persona" required>
 
-  <label for="nombre">Nombre:</label>
-  <input type="text" id="nombre" [(ngModel)]="persona.nombre" name="nombre" required>
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" [(ngModel)]="persona.nombre" name="nombre" required>
 
-  <label for="nombre2">Segundo Nombre:</label>
-  <input type="text" id="nombre2" [(ngModel)]="persona.nombre2" name="nombre2" required>
+    <label for="nombre2">Segundo Nombre:</label>
+    <input type="text" id="nombre2" [(ngModel)]="persona.nombre2" name="nombre2" required>
 
-  <label for="apellido">Apellido:</label>
-  <input type="text" id="apellido" [(ngModel)]="persona.apellido" name="apellido" required>
+    <label for="apellido">Apellido:</label>
+    <input type="text" id="apellido" [(ngModel)]="persona.apellido" name="apellido" required>
 
-  <label for="apellido2">Segundo Apellido:</label>
-  <input type="text" id="apellido2" [(ngModel)]="persona.apellido2" name="apellido2" required>
+    <label for="apellido2">Segundo Apellido:</label>
+    <input type="text" id="apellido2" [(ngModel)]="persona.apellido2" name="apellido2" required>
 
-  <label for="genero">Género:</label>
-  <input type="text" id="genero" [(ngModel)]="persona.genero" name="genero" required>
+    <label for="genero">Género:</label>
+    <select id="genero" [(ngModel)]="persona.genero" name="genero" required>
+      <option value="masculino">Masculino</option>
+      <option value="femenino">Femenino</option>
+      <option value="noContestar">Prefiero no contestar</option>
+    </select>
 
-  <label for="telefono">Teléfono:</label>
-  <input type="text" id="telefono" [(ngModel)]="persona.telefono" name="telefono" required>
+    <label for="telefono">Teléfono:</label>
+    <input type="text" id="telefono" [(ngModel)]="persona.telefono" name="telefono" required>
 
-  <label for="direccion">Dirección:</label>
-  <input type="text" id="direccion" [(ngModel)]="persona.direccion" name="direccion" required>
+    <label for="direccion">Dirección:</label>
+    <input type="text" id="direccion" [(ngModel)]="persona.direccion" name="direccion" required>
 
-  <label for="edad">Edad:</label>
-  <input type="number" id="edad" [(ngModel)]="persona.edad" name="edad" required>
+    <label for="edad">Edad:</label>
+    <input type="number" id="edad" [(ngModel)]="persona.edad" name="edad" required>
 
-  <label for="id_canton">Cantón:</label>
-<select id="id_canton" [(ngModel)]="persona.id_canton" name="id_canton">
-  <option *ngFor="let canton of cantones" [value]="canton.id_canton">{{ canton.nombre }}</option>
-</select>
+    <label for="id_canton">Cantón:</label>
+    <select id="id_canton" [(ngModel)]="persona.id_canton" name="id_canton">
+      <option *ngFor="let canton of cantones" [value]="canton.id_canton">{{ canton.nombre }}</option>
+    </select>
 
-
-
-
-
-  <button type="submit">Guardar</button>
-</form>
+    <!--<button type="button" (click)="irARegistroC()">Siguiente</button>-->
+    <button type="button" (click)="irARegistroC()">Siguiente</button>
+  </form>
+</div>

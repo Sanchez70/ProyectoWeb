@@ -105,4 +105,9 @@ export class LoginComponent {
       }
     );
   }
+
+  redirectA() {
+    // Puedes redirigir a la ruta deseada usando el router
+    this.router.navigate(['/persona/form']);
+ }
 }
