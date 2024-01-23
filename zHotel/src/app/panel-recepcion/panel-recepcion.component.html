@@ -1,1 +1,68 @@
-<p>panel-recepcion works!</p>
+<div class="card border-primary mb-3">
+  <div class="card-header">Panel de Recepción</div>
+
+  <div class="card-body text-primary">
+    <h5 class="card-title">Listado</h5>
+
+    <div class="my-2 text-left">
+    <!--  <button class="btn btn-rounded btn-primary mr-5" (click)="cargarInformacion()" [routerLink]="['/habitaciones']">Recargar Habitaciones</button>-->
+    <button class="btn btn-rounded btn-primary mr-5" (click)="cargarInformacion()">Recargar Habitaciones</button>  
+    <button class="btn btn-rounded btn-primary mr-5" [routerLink]="['/recepcionistas']">Recepcionistas</button>
+    <button class="btn btn-rounded btn-primary mr-5">Reportes</button>
+    <button class="btn btn-rounded btn-primary">Ocupación General</button>
+    </div> 
+
+    <div class="my-2 text-left mr-auto mb-3">
+      <label for="buscarId">Buscar por ID:</label>
+      <input type="text" id="buscarId" [(ngModel)]="idABuscar" inputmode="numeric" pattern="[0-9]*" />
+      <button class="btn btn-succes" (click)="buscarPorId()">Buscar</button>
+    </div>
+
+
+    <div class="my-2 text-left ">
+      <div class="row">
+        <div class="col-md-6">
+          <button type="button" [routerLink]="['/habitaciones/form']" class="btn btn-link">Crear Habitación</button>
+        </div>
+        <div class="col-md-6">
+          <button type="button" [routerLink]="['/recepcionistas/form']" class="btn btn-link">Crear Recepcionista</button>
+        </div>
+      </div>
+    </div>
+    
+    
+    <!-- Tabla de Habitaciones -->
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th style="color: black;">ID</th>
+          <th style="color: black;">Número de Habitación</th>
+          <th style="color: black;">Piso</th>
+          <th style="color: black;">Precio</th>
+          <th style="color: black;">Descripción</th>
+          <th style="color: black;" >Imagen</th>
+          <!-- Agrega más columnas según tus necesidades -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let habitacion of habitaciones">
+          <td>{{ habitacion.idHabitaciones }}</td>
+          <td>{{ habitacion.nHabitacion }}</td>
+          <td>{{ habitacion.nPiso }}</td>
+          <td>{{ habitacion.precio }}</td>
+          <td>{{ habitacion.descriphabi }}</td>
+          <td>
+            <img src="{{ habitacion.imagen }}" alt="Imagen de la habitación" width="50" height="50">
+          </td>
+          <td class="text-center">
+            <button type="button" name="button" [routerLink]="['/habitaciones/form', habitacion.idHabitaciones]" class="btn btn-info">Editar</button>
+          </td>
+          <td class="text-center">
+            <button type="button" (click)="eliminarHabitacion(habitacion.idHabitaciones)" class="btn btn-danger">Eliminar</button>
+          </td>
+          <!-- Agrega más celdas según tus necesidades -->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

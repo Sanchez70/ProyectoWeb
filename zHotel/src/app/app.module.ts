@@ -50,6 +50,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'habitaciones', component: HabitacionesComponent },
   { path: 'panel-recepcion', component: PanelRecepcionComponent },
+  { path: 'panel-servicios-reservas', component: PanelServiciosReservasComponent },
   { path: 'habitaciones/form/:id', component: FormHbitacionesComponent },
   { path: 'habitaciones/form', component: FormHbitacionesComponent },
   { path: 'carrucel', component: CarrucelComponent },
