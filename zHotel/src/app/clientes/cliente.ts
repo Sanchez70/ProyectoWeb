@@ -3,5 +3,5 @@ export class Cliente {
     usuario: string = '';
     contrasena: string = '';
     cedula_persona: string = '';
-    foto: string = '';
+    foto: any;
 }

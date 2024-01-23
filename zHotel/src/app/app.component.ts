@@ -10,6 +10,7 @@ export class AppComponent {
   isLoggedIn = false;
   idUsuario:any;
   cedulaUser:any;
+  tipoUser:any;
 
 
 login() {

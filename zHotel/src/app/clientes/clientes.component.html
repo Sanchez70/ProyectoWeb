@@ -1,6 +1,6 @@
-<div class="card-header" style="align-items: center; left: 40%;">
+<div class="card-header" style="align-self: center; left: 40%;">
   <h5 class="card-title" >{{cliente.usuario}}</h5>
-  <img src="..." class="card-img-top" >
+  <img [src]="[cliente.foto]" class="card-img-top" >
 </div> 
 
 <div class="card border-primary mb-3" style="width: 30rem; align-content: center; left: 2%;">  
@@ -28,7 +28,7 @@
       </li>
       <li class="list-group-item">
         <h5>Género</h5>
-        <p>{{persona.edad}}</p>
+        <p>{{persona.genero}}</p>
       </li>
       <li class="list-group-item">
         <h5>Teléfono</h5>
@@ -47,3 +47,4 @@
       <button type="button" name="buttonEdit" [routerLink]="['/clientes/form', cliente.idCliente]" class="btn btn-primary">Editar</button>
     </div>
   </div>
+  
