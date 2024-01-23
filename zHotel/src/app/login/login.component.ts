@@ -9,6 +9,7 @@ import { Cliente } from '../clientes/cliente';
 import { ClienteService } from '../clientes/cliente.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AppComponent } from '../app.component';
+
 import { Administrador } from '../administrador/administrador';
 import { Recepcionista } from '../recepcionista/recepcionista';
 
@@ -25,7 +26,8 @@ export class LoginComponent {
     private fb: FormBuilder,
     private loginService: LoginService,
     private router: Router,
-    private inicio: AppComponent) {
+    private inicio: AppComponent,
+   ) {
     this.searchForm = this.fb.group({
       usuario: [''],
       contraneusu: [''] // Este campo se relaciona con el nombre que deseas buscar
@@ -46,12 +48,10 @@ export class LoginComponent {
             if (clienteEncontrado) {
               // Asignar el idCliente al atributo usuario de AppComponent
               this.inicio.idUsuario = clienteEncontrado.idCliente;
-              this.inicio.cedulaUser=clienteEncontrado.cedula_persona;
               Swal.fire(`Bienvenid@ ${usuario}`, 'Inicio de sesion correcto', 'success');
               this.router.navigate(['./carrucel']);
               this.inicio.login();
               console.log(this.inicio.idUsuario)
-              console.log(this.inicio.cedulaUser)
           } else {
             // La contraseña no coincide con ninguna en el array
             Swal.fire('Contraseña o usuario incorrectos', 'Cliente', 'error');
@@ -62,11 +62,8 @@ export class LoginComponent {
         this.loginService.buscarAdmin(usuario).subscribe(
           (resultAdmin) => {
             if (Array.isArray(resultAdmin) && resultAdmin.length > 0) {
-              const adminEncontrados = resultAdmin as Administrador[];
-              const adminEncontrado = adminEncontrados.find(admin => admin.contrasena === contraneusu);
-              if(adminEncontrado){
-                this.inicio.idUsuario = adminEncontrado.idAdmin;
-                this.inicio.cedulaUser= adminEncontrado.cedula_persona;
+              const adminEcontrados = resultAdmin as Administrador[];
+              if(adminEcontrados.some(admin=> admin.contrasena === contraneusu)){
                 Swal.fire(`Bienvenid@ ${usuario}`, 'Inicio de sesion correcto', 'success');
                 this.router.navigate(['./carrucel']);
                 this.inicio.login();
@@ -82,10 +79,7 @@ export class LoginComponent {
               (resultRecep) => {
                 if (Array.isArray(resultRecep) && resultRecep.length > 0) {
                   const recepEcontrados = resultRecep as Recepcionista[];
-                  const recepEncontrado = recepEcontrados.find(recep => recep.contrasena === contraneusu);
-                  if(recepEncontrado){
-                    this.inicio.idUsuario = recepEncontrado.id_recepcionista;
-                    this.inicio.cedulaUser= recepEncontrado.cedula_persona;
+                  if(recepEcontrados.some(recep=> recep.contrasena === contraneusu)){
                     Swal.fire(`Bienvenid@ ${usuario}`, 'Inicio de sesion correcto', 'success');
                     this.router.navigate(['./carrucel']);
                     this.inicio.login();

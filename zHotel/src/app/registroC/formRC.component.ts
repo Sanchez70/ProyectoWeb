@@ -39,24 +39,10 @@ export class FormRCComponent implements OnInit {
     });
   }
 
-<<<<<<< Updated upstream
-    // if (cedulaPersona) {
-    //   this.registroCService.obtenerDatosPersonaPorCedula(cedulaPersona).subscribe(
-    //     (datosPersona) => {
-    //       // Puedes realizar acciones con los datos de persona si es necesario
-    //     },
-    //     (error) => {
-    //       console.error('Error al obtener datos de persona:', error);
-    //       // Puedes manejar el error según tus necesidades
-    //     }
-    //   );
-    // }
-=======
   registrarCliente(): void {
     // Asigna los valores del formulario al objeto RegistroC
     this.registroC = this.formRC.value;
     this.registroC.cedula_persona = this.cedulaPersona;  // Asigna la cédula
->>>>>>> Stashed changes
 
     // Llamada al servicio para registrar al cliente
     this.registroCService.registrarCliente(this.registroC).subscribe(

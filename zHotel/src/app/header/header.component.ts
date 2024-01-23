@@ -17,8 +17,7 @@ export class HeaderComponent {
     this.inicio.logout()
   }
 
-  id: number =  this.inicio.idUsuario;
-  cedula:any = this.inicio.cedulaUser;
+  usuario: number =  this.inicio.idUsuario;
 
   abrirFormularioPersona(): void {
     // Redirige directamente al formulario de creación de persona

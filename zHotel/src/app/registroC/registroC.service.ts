@@ -18,13 +18,3 @@ export class RegistroCService {
     return this.http.post<RegistroC>(this.urlEndPoint, registroC);
   }
 }
-<<<<<<< Updated upstream
-
-  // obtenerDatosPersonaPorCedula(cedula: string): Observable<any> {
-  //   const url = `${this.apiUrl}/obtenerDatosPersona/${cedula}`;
-  //   return this.http.get<any>(url);
-  // }
-  // Puedes agregar más métodos según sea necesario
-
-=======
->>>>>>> Stashed changes
