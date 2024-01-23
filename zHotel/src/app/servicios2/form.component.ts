@@ -5,6 +5,8 @@ import { ServicioService } from '../servicios/servicio.service';
 import { Servicio2Service } from './servicio2.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { Habitaciones } from '../habitaciones/habitaciones';
+import { HabitacionesService } from '../habitaciones/habitaciones.service';
 
 @Component({
   selector: 'app-from',
@@ -13,12 +15,15 @@ import Swal from 'sweetalert2';
 export class FormComponentServi {
   public servicio: Servicio = new Servicio()
   public servicio2: Servicios2 = new Servicios2()
+  public habitacion: Habitaciones = new Habitaciones()
+  public habitaciones: Habitaciones[] = [];
   public titulo: String = "Crear Servicio"
 
-  constructor(private servicioService: ServicioService,private servicio2Service: Servicio2Service, private router: Router, private activatedRoute: ActivatedRoute) { }
+  constructor(private habitacionesService: HabitacionesService,private servicioService: ServicioService,private servicio2Service: Servicio2Service, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.cargarServicios()
+    this.cargarHabitaciones()
   }
 
   cargarServicios(): void {
@@ -33,7 +38,15 @@ export class FormComponentServi {
     })
   }
 
+  cargarHabitaciones(): void {
+    this.habitacionesService.getHabitaciones().subscribe((habitaciones) => {
+      this.habitaciones = habitaciones;
+    });
+  }
+
   public create(): void {
+    this.servicio2.idHabitaciones = this.habitacion.idHabitaciones; 
+    this.servicio2.estado = 'Pendiente';
     this.servicio2Service.create(this.servicio2)
       .subscribe(servicio2 => {
         this.router.navigate(['/servicios2'])
@@ -41,5 +54,5 @@ export class FormComponentServi {
       }
       )
   }
-
+  
 }
