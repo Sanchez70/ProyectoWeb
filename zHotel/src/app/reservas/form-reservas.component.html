@@ -1,14 +1,29 @@
 <div class="col" style="display: grid; grid-template-columns: 1fr 1fr; height: 100dvh;">
-<div style="display: flex; flex-direction: column;" >
-    <img src="{{habitaciones.foto}}" class="rounded float-left" style="width: 30cap; height: 30cap; justify-content: center;">
-    <input type="text" [(ngModel)]="habitaciones.precio">
-</div>
+    <div class="card" style="width: 55%; height: min-content; margin-left: 20cap; text-align: center; border-radius: 0cap; border-style: dashed; border-color: rgb(109, 117, 117); flex-wrap: wrap;" >
+        <div class="card-body">
+            <div style="display: flex; flex-direction: column;" >
+                <img src="{{habitaciones.foto}}" class="rounded float-left"  class="card-img-top" style="height: 350px; border-radius: 15%;">
+                <b class="card-text" style="font-style: oblique; margin-top: 1cap; text-align: center ">DESCRIPCIÓN</b>
+                <p class="card-text" style="font-style: oblique; margin-top: 1cap; text-align: center; ">{{habitaciones.descriphabi}}</p>
+                <b class="card-text" style="font-style: oblique; margin-top: 1cap; text-align: center; ">PRECIO</b>
+                <p class="card-text" style="margin-top: 1cap; justify-content: center; align-items: center; text-align: center; ">{{habitaciones.precio}} $</p>
+                
+            </div>
+            <div style="display: flex; justify-content: center; margin-top: 10px;">
+                <i class="bi bi-wifi" style="font-size: 50px; color: rgb(0, 0, 0);"></i>
+                <i class="bi bi-egg-fried" style="font-size: 50px; color: rgb(0, 0, 0); margin-left: 40px;"></i>
+                <i class="bi bi-controller" style="font-size: 50px; color: rgb(0, 0, 0); margin-left: 40px;"></i>
+            </div>
+        </div>
+    </div>
 <div class="col-md-8" style="justify-content: flex-start; align-items: flex-end; display: flex; flex-direction: column;">
-<form class="formulario" ngNativeValidate (ngSubmit)="create()">
+<form class="formulario" ngNativeValidate (ngSubmit)="create()"> 
         <!--Numero personas-->
         <label for="nro_personas" class="label_form">Número de personas</label>
         <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Número de personas" [(ngModel)]="reserva.nPersona" name="nPersona" aria-label="Número de personas" aria-describedby="basic-addon1">
+            <select  class="form-control" placeholder="Número de personas" [(ngModel)]="opcionSeleccionada" name="nPersona" aria-label="Número de personas" aria-describedby="basic-addon1">
+                <option *ngFor="let opcion of opciones" [value]="opcion">{{opcion}}</option>
+            </select>
           </div>
 
         <!--Fecha entrada-->
@@ -33,7 +48,7 @@
         <div class="form_group" id="dias_grupo">
             <label for="nro_dias" class="label_form">Días total</label>
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Días" [(ngModel)]="dias" name="dias" aria-label="Días" aria-describedby="basic-addon1" [value]="diferenciadias" (ngModelChange)="calcularTotal()">
+                <input type="text" class="form-control" placeholder="Días" [(ngModel)]="dias" name="dias" aria-label="Días" aria-describedby="basic-addon1" [value]="diferenciadias">
               </div>
             
         </div>
@@ -51,7 +66,7 @@
         <div class="form_group" id="usuario_grupo">
             <label for="total" class="label_form">TOTAL A PAGAR</label>
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="TOTAL" [(ngModel)]="total" name="total" aria-label="TOTAL" aria-describedby="basic-addon1" [value]="total">
+                <input type="text" class="form-control" placeholder="TOTAL" [(ngModel)]="total" name="total" aria-label="TOTAL" aria-describedby="basic-addon1"  [value]="total">
               </div>          
         </div>
 
