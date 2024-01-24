@@ -18,6 +18,7 @@ export class HeaderComponent {
   }
 
   usuario: number =  this.inicio.idUsuario;
+  tipUser: any = this.inicio.tipoUser;
 
   abrirFormularioPersona(): void {
     // Redirige directamente al formulario de creación de persona
