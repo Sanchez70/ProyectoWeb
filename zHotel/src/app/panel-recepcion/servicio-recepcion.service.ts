@@ -12,7 +12,7 @@ export class ServicioRecepcion {
   constructor(private http: HttpClient) {}
 
   getHabitaciones(): Observable<any[]> {
-    const apiUrl = 'http://192.168.40.228:8081/api/habitaciones';
+    const apiUrl = 'http://localhost:8081/api/habitaciones';
     return this.http.get<any[]>(apiUrl).pipe(
       catchError(error => {
         console.error('Error en la solicitud de habitaciones:', error);
@@ -22,7 +22,7 @@ export class ServicioRecepcion {
   }
 
   getHabitacionById(id: number): Observable<any> {
-    const apiUrl = ` http://192.168.40.228:8081/api/habitaciones/${id}`;
+    const apiUrl = `http://localhost:8081/api/habitaciones/${id}`;
     return this.http.get<any>(apiUrl).pipe(
       catchError(error => {
         console.error(`Error al obtener la habitación con ID ${id}:`, error);
@@ -32,10 +32,20 @@ export class ServicioRecepcion {
   }
 
   eliminarHabitacion(id: number): Observable<void> {
-    const apiUrl = ` http://192.168.40.228:8081/api/habitaciones/${id}`;
+    const apiUrl = `http://localhost:8081/api/habitaciones/${id}`;
     return this.http.delete<void>(apiUrl).pipe(
       catchError(error => {
         console.error(`Error al eliminar la habitación con ID ${id}:`, error);
+        return throwError(error);
+      })
+    );
+  }
+
+  buscarHabitacion(term: string): Observable<any[]> {
+    const apiUrl = `http://localhost:8081/api/habitaciones/buscar/${term}`;
+    return this.http.get<any[]>(apiUrl).pipe(
+      catchError(error => {
+        console.error(`Error al realizar la búsqueda:`, error);
         return throwError(error);
       })
     );

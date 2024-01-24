@@ -5,19 +5,17 @@
     <h5 class="card-title">Listado</h5>
 
     <div class="my-2 text-left">
-    <!--  <button class="btn btn-rounded btn-primary mr-5" (click)="cargarInformacion()" [routerLink]="['/habitaciones']">Recargar Habitaciones</button>-->
-    <button class="btn btn-rounded btn-primary mr-5" (click)="cargarInformacion()">Recargar Habitaciones</button>  
-    <button class="btn btn-rounded btn-primary mr-5" [routerLink]="['/recepcionistas']">Recepcionistas</button>
-    <button class="btn btn-rounded btn-primary mr-5">Reportes</button>
-    <button class="btn btn-rounded btn-primary">Ocupación General</button>
+      <!--  <button class="btn btn-rounded btn-primary mr-5" (click)="cargarInformacion()" [routerLink]="['/habitaciones']">Recargar Habitaciones</button>-->
+      <button class="btn btn-rounded btn-primary mr-5" (click)="cargarInformacion()">Recargar Habitaciones</button>  
+      <button class="btn btn-rounded btn-primary mr-5" [routerLink]="['/recepcionistas']">Recepcionistas</button>
+      <button class="btn btn-rounded btn-primary mr-5">Reportes</button>
+      <button class="btn btn-rounded btn-primary mr-5" (click)="verificarOcupacionGeneral()">Ocupación General</button>
     </div> 
 
     <div class="my-2 text-left mr-auto mb-3">
       <label for="buscarId">Buscar por ID:</label>
-      <input type="text" id="buscarId" [(ngModel)]="idABuscar" inputmode="numeric" pattern="[0-9]*" />
-      <button class="btn btn-succes" (click)="buscarPorId()">Buscar</button>
+      <input type="text" id="buscarId" [(ngModel)]="idABuscar" inputmode="numeric" pattern="[0-9]*" (input)="buscarEnTiempoReal()" (keydown)="onKeyDown($event)" />
     </div>
-
 
     <div class="my-2 text-left ">
       <div class="row">
@@ -30,9 +28,8 @@
       </div>
     </div>
     
-    
     <!-- Tabla de Habitaciones -->
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped" *ngIf="mostrarTabla">
       <thead>
         <tr>
           <th style="color: black;">ID</th>
@@ -52,7 +49,7 @@
           <td>{{ habitacion.precio }}</td>
           <td>{{ habitacion.descriphabi }}</td>
           <td>
-            <img src="{{ habitacion.imagen }}" alt="Imagen de la habitación" width="50" height="50">
+            <img src="{{ habitacion.foto }}" alt="Imagen de la habitación" width="50" height="50">
           </td>
           <td class="text-center">
             <button type="button" name="button" [routerLink]="['/habitaciones/form', habitacion.idHabitaciones]" class="btn btn-info">Editar</button>
