@@ -44,7 +44,6 @@ import { ProvinciaService } from './provincias/provincia.service';
 import { RegistroCComponent } from './registroC/registroC.component';
 import { RegistroCService } from './registroC/registroC.service';
 import { FormRCComponent } from './registroC/formRC.component';
-import { FacturaComponent } from './factura/factura.component';
 import { FormrrcepcionistaComponent } from './header/formrrcepcionista.component';
 import { FormAdminLoginComponent } from './header/form-admin-login.component';
 
@@ -107,7 +106,6 @@ const routes: Routes = [
     CantonesComponent,
     RegistroCComponent,
     FormRCComponent,
-    FacturaComponent,
     FormrrcepcionistaComponent,
     FormAdminLoginComponent,
   ],

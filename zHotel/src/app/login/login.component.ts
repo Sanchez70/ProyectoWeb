@@ -53,6 +53,7 @@ export class LoginComponent {
               this.inicio.login();
               this.inicio.tipoUser='cliente';
               console.log(this.inicio.idUsuario)
+              console.log(this.inicio.tipoUser);
           } else {
             // La contraseña no coincide con ninguna en el array
             Swal.fire('Contraseña o usuario incorrectos', 'Cliente', 'error');
@@ -69,6 +70,7 @@ export class LoginComponent {
                 this.router.navigate(['./carrucel']);
                 this.inicio.login();
                 this.inicio.tipoUser='admin';
+                console.log(this.inicio.tipoUser);
               }else {
                 Swal.fire('Contraseña  incorrectos', 'Cliente', 'error');
               }
@@ -85,6 +87,7 @@ export class LoginComponent {
                     this.router.navigate(['./carrucel']);
                     this.inicio.login();
                     this.inicio.tipoUser='recep';
+                    console.log(this.inicio.tipoUser);
                   }else {
                     Swal.fire('Contraseña  incorrectos', 'Cliente', 'error');
                   }
