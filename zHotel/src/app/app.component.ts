@@ -10,7 +10,15 @@ export class AppComponent {
   isLoggedIn = false;
   idUsuario:any;
   cedulaUser:any;
-  tipoUser:any;
+  tipoUser:string='';
+
+  setTipoUser(type: string): void {
+    this.tipoUser = type;
+  }
+
+  getTipoUser(): string {
+    return this.tipoUser;
+  }
 
 
 login() {

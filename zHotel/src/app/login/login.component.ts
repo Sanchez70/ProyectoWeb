@@ -76,7 +76,6 @@ export class LoginComponent {
             }
           },
           (error) => {
-            Swal.fire('Usuario incorrectos', 'Cliente', 'error');
             this.loginService.buscarRecep(usuario).subscribe(
               (resultRecep) => {
                 if (Array.isArray(resultRecep) && resultRecep.length > 0) {

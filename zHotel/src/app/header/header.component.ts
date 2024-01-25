@@ -11,7 +11,7 @@ import { AppComponent } from '../app.component';
 })
 export class HeaderComponent {
 
-  constructor(private  inicio: AppComponent, private router: Router,){}
+  constructor(private  inicio: AppComponent, private router: Router){}
   apagar(){
     this.router.navigate(['./login']);
     this.inicio.logout()
