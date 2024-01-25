@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<div id="htmlData" style="width: 1000px; margin-left: 25cap; margin-right: 25cap ;">
 <html lang="es">
 
 <head>
@@ -23,29 +24,22 @@
         <hr>
         <div class="row">
             <div class="col-xs-10">
-                <h1 class="h6">Luis Cabrera Benito</h1>
-                <h1 class="h6">https://parzibyte.me/blog</h1>
+                <h1 class="h6">Cedula: {{persona.cedula_persona}}</h1>
+                <h1 class="h6">Nombre y Apellidos: {{persona.nombre}} {{persona.nombre2}} {{persona.apellido}} {{persona.apellido2}}</h1>
+                <h1 class="h6">Dirección: {{persona.direccion}}</h1>
+                <h1 class="h6">Correo: {{cliente.usuario}}</h1>
+                <h1 class="h6">Telefono: {{persona.telefono}}</h1>
             </div>
             <div class="col-xs-2 text-center">
                 <strong>Fecha</strong>
-                <br>
-                2021-05-03 <br>
+                <br>{{encabezado.fechaFactura}}<br>
                 <strong>Factura No.</strong>
                 <br>
-                1
+                {{encabezado.idEncabezado}}
             </div>
         </div>
         <hr>
-        <div class="row text-center" style="margin-bottom: 2rem;">
-            <div class="col-xs-6">
-                <h1 class="h2">Cliente</h1>
-                <strong>Luis Cabrera Benito</strong>
-            </div>
-            <div class="col-xs-6">
-                <h1 class="h2">Remitente</h1>
-                <strong>Luis Cabrera Benito</strong>
-            </div>
-        </div>
+        
         <div class="row">
             <div class="col-xs-12">
                 <table class="table table-condensed table-bordered table-striped">
@@ -58,31 +52,28 @@
                         </tr>
                     </thead>
                     <tbody>
-                     
+                        <tr>
+                        <td>{{habitacion.descriphabi}}</td>   
+                        <td>{{reserva.dias}}</td>
+                        <td>{{habitacion.precio}}</td>   
+                        <td>{{encabezado.total}}</td>  
+                    </tr>
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td colspan="3" class="text-right">Subtotal</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td colspan="3" class="text-right">Descuento</td>
-                            <td></td>
-                        </tr>
-                        <tr>
                             <td colspan="3" class="text-right">Subtotal con descuento</td>
-                            <td></td>
+                            <td>{{detallet.subTotal}}</td>
                         </tr>
                         <tr>
                             <td colspan="3" class="text-right">Impuestos</td>
-                            <td></td>
+                            <td>0%</td>
                         </tr>
                         <tr>
                             <td colspan="3" class="text-right">
                                 <h4>Total</h4>
                             </td>
                             <td>
-                                <h4>encabet</h4>
+                                <h4>{{encabezado.total}}</h4>
                             </td>
                         </tr>
                     </tfoot>
@@ -98,3 +89,7 @@
 </body>
 
 </html>
+</div>
+<div class="form_group btn_reservar">
+    <button type="submit" class="btn btn-outline-dark" (click)="downloadPDF()">Descargar</button>
+</div>

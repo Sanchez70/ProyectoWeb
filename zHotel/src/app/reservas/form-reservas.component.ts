@@ -60,6 +60,7 @@ export class FormReservasComponent implements OnInit {
               this.reserva.idCliente = this.idCliente;
               this.reserva.idRecepcionista = 1;
               this.preciohabi = result.precio;
+              this.inicio.idHabitacion=result.idHabitaciones;
               console.log('Precio de la habitación:', this.preciohabi);
   
             } else {
@@ -82,8 +83,9 @@ export class FormReservasComponent implements OnInit {
     this.reservaService.create(this.reserva).subscribe(
       response => {
         this.idReserva=response.idReserva;
+        this.inicio.idReserva=response.idReserva;
         this.createEncabezado();
-        this.router.navigate(['/habitaciones'])
+        //this.router.navigate(['/habitaciones'])
         Swal.fire('Reserva creada',`guardado con éxito`,'success')
   },(error)=>{
     console.error('Error al guardar la reserva:', error);
@@ -100,6 +102,7 @@ export class FormReservasComponent implements OnInit {
     this.encabezadoService.create(this.encabezado).subscribe(
       response => {
         this.idEncabezado=response.idEncabezado;
+        this.inicio.idEncabezado=response.idEncabezado;
         console.log('ENCABEZADO CREADO',this.idEncabezado);
         this.createDetalle();
   },(error)=>{
@@ -114,6 +117,7 @@ export class FormReservasComponent implements OnInit {
     this.detalle.subTotal=this.preciohabi;
     this.detalleService.create(this.detalle).subscribe(
       response => {
+        this.inicio.idDetalle=response.idDetalleFac;
         console.log('DETALLE CREADO');
   },(error)=>{
     console.error('Error al guardar la detalle:', error);
