@@ -1,84 +1,63 @@
-<div class="col" style="display: grid; grid-template-columns: 1fr 1fr; height: 100dvh;">
-    <div class="card" style="width: 55%; height: min-content; margin-left: 20cap; text-align: center; border-radius: 0cap; border-style: dashed; border-color: rgb(109, 117, 117); flex-wrap: wrap;" >
+<div class="d-flex justify-content-around" style="height: 100vh; border: 2px solid black; padding: 20px;">
+    <div class="card mx-auto" style="width: 45%; border-radius: 15px; border: none;">
+        <img src="{{habitaciones.foto}}" class="card-img-top rounded" style="height: 350px;">
         <div class="card-body">
-            <div style="display: flex; flex-direction: column;" >
-                <img src="{{habitaciones.foto}}" class="rounded float-left"  class="card-img-top" style="height: 350px; border-radius: 15%;">
-                <b class="card-text" style="font-style: oblique; margin-top: 1cap; text-align: center ">DESCRIPCIÓN</b>
-                <p class="card-text" style="font-style: oblique; margin-top: 1cap; text-align: center; ">{{habitaciones.descriphabi}}</p>
-                <b class="card-text" style="font-style: oblique; margin-top: 1cap; text-align: center; ">PRECIO</b>
-                <p class="card-text" style="margin-top: 1cap; justify-content: center; align-items: center; text-align: center; ">{{habitaciones.precio}} $</p>
-                
-            </div>
-            <div style="display: flex; justify-content: center; margin-top: 10px;">
-                <i class="bi bi-wifi" style="font-size: 50px; color: rgb(0, 0, 0);"></i>
-                <i class="bi bi-egg-fried" style="font-size: 50px; color: rgb(0, 0, 0); margin-left: 40px;"></i>
-                <i class="bi bi-controller" style="font-size: 50px; color: rgb(0, 0, 0); margin-left: 40px;"></i>
+            <h5 class="card-title text-center font-weight-bold">DESCRIPCIÓN</h5>
+            <p class="card-text text-center font-italic">{{habitaciones.descriphabi}}</p>
+            <h5 class="card-title text-center font-weight-bold">PRECIO</h5>
+            <p class="card-text text-center">{{habitaciones.precio}} $</p>
+            <div class="d-flex justify-content-center mt-3">
+                <i class="bi bi-wifi" style="font-size: 50px;"></i>
+                <i class="bi bi-egg-fried ml-4" style="font-size: 50px;"></i>
+                <i class="bi bi-controller ml-4" style="font-size: 50px;"></i>
             </div>
         </div>
     </div>
-<div class="col-md-8" style="justify-content: flex-start; align-items: flex-end; display: flex; flex-direction: column;">
-<form class="formulario" ngNativeValidate (ngSubmit)="create()"> 
-        <!--Numero personas-->
-        <label for="nro_personas" class="label_form">Número de personas</label>
+
+    <form class="formulario" ngNativeValidate (ngSubmit)="create()" style="width: 45%;"> 
+        <label for="nro_personas" class="label_form font-weight-bold">Número de personas</label>
         <div class="input-group mb-3">
             <select  class="form-control" placeholder="Número de personas" [(ngModel)]="opcionSeleccionada" name="nPersona" aria-label="Número de personas" aria-describedby="basic-addon1">
                 <option *ngFor="let opcion of opciones" [value]="opcion">{{opcion}}</option>
             </select>
-          </div>
-
-        <!--Fecha entrada-->
+        </div>
         <div class="form_group" id="fechain_grupo">
-            <label for="fecha_inicio" class="label_form">Fecha de Entrada</label>
+            <label for="fecha_inicio" class="label_form font-weight-bold">Fecha de Entrada</label>
             <div class="input-group mb-3">
                 <input type="date" class="form-control" placeholder="Fecha Inicio" [(ngModel)]="fechaEntrada" name="fechaEntrada" id="fechaEntrada"  aria-label="Fecha Inicio" (ngModelChange)="calcularDiferenciaDeDias()" aria-describedby="basic-addon1">
-              </div>
-            
+            </div>  
         </div>
-
-        <!--Fecha salida-->
         <div class="form_group" id="fechafin_grupo">
-            <label for="fecha_fin" class="label_form">Fecha de Salida</label>
+            <label for="fecha_fin" class="label_form font-weight-bold">Fecha de Salida</label>
             <div class="input-group mb-3">
                 <input type="date" class="form-control" placeholder="Fecha Fin" [(ngModel)]="fechaSalida" name="fechaSalida" aria-label="Fecha Fin" id="fechaSalida" (ngModelChange)="calcularDiferenciaDeDias()" aria-describedby="basic-addon1">
-              </div>
-            
+            </div>     
         </div>
-
-        <!--Numero dias-->
         <div class="form_group" id="dias_grupo">
-            <label for="nro_dias" class="label_form">Días total</label>
+            <label for="nro_dias" class="label_form font-weight-bold">Días total</label>
             <div class="input-group mb-3">
                 <input type="text" class="form-control" placeholder="Días" [(ngModel)]="dias" name="dias" aria-label="Días" aria-describedby="basic-addon1" [value]="diferenciadias">
-              </div>
-            
+            </div>    
         </div>
-
-        <!--Método de pago-->
         <div class="form_group" id="pago_grupo">
-            <label for="metodo_pago" class="label_form">METODO DE PAGO</label>
+            <label for="metodo_pago" class="label_form font-weight-bold">METODO DE PAGO</label>
             <div class="form_group_input">
                 <i class="formulario_validacion"></i>
-            </div>
-            
+            </div>    
         </div>
-
-        <!--Total-->
         <div class="form_group" id="usuario_grupo">
-            <label for="total" class="label_form">TOTAL A PAGAR</label>
+            <label for="total" class="label_form font-weight-bold">TOTAL A PAGAR</label>
             <div class="input-group mb-3">
                 <input type="text" class="form-control" placeholder="TOTAL" [(ngModel)]="total" name="total" aria-label="TOTAL" aria-describedby="basic-addon1"  [value]="total">
-              </div>          
+            </div>          
         </div>
-
-        <div class="form_group btn_reservar">
-            <button type="submit" class="btn btn-outline-dark">Reservar</button>
-        </div>
-
-    
-    </form>
-    <div class="form_group btn_reservar" routerLinkActive="active">
-        <button type="submit" class="btn btn-outline-dark" routerLink="/reservas/form-factura">Metodo</button>
-    </div>
+        <div class="d-flex justify-content-center">
+            <div class="form_group btn_reservar mr-2">
+                <button type="submit" class="btn btn-outline-dark">Reservar</button>
+            </div>
+            <div class="form_group btn_reservar ml-2" routerLinkActive="active">
+                <button type="button" class="btn btn-outline-dark" routerLink="/reservas/form-factura">Metodo</button>
+            </div>
+        </div>        
+    </form> 
 </div>
-</div>
-

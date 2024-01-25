@@ -51,8 +51,8 @@ export class FormComponentServi {
     this.servicio2.idTipo_servicio=this.servicio.idTipo_servicio
     this.servicio2Service.create(this.servicio2)
       .subscribe(servicio2 => {
-        this.router.navigate(['/servicios2'])
-        Swal.fire('Servicio guardado', `Servicio ${servicio2.idTipo_servicio} Guardado con exito`, 'success')
+        this.router.navigate(['/servicios'])
+        Swal.fire('Servicio Solictado con exito', `Servicio ${servicio2.descripcion}`, 'success')
       }
       )
   }

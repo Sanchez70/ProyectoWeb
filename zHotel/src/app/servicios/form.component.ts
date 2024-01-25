@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 export class FormComponent {
 
   public servicio: Servicio = new Servicio()
-  public titulo: String = "Crear Servicio"
+  public titulo: String = "SOLICITAR SERVICIO"
 
   constructor(private servicioService: ServicioService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
