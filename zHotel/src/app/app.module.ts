@@ -6,7 +6,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ReservasComponent } from './reservas/reservas.component';
+
 import { ClientesComponent } from './clientes/clientes.component';
 import { FormClienteComponent } from './clientes/form-cliente.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -37,19 +37,24 @@ import { FormAComponent } from './login/formA.component';
 import { PersonaService } from './persona/persona.service';
 import { PersonaComponent } from './persona/persona.component';
 import { FormPComponent } from './persona/formP.component';
+import { ProvinciasComponent } from './provincias/provincias.component';
 import { CantonesComponent } from './cantones/cantones.component';
 import { CantonService } from './cantones/canton.service';
 import { ProvinciaService } from './provincias/provincia.service';
-import { ProvinciasComponent } from './provincias/provincias.component';
 import { RegistroCComponent } from './registroC/registroC.component';
 import { RegistroCService } from './registroC/registroC.service';
 import { FormRCComponent } from './registroC/formRC.component';
+import { FormrrcepcionistaComponent } from './header/formrrcepcionista.component';
+import { FormAdminLoginComponent } from './header/form-admin-login.component';
+import { FormFacturaComponent } from './reservas/form-factura.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'habitaciones', component: HabitacionesComponent },
   { path: 'panel-recepcion', component: PanelRecepcionComponent },
+  { path: 'reservas/form-factura', component: FormFacturaComponent },
+  { path: 'panel-servicios-reservas', component: PanelServiciosReservasComponent },
   { path: 'habitaciones/form/:id', component: FormHbitacionesComponent },
   { path: 'habitaciones/form', component: FormHbitacionesComponent },
   { path: 'carrucel', component: CarrucelComponent },
@@ -68,10 +73,11 @@ const routes: Routes = [
   { path: 'persona', component: PersonaComponent},
   { path: 'persona/form', component: FormPComponent },
   { path: 'persona/form/:id', component: FormPComponent },
+  { path: 'provincias', component: ProvinciasComponent},
   { path: 'cantones', component: CantonesComponent},
   {path: 'registroC', component: RegistroCComponent},
-  {path: 'registroC/form/:cedula_persona', component: FormRCComponent},
-  {path: 'provincias', component: ProvinciasComponent},
+  //{path: 'registroC', component: FormRCComponent},
+  {path: 'registroC/form/:cedula_persona', component: FormRCComponent}
 ];
 
 
@@ -80,7 +86,6 @@ const routes: Routes = [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    ReservasComponent,
     ClientesComponent,
     FormClienteComponent,
     FormReservasComponent,
@@ -98,10 +103,13 @@ const routes: Routes = [
     Servicios2Component,
     PersonaComponent,
     FormPComponent,
+    ProvinciasComponent,
     CantonesComponent,
     RegistroCComponent,
     FormRCComponent,
-    ProvinciasComponent,
+    FormrrcepcionistaComponent,
+    FormAdminLoginComponent,
+    FormFacturaComponent
   ],
   imports: [
     BrowserModule,
@@ -122,9 +130,9 @@ const routes: Routes = [
     HabitacionesService,
     LoginService,
     PersonaService,
+    ProvinciaService,
     CantonService,
     RegistroCService,
-    ProvinciaService,
     provideClientHydration()
   ],
   bootstrap: [AppComponent]

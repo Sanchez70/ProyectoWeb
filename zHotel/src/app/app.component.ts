@@ -11,6 +11,7 @@ export class AppComponent {
   idUsuario:any;
   cedulaUser:any;
   tipoUser:string='';
+  
 
   setTipoUser(type: string): void {
     this.tipoUser = type;
