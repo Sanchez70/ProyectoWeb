@@ -1,4 +1,4 @@
-// registroC.component.ts
+
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RegistroCService } from './registroC.service';
@@ -25,16 +25,14 @@ export class RegistroCComponent implements OnInit {
     });
   }
 
-  // Método para registrar al cliente
   registrarCliente(): void {
     this.registroC.cedula_persona = this.cedulaPersona;
 
-    // Llamada al servicio para registrar al cliente
     this.registroCService.registrarCliente(this.registroC).subscribe(
       () => {
         Swal.fire('Cliente registrado', 'El cliente se ha registrado con éxito.', 'success');
-        // Puedes redirigir a donde desees después de registrar al cliente
-        this.router.navigate(['/']); // Por ejemplo, redirigir al inicio
+     
+        this.router.navigate(['/']); 
       },
       (error) => {
         console.error('Error al registrar cliente:', error);

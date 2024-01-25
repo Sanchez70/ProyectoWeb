@@ -37,10 +37,10 @@ import { FormAComponent } from './login/formA.component';
 import { PersonaService } from './persona/persona.service';
 import { PersonaComponent } from './persona/persona.component';
 import { FormPComponent } from './persona/formP.component';
-import { ProvinciasComponent } from './provincias/provincias.component';
 import { CantonesComponent } from './cantones/cantones.component';
 import { CantonService } from './cantones/canton.service';
 import { ProvinciaService } from './provincias/provincia.service';
+import { ProvinciasComponent } from './provincias/provincias.component';
 import { RegistroCComponent } from './registroC/registroC.component';
 import { RegistroCService } from './registroC/registroC.service';
 import { FormRCComponent } from './registroC/formRC.component';
@@ -68,11 +68,10 @@ const routes: Routes = [
   { path: 'persona', component: PersonaComponent},
   { path: 'persona/form', component: FormPComponent },
   { path: 'persona/form/:id', component: FormPComponent },
-  { path: 'provincias', component: ProvinciasComponent},
   { path: 'cantones', component: CantonesComponent},
   {path: 'registroC', component: RegistroCComponent},
-  //{path: 'registroC', component: FormRCComponent},
-  {path: 'registroC/form/:cedula_persona', component: FormRCComponent}
+  {path: 'registroC/form/:cedula_persona', component: FormRCComponent},
+  {path: 'provincias', component: ProvinciasComponent},
 ];
 
 
@@ -99,10 +98,10 @@ const routes: Routes = [
     Servicios2Component,
     PersonaComponent,
     FormPComponent,
-    ProvinciasComponent,
     CantonesComponent,
     RegistroCComponent,
     FormRCComponent,
+    ProvinciasComponent,
   ],
   imports: [
     BrowserModule,
@@ -123,9 +122,9 @@ const routes: Routes = [
     HabitacionesService,
     LoginService,
     PersonaService,
-    ProvinciaService,
     CantonService,
     RegistroCService,
+    ProvinciaService,
     provideClientHydration()
   ],
   bootstrap: [AppComponent]

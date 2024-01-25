@@ -1,16 +1,16 @@
-// Importa las clases necesarias
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Persona } from './persona';
 import { Cantones } from '../cantones/canton';
+import { Provincia } from '../provincias/provincia';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PersonaService {
- // private apiUrl = 'http://192.168.40.228:8081/api';
+  //private apiUrl = 'http://192.168.40.228:8081/api';
  private apiUrl = 'http://localhost:8081/api';
   private urlEndPoint = `${this.apiUrl}/personas`;
   private httpHeaders = { 'Content-Type': 'application/json' };
@@ -48,9 +48,13 @@ export class PersonaService {
     return this.http.delete<void>(`${this.urlEndPoint}/${cedula}`);
   }
 
-  // Agrega este método para obtener la lista de cantones
+  
   getCantones(): Observable<Cantones[]> {
     return this.http.get<Cantones[]>('http://localhost:8081/api/Cantons');
+  }
+
+  getProvincias(): Observable<Provincia[]>{
+    return this.http.get<Provincia[]>('http://localhost:8081/api/provincias');
   }
 
   

@@ -11,9 +11,9 @@ export class Persona {
   telefono!: string;
   direccion!: string;
   edad!: number;
-  id_canton!: string; // Agrega esta propiedad
+  id_canton!: string;
 
-  cantones?: Cantones[]; // Asegúrate de que Cantones tenga las propiedades correctas
+  cantones?: Cantones[]; 
 
   constructor() {
     this.cantones = [];

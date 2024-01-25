@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProvinciaService } from './provincia.service';
 import { Provincia } from './provincia';
-import { CantonService } from '../cantones/canton.service'; // Importa el servicio de cantones
+import { CantonService } from '../cantones/canton.service';
 import { Cantones } from '../cantones/canton';
 
 @Component({
@@ -47,7 +47,7 @@ export class ProvinciasComponent implements OnInit {
   
 
   mapCantonesToProvincias() {
-    // Asigna los cantones correspondientes a las provincias
+
     this.cantones.forEach((canton) => {
       const provincia = this.provincias.find(
         (p) => p.id_provincia === canton.id_provincia

@@ -1,4 +1,4 @@
-// registroC.ts
+
 export class RegistroC {
   cedula_persona!: string;
   usuario!: string;

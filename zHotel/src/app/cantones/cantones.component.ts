@@ -24,7 +24,7 @@ export class CantonesComponent implements OnInit {
     this.cantonService.getCantones().subscribe(
       (data) => {
         this.cantones = data;
-        this.loadProvincias(); // Llama a la función para cargar las provincias
+        this.loadProvincias(); 
       },
       (error) => {
         console.error('Error loading cantones', error);
@@ -33,15 +33,12 @@ export class CantonesComponent implements OnInit {
   }
 
   loadProvincias() {
-    // Obtén la lista de provincias
     this.provinciaService.getProvincias().subscribe(
       (provincias) => {
-        // Asigna las provincias correspondientes a los cantones
         this.cantones.forEach(canton => {
           const provincia = provincias.find(p => p.id_provincia === canton.id_provincia);
           if (provincia) {
             canton.id_provincia = provincia.id_provincia;
-            // También puedes asignar otros datos de la provincia según tu necesidad
           }
         });
       },

@@ -19,4 +19,5 @@ export class CantonService {
   getCantonById(id: string): Observable<Cantones> {
     return this.http.get<Cantones>(`${this.apiUrl}/Cantons/${id}`);
   }
+ 
 }

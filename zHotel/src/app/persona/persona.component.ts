@@ -1,4 +1,3 @@
-// persona.component.ts
 import { Component, OnInit } from '@angular/core';
 import { Persona } from './persona';
 import { PersonaService } from './persona.service';
@@ -6,6 +5,7 @@ import { PersonaService } from './persona.service';
 @Component({
   selector: 'app-persona',
   templateUrl: './persona.component.html',
+  styleUrl: './formP.component.css'
 })
 export class PersonaComponent implements OnInit {
   personas: Persona[] = [];
@@ -24,7 +24,6 @@ export class PersonaComponent implements OnInit {
 
   eliminarPersona(cedula: string): void {
     this.personaService.deletePersona(cedula).subscribe(() => {
-      // Vuelve a cargar la lista después de eliminar una persona
       this.cargarPersonas();
     });
   }

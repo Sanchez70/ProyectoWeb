@@ -1,4 +1,4 @@
-// formRC.component.ts
+
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -14,7 +14,7 @@ import Swal from 'sweetalert2';
 export class FormRCComponent implements OnInit {
   @Input() formRC!: FormGroup;
   public cedulaPersona: string = '';
-  public registroC: RegistroC = new RegistroC();  // Crea una instancia de RegistroC
+  public registroC: RegistroC = new RegistroC();  
 
   constructor(
     private fb: FormBuilder,
@@ -35,25 +35,21 @@ export class FormRCComponent implements OnInit {
       usuario: ['', Validators.required],
       contrasena: ['', Validators.required],
       foto: ['', Validators.required],
-      // Puedes agregar más campos según tus necesidades
     });
   }
 
   registrarCliente(): void {
-    // Asigna los valores del formulario al objeto RegistroC
     this.registroC = this.formRC.value;
-    this.registroC.cedula_persona = this.cedulaPersona;  // Asigna la cédula
-
-    // Llamada al servicio para registrar al cliente
+    this.registroC.cedula_persona = this.cedulaPersona;
     this.registroCService.registrarCliente(this.registroC).subscribe(
       () => {
-        Swal.fire('Cliente registrado', 'El cliente se ha registrado con éxito.', 'success');
-        // Puedes redirigir a donde desees después de registrar al cliente
-        this.router.navigate(['/']); // Por ejemplo, redirigir al inicio
+        Swal.fire('Registro exitoso', 'success');
+        
+        this.router.navigate(['/']); 
       },
       (error) => {
         console.error('Error al registrar cliente:', error);
-        Swal.fire('Error', 'Ocurrió un error al intentar registrar al cliente.', 'error');
+        Swal.fire('Error', 'Ocurrió un error al intentar registrar sus datos', 'error');
       }
     );
   }

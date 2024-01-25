@@ -1,18 +1,17 @@
-<!-- formRC.component.html -->
+
 <div class="registration-container">
   <h2>REGISTRO</h2>
+<form [formGroup]="formRC">
+  <label for="usuario">Usuario:</label>
+  <input type="text" id="usuario" formControlName="usuario" required>
 
-  <form [formGroup]="formRC">
-    <label for="usuario">Usuario:</label>
-    <input type="text" id="usuario" formControlName="usuario" required>
+  <label for="contrasena">Contraseña:</label>
+  <input type="password" id="contrasena" formControlName="contrasena" required>
 
-    <label for="contrasena">Contraseña:</label>
-    <input type="password" id="contrasena" formControlName="contrasena" required>
+  <label for="foto">Foto:</label>
+  <input type="text" id="foto" formControlName="foto" required>
 
-    <label for="foto">Foto:</label>
-    <input type="text" id="foto" formControlName="foto" required>
+  <button type="button" (click)="registrarCliente()">Registrar Cliente</button>
 
-    <button type="button" (click)="registrarCliente()">Registrar Cliente</button>
-    <!-- Puedes agregar más campos aquí -->
-  </form>
+</form>
 </div>

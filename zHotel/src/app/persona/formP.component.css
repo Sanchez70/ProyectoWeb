@@ -1,27 +1,26 @@
-/* formP.component.css */
-
 .registration-container {
     max-width: 400px;
     margin: auto;
     padding: 20px;
-    border: 1px solid #ddd; /* Cambiado a un gris más claro */
-    border-radius: 10px; /* Aumenta el radio para bordes más redondeados */
+    border: 1px solid #ddd; 
+    border-radius: 10px; 
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     background-color: #fff;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centra horizontalmente */
-    justify-content: center; /* Centra verticalmente */
-    margin-top: 50px; /* Ajusta el margen superior para centrar verticalmente */
+    align-items: center; 
+    justify-content: center; 
+    margin-top: 50px; 
+    position: relative;
   }
   
   h2 {
     text-align: center;
-    color: #4285f4; /* Google Blue */
+    color: #4285f4; 
   }
   
   form {
-    width: 100%; /* Hace que el formulario ocupe todo el ancho del contenedor */
+    width: 100%; 
   }
   
   label {
@@ -33,23 +32,110 @@
   select,
   textarea {
     width: 100%;
-    padding: 12px; /* Ajustado el padding para más espacio */
-    margin-bottom: 12px; /* Ajustado el margin para más espacio */
+    padding: 12px; 
+    margin-bottom: 12px; 
     border: 1px solid #ccc;
     border-radius: 4px;
-    box-sizing: border-box; /* Evita que el padding afecte el ancho total */
+    box-sizing: border-box; 
   }
   
   button {
-    background-color: #4285f4; /* Google Blue */
+    background-color: #4285f4; 
     color: #fff;
-    padding: 14px; /* Ajustado el padding para más espacio */
+    padding: 14px; 
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    width: 100%; /* Hace que el botón ocupe todo el ancho del contenedor */
+    width: 100%; 
   }
   
   button:hover {
-    background-color: #3c78d8; /* Google Dark Blue */
+    background-color: #3c78d8; 
   }
+
+  .provincia-container {
+  display: flex;
+  align-items: center; 
+  justify-content: space-between; 
+}
+
+.filter-button {
+  background-color: #4285f4; 
+  color: #fff;
+  padding: 6px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 10px; 
+  display: flex;
+  align-items: center; 
+}
+
+.filter-button i {
+  font-size: 12px; 
+  margin-right: 5px;
+}
+
+.checkmark {
+  color: #4caf50; 
+  font-size: 16px;
+  margin-left: 5px; 
+}
+
+.filter-indicator {
+  width: 10px;
+  height: 10px;
+  background-color: #4caf50;
+  border-radius: 50%;
+  margin-left: 5px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.filter-indicator.ng-star-inserted {
+  display: block;
+}
+
+.filter-indicator:not(.ng-star-inserted) {
+  display: none;
+}
+
+  .checkmark.ng-star-inserted {
+    display: block;
+  }
+  
+  .checkmark:not(.ng-star-inserted) {
+    display: none;
+  }
+
+  .provincia-select {
+    width: 100%; 
+    padding: 12px; 
+    margin-bottom: 12px; 
+  }
+  
+  .selected-province-message {
+    margin-top: 10px;
+    font-size: 12px;
+    color: #888; /* Color gris */
+  }
+  
+  .filter-button-small {
+    /* Ajusta el tamaño del botón según tus preferencias */
+    width: 30px;
+    height: 30px;
+    padding: 4px; /* Ajusta el padding para centrar el ícono */
+  }
+  
+  
+  .small-rounded-button {
+    background-color: #4285f4; /* Google Blue */
+    color: #fff;
+    padding: 10px; /* Ajustado el padding para hacer el botón más pequeño */
+    border: none;
+    border-radius: 10px; /* Aumenta el radio para bordes más redondeados */
+    cursor: pointer;
+    width: 100%; /* Hace que el botón ocupe todo el ancho del contenedor */
+  }
+
+  
