@@ -1,18 +1,15 @@
 <div class="my-2 text-left">
     <div class="card-header">Servicios</div>
     <div>
-      <h6 class="card-title">Listado de Servicios</h6>
+      <h6 class="card-title">Servicios Solicitados </h6>
     </div>
-    <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/proveedores/form']">Crear</button>
-  
     <div class="card-container" style="display: flex; gap: 20px; overflow-x: auto; padding: 20px ; flex-wrap: wrap;">
       <div *ngFor="let servicios2 of Servicios2" class="card" style="width: 18rem;">
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">Id: {{ servicios2.idServicio }}</li>
-          <li class="list-group-item">Nombre: {{ servicios2.descripcion }}</li>
-          <li class="list-group-item">Descripción: {{ servicios2.estado }}</li>
-          <li class="list-group-item">Descripción2: {{ servicios2.idTipo_servicio }}</li>
-          <li class="list-group-item">Descripción3: {{ servicios2.idHabitaciones}}</li>
+          <li class="list-group-item">Tipo de Servicio: {{ servicios2.idTipo_servicio }}</li>
+          <li class="list-group-item">Numero de Habitacion: {{ servicios2.idHabitaciones }}</li>
+          <li class="list-group-item">Estado: {{ servicios2.estado }}</li>
+          <li class="list-group-item">Descripción: {{ servicios2.descripcion }}</li>
         </ul>
         <div class="card-body">
           <div style="display: flex; justify-content: space-between space-between; margin-left:4%; margin-right: 7%;">
@@ -23,3 +20,5 @@
       </div>
     </div>
   </div>
+
+

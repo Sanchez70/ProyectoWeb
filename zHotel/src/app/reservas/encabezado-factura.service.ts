@@ -7,8 +7,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class EncabezadoFacturaService {
-  //private urlEndPoint:string = 'http://192.168.40.228:8081/api/encabezadofactura';
-  private urlEndPoint: string = 'http://192.168.0.119:8081/api/encabezadofactura';
+  private urlEndPoint:string = 'http://192.168.40.228:8081/api/encabezadofactura';
+  //private urlEndPoint: string = 'http://192.168.0.119:8081/api/encabezadofactura';
   private httpHeaders = new HttpHeaders({'Content-type':'application/json'})
   constructor(private http:HttpClient) { }
   getReserva(): Observable<EncabezadoFactura[]>{

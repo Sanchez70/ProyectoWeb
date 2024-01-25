@@ -13,7 +13,7 @@
 
     <div data-mdb-input-init class="form-outline mb-4">
         <label class="form-label" for="form4Example2">Habitacion</label>
-        <select id="form4Example2" class="form-control" [(ngModel)]="habitacion.idHabitaciones" name="nHabitacion">
+        <select id="form4Example2" class="form-control" [(ngModel)]="habitacion.idHabitaciones" name="idHabitaciones">
             <option *ngFor="let habitacion of habitaciones" [value]="habitacion.idHabitaciones">
                 {{habitacion.nHabitacion}}
             </option>

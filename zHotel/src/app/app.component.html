@@ -1,4 +1,5 @@
-
-<app-header *ngIf="isLoggedIn"></app-header>
+<app-header *ngIf="isLoggedIn && tipoUser === 'cliente'"></app-header>
+<app-formrrcepcionista *ngIf="isLoggedIn && tipoUser === 'recep'"></app-formrrcepcionista>
+<app-form-admin-login *ngIf="isLoggedIn && tipoUser === 'admin'"></app-form-admin-login>
 <router-outlet></router-outlet>
 <app-footer *ngIf="isLoggedIn" body style="min-height: 100vh;"></app-footer>
