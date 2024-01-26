@@ -37,6 +37,7 @@ export class ClientesComponent implements OnInit{
     this.clienteService.getCliente(this.id).subscribe(
       (cliente) => {
         this.cliente = cliente;
+        this.cargarPersona();
       },
       (error) => {
         console.error(error);

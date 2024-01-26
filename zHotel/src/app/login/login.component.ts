@@ -48,12 +48,14 @@ export class LoginComponent {
             if (clienteEncontrado) {
               // Asignar el idCliente al atributo usuario de AppComponent
               this.inicio.idUsuario = clienteEncontrado.idCliente;
-              Swal.fire(`Bienvenid@ ${usuario}`, 'Inicio de sesion correcto', 'success');
               this.router.navigate(['./carrucel']);
               this.inicio.login();
               this.inicio.tipoUser='cliente';
-              console.log(this.inicio.idUsuario)
+              this.inicio.cedulaUser=clienteEncontrado.cedula_persona;
+              console.log(this.inicio.idUsuario);
               console.log(this.inicio.tipoUser);
+              console.log(this.inicio.cedulaUser);
+              Swal.fire(`Bienvenid@ ${usuario}`, 'Inicio de sesion correcto', 'success');
           } else {
             // La contraseña no coincide con ninguna en el array
             Swal.fire('Contraseña o usuario incorrectos', 'Cliente', 'error');
@@ -64,13 +66,16 @@ export class LoginComponent {
         this.loginService.buscarAdmin(usuario).subscribe(
           (resultAdmin) => {
             if (Array.isArray(resultAdmin) && resultAdmin.length > 0) {
-              const adminEcontrados = resultAdmin as Administrador[];
-              if(adminEcontrados.some(admin=> admin.contrasena === contraneusu)){
-                Swal.fire(`Bienvenid@ ${usuario}`, 'Inicio de sesion correcto', 'success');
+              const adminEncontrados = resultAdmin as Administrador[];
+              const adminEncontrado = adminEncontrados.find(admin => admin.contrasena === contraneusu);
+              if(adminEncontrado){
+                this.inicio.idUsuario = adminEncontrado.idAdmin;
+                this.inicio.cedulaUser= adminEncontrado.cedula_persona;
                 this.router.navigate(['./carrucel']);
                 this.inicio.login();
                 this.inicio.tipoUser='admin';
                 console.log(this.inicio.tipoUser);
+                Swal.fire(`Bienvenid@ ${usuario}`, 'Inicio de sesion correcto', 'success');
               }else {
                 Swal.fire('Contraseña  incorrectos', 'Cliente', 'error');
               }
@@ -82,12 +87,15 @@ export class LoginComponent {
               (resultRecep) => {
                 if (Array.isArray(resultRecep) && resultRecep.length > 0) {
                   const recepEcontrados = resultRecep as Recepcionista[];
-                  if(recepEcontrados.some(recep=> recep.contrasena === contraneusu)){
-                    Swal.fire(`Bienvenid@ ${usuario}`, 'Inicio de sesion correcto', 'success');
+                  const recepEncontrado = recepEcontrados.find(recep => recep.contrasena === contraneusu);
+                  if(recepEncontrado){
+                    this.inicio.idUsuario = recepEncontrado.id_recepcionista;
+                    this.inicio.cedulaUser= recepEncontrado.cedula_persona;
                     this.router.navigate(['./carrucel']);
                     this.inicio.login();
                     this.inicio.tipoUser='recep';
-                    console.log(this.inicio.tipoUser);
+                    console.log(this.inicio.tipoUser);  
+                    Swal.fire(`Bienvenid@ ${usuario}`, 'Inicio de sesion correcto', 'success');
                   }else {
                     Swal.fire('Contraseña  incorrectos', 'Cliente', 'error');
                   }

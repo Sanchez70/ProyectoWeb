@@ -23,7 +23,7 @@ export class PersonaService {
 
   getPersona(cedula: string): Observable<Persona> {
     return this.http.get<Persona>(`${this.urlEndPoint}/${cedula}`);
-  }
+  }   
 
   createPersona(persona: Persona): Observable<Persona> {
     return this.http.post<Persona>(this.urlEndPoint, persona, { headers: this.httpHeaders })
