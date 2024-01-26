@@ -8,10 +8,12 @@
   <label for="contrasena">Contraseña:</label>
   <input type="password" id="contrasena" formControlName="contrasena" required>
 
-  <label for="foto">Foto:</label>
-  <input type="text" id="foto" formControlName="foto" required>
+  <!-- <label for="foto">Foto:</label>
+  <input type="text" id="foto" formControlName="foto" required> -->
+  <input type="file" class="form-control-file" (change)="onFileSelected($event)" accept="image/*" id="imagen" name="imagen">
+<img [src]="previewImage" alt="Vista previa de la imagen" class="img-thumbnail mt-2">
 
-  <button type="button" (click)="registrarCliente()">Registrar Cliente</button>
+  <button type="button" (click)="registrarCliente()">Registrar</button>
 
 </form>
 </div>

@@ -10,7 +10,6 @@ import { error } from 'console';
 @Component({
   selector: 'app-clientes',
   templateUrl: './clientes.component.html',
-  styleUrl:'./clientes.component.css'
 })
 export class ClientesComponent implements OnInit{
   
@@ -38,7 +37,6 @@ export class ClientesComponent implements OnInit{
     this.clienteService.getCliente(this.id).subscribe(
       (cliente) => {
         this.cliente = cliente;
-        this.cargarPersona()
       },
       (error) => {
         console.error(error);
