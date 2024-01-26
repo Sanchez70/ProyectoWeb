@@ -32,9 +32,9 @@
 
     <label for="edad">Edad:</label>
     <input type="number" id="edad" [(ngModel)]="persona.edad" name="edad" required>
-
+    
+    <label for="id_provincia">Provincia:</label>
     <div class="provincia-container">
-      <label for="id_provincia">Provincia:</label>
       <select id="id_provincia" [(ngModel)]="provinciaSeleccionada" name="id_provincia" class="provincia-select">
         <option *ngFor="let provincia of provincias" [value]="provincia.id_provincia">{{ provincia.nombre }}</option>
       </select>

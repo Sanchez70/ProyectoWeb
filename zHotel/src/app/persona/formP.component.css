@@ -58,56 +58,6 @@
   align-items: center; 
   justify-content: space-between; 
 }
-
-.filter-button {
-  background-color: #4285f4; 
-  color: #fff;
-  padding: 6px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-left: 10px; 
-  display: flex;
-  align-items: center; 
-}
-
-.filter-button i {
-  font-size: 12px; 
-  margin-right: 5px;
-}
-
-.checkmark {
-  color: #4caf50; 
-  font-size: 16px;
-  margin-left: 5px; 
-}
-
-.filter-indicator {
-  width: 10px;
-  height: 10px;
-  background-color: #4caf50;
-  border-radius: 50%;
-  margin-left: 5px;
-  display: inline-block;
-  vertical-align: middle;
-}
-
-.filter-indicator.ng-star-inserted {
-  display: block;
-}
-
-.filter-indicator:not(.ng-star-inserted) {
-  display: none;
-}
-
-  .checkmark.ng-star-inserted {
-    display: block;
-  }
-  
-  .checkmark:not(.ng-star-inserted) {
-    display: none;
-  }
-
   .provincia-select {
     width: 100%; 
     padding: 12px; 
