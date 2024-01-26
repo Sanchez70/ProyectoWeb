@@ -54,3 +54,7 @@ button {
 button:hover {
   background-color: #3c78d8; 
 }
+.logo {
+  max-width: 200px; /* Ajusta el ancho máximo según tus necesidades */
+  margin-bottom: 20px; /* Ajusta el margen inferior según tus necesidades */
+}
