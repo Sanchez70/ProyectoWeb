@@ -6,6 +6,7 @@ import { HabitacionesService } from './habitaciones.service';
 @Component({
   selector: 'app-habitaciones',
   templateUrl: './habitaciones.component.html',
+  styleUrl:'./habitaciones.component.css'
 })
 export class HabitacionesComponent implements OnInit {
   habitaciones: Habitaciones[]=[ ];
