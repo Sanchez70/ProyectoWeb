@@ -6,4 +6,6 @@ export class Habitaciones {
     idCategoria!: number;
     foto: string = '';
     descriphabi: string = '';
+    estado:string='';
+    
 }
