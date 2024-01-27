@@ -47,6 +47,8 @@ import { FormRCComponent } from './registroC/formRC.component';
 import { FormrrcepcionistaComponent } from './header/formrrcepcionista.component';
 import { FormAdminLoginComponent } from './header/form-admin-login.component';
 import { FormFacturaComponent } from './reservas/form-factura.component';
+import { vigilanteGuard } from './vigilante.guard';
+import { AuthService } from './auth.service';
 
 
 const routes: Routes = [
@@ -69,7 +71,7 @@ const routes: Routes = [
   { path: 'clientes/:id', component: ClientesComponent },
   { path: 'clientes/form', component: FormClienteComponent },
   { path: 'clientes/form/:id', component: FormClienteComponent },
-  { path: 'login', component: LoginComponent},
+  { path: 'login', component: LoginComponent, canActivate:[vigilanteGuard]},
   { path: 'persona', component: PersonaComponent},
   { path: 'persona/form', component: FormPComponent },
   { path: 'persona/form/:id', component: FormPComponent },
@@ -120,7 +122,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes)
   ],
   providers: [
-    
+    AuthService,
     ClienteService,
     ReservaService,
     EncabezadoFacturaService,

@@ -14,6 +14,7 @@ import { HabitacionesService } from '../habitaciones/habitaciones.service';
 import { Habitaciones } from '../habitaciones/habitaciones';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+import { AuthService } from '../auth.service';
 
 
 @Component({
@@ -23,7 +24,7 @@ import jsPDF from 'jspdf';
 })
 export class FormFacturaComponent implements OnInit {
   cedula_persona: any;
-  constructor(private inicio: AppComponent, private sevicePersona: PersonaService, private serviceReserva: ReservaService, private seviceEncabezado: EncabezadoFacturaService,
+  constructor(private inicio: AuthService, private sevicePersona: PersonaService, private serviceReserva: ReservaService, private seviceEncabezado: EncabezadoFacturaService,
     private serviceDetalle: DetalleFacturaService, private serviceClietne: ClienteService, private serviceHabitacion: HabitacionesService) { }
   public cliente: Cliente = new Cliente();
   public persona: Persona=new Persona();

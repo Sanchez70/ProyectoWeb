@@ -7,6 +7,7 @@ import { AppComponent } from '../app.component';
 import { Router, ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
 import { error } from 'console';
+import { AuthService } from '../auth.service';
 
 
 @Component({
@@ -26,7 +27,7 @@ export class FormClienteComponent implements OnInit{
     private personaService:PersonaService,
     private router:Router,
     private activatedRoute: ActivatedRoute,
-    private inicio: AppComponent) {}
+    private inicio: AuthService) {}
   
   ngOnInit(): void {
     this.cargarCliente()

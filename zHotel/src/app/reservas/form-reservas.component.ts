@@ -13,6 +13,7 @@ import { AppComponent } from '../app.component';
 import Swal from 'sweetalert2';
 import { switchMap } from 'rxjs';
 import { error } from 'console';
+import { AuthService } from '../auth.service';
 @Component({
   selector: 'app-form-reservas',
   templateUrl: './form-reservas.component.html',
@@ -42,7 +43,7 @@ export class FormReservasComponent implements OnInit {
   public detalle:DetalleFactura = new DetalleFactura()
   public habitaciones: Habitaciones = new Habitaciones()
   constructor(private reservaService:ReservaService, private habitacionesService:HabitacionesService,private encabezadoService:EncabezadoFacturaService,private detalleService:DetalleFacturaService ,private router:Router,
-    private activatedRoute:ActivatedRoute,private inicio: AppComponent,private fb: FormBuilder){
+    private activatedRoute:ActivatedRoute,private inicio: AuthService,private fb: FormBuilder){
       
     }
 

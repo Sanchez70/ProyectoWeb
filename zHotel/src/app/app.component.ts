@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './auth.service';
 
 @Component({
   selector: 'app-root',
@@ -7,32 +8,18 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'zHotel';
-  isLoggedIn = false;
-  idUsuario:any;
-  cedulaUser:any;
-  tipoUser:string='';
-  idReserva: any;
-  idEncabezado: any;
-  idDetalle:any;
-  idHabitacion: any;
-
-
-  setTipoUser(type: string): void {
-    this.tipoUser = type;
+  
+  constructor(private authService: AuthService) {
+    this.authService.isLoggedIn = false;
+    this.authService.tipoUser = '';
   }
 
-  getTipoUser(): string {
-    return this.tipoUser;
+  usuario(){
+   return this.authService.tipoUser
   }
 
-
-login() {
-
-  this.isLoggedIn = true;
+  footer(){
+    this.authService.login
+  }
 }
 
-logout() {
-
-  this.isLoggedIn = false;
-}
-}

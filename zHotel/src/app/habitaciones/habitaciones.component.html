@@ -2,8 +2,8 @@
   <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/habitaciones/form']">Crear
     habitaciones</button>
 
-  <div class="col">
-    <div class="card-container" style="display: flex; gap: 20px; overflow-x: auto; padding: 20px ;flex-wrap: wrap;">
+  <div class="col" >
+    <div class="card-container" style="display: flex; gap: 20px; overflow-x: auto; padding: 20px ;flex-wrap: wrap; margin-left: 8cap;">
       <div class="card mb-3 rounded-lg" style="max-width: 640px;" *ngFor="let habitaciones of habitaciones">
         <div class="flex p-6 font-mono">
           <div class="flex-none w-48 mb-10 relative z-10 before:absolute before:top-1 before:left-1 before:w-full before:h-full before:bg-white-400 rounded-lg">
@@ -27,8 +27,13 @@
                 {{habitaciones.estado}}dd
               </div>
             </div>
-            
-            <div class="flex items-baseline space-x-8 my-6 mx-10 "  >
+            <div class=" space-x-3 mx-10" style=" width: 300px; height: 30px;">
+              <p class="text-xs leading-6 text-slate-500" >
+                 sadddddddddddddddddddddddddddddddddddddddddddddddddddddddddd{{habitaciones.descriphabi}}
+               </p>
+             </div>
+             <div> 
+            <div class="flex items-baseline space-x-8 my-4 mx-10 "  >
               <div class="space-x-1  flex text-sm font-medium" style="left: 10rem;">
                 <label >
                  
@@ -55,14 +60,7 @@
 
               </div>
             </div>
-            <div class=" space-x-3 mx-10" style=" width: 300px; height: 30px;">
-             <p class="text-xs leading-6 text-slate-500" >
-                sadddddddddddddddddddddddddddddddddddddddddddddddddddddddddd{{habitaciones.descriphabi}}
-              </p>
-            </div>
-            <div>
-             
-              <div class="flex space-x-50 " routerLinkActive="active" style="margin-left: 24cap;">
+              <div class="flex space-x-20 " routerLinkActive="active" style="margin-left: 24cap;">
                 <button
                   class="px-6 h-12 uppercase font-semibold tracking-wider border-2 border-black bg-white-400 text-black"
                   type="button" [routerLink]="['/reservas/form-reservas',habitaciones.idHabitaciones]" >

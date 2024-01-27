@@ -6,6 +6,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AppComponent } from '../app.component';
 import { Persona } from '../persona/persona';
 import { error } from 'console';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-clientes',
@@ -24,10 +25,10 @@ export class ClientesComponent implements OnInit{
     private personaService: PersonaService,
     private router:Router,
     private activatedRoute: ActivatedRoute,
-    private inicio: AppComponent) { }
+    private inicio: AuthService) {this.inicio.tipoUser='cliente'; }
   
   ngOnInit(): void {
-
+    
     this.cargarCliente();
 
   }

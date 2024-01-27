@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AppComponent } from '../app.component';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-form-admin-login',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class FormAdminLoginComponent {
 
-  constructor(private  inicio: AppComponent, private router: Router){}
+  constructor(private  inicio: AuthService, private router: Router){}
    apagar(){
     this.router.navigate(['./login']);
     this.inicio.logout()

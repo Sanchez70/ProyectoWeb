@@ -2,6 +2,7 @@ import { Component,OnInit  } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from '../login/login.service';
 import { AppComponent } from '../app.component';
+import { AuthService } from '../auth.service';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { AppComponent } from '../app.component';
 })
 export class HeaderComponent {
 
-  constructor(private  inicio: AppComponent, private router: Router){}
+  constructor(private  inicio: AuthService, private router: Router){}
   apagar(){
     this.router.navigate(['./login']);
     this.inicio.logout()
