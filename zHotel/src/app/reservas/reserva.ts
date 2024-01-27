@@ -1,6 +1,6 @@
 export class Reserva {
     idReserva : number=0;
-    metodoPago : number=0;
+    idPago : number=0;
     fechaSalida : String='';
     fechaEntrada : String='';
     total : number= 0;

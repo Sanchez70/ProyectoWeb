@@ -29,4 +29,9 @@ export class HabitacionesService {
   delete(id: any): Observable<Habitaciones>{
     return this.http.delete<Habitaciones>(`${this.urlEndPoint}/${id}`)
   }
+
+  update(habitaciones: Habitaciones): Observable<Habitaciones> {
+    const url = `${this.urlEndPoint}/${habitaciones.idHabitaciones}`;
+    return this.http.put<Habitaciones>(url, habitaciones,{headers: this.httpHeaders})
+  }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Reserva } from './reserva';
 import { ReservaService } from './reserva.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -32,18 +33,39 @@ export class FormReservasComponent implements OnInit {
   preciohabi: number=0;
   opciones: number[] = [1,2,3,4];
   opcionSeleccionada: number=0;
-  
+  pagoOpciones:string[]=['Tarjeta de Crédito','Transferencia Bancaria','Efectivo'];
+  pagoSeleccionado: string='';
+  form!:FormGroup;
+  btnFactura:boolean=false;
   public reserva:Reserva = new Reserva()
   public encabezado:EncabezadoFactura = new EncabezadoFactura()
   public detalle:DetalleFactura = new DetalleFactura()
   public habitaciones: Habitaciones = new Habitaciones()
   constructor(private reservaService:ReservaService, private habitacionesService:HabitacionesService,private encabezadoService:EncabezadoFacturaService,private detalleService:DetalleFacturaService ,private router:Router,
-    private activatedRoute:ActivatedRoute,private inicio: AppComponent){}
+    private activatedRoute:ActivatedRoute,private inicio: AppComponent,private fb: FormBuilder){
+      
+    }
 
   ngOnInit(): void {
     this.cargarhabitacion()
     console.log('Id cliente en reserva',this.idCliente);
     console.log('Id cliente habitaciones',this.idHabitaciones);
+    this.form=this.fb.group({
+      dias1:['',Validators.required],
+      fechafin: ['',Validators.required],
+      fechaini:['',Validators.required],
+      numeroPer:[0,this.validateSelectedOption],
+      total:['',Validators.required],
+      metodoPago:['',Validators.required]
+    });
+    
+  }
+
+  validateSelectedOption(control: FormGroup) {
+    if (control.value === 0 ) {
+      return { 'required': true }; // Devuelve un error si la opción seleccionada es null
+    }
+    return null;
   }
 
   cargarhabitacion(): void {
@@ -62,7 +84,6 @@ export class FormReservasComponent implements OnInit {
               this.preciohabi = result.precio;
               this.inicio.idHabitacion=result.idHabitaciones;
               console.log('Precio de la habitación:', this.preciohabi);
-  
             } else {
               console.error('No se encontró la habitación con ID:', id);
           
@@ -78,20 +99,26 @@ export class FormReservasComponent implements OnInit {
   }
 
   create(){
-    this.reserva.nPersona=this.opcionSeleccionada;
-    this.reserva.estado="Pendiente";
-    this.reservaService.create(this.reserva).subscribe(
-      response => {
-        this.idReserva=response.idReserva;
-        this.inicio.idReserva=response.idReserva;
-        this.createEncabezado();
-        //this.router.navigate(['/habitaciones'])
-        Swal.fire('Reserva creada',`guardado con éxito`,'success')
-  },(error)=>{
-    console.error('Error al guardar la reserva:', error);
-  }
-  );
-  console.log(this.reservaService.create(this.reserva));
+    if(this.form.valid){
+        this.reserva.nPersona=this.opcionSeleccionada;
+        this.reserva.estado="Pendiente";
+        this.reservaService.create(this.reserva).subscribe(
+          response => {
+            this.idReserva=response.idReserva;
+            this.inicio.idReserva=response.idReserva;
+            this.createEncabezado();
+            //this.router.navigate(['/habitaciones'])
+            this.actualizarEstado();
+            Swal.fire('Reserva creada',`guardado con éxito`,'success')
+            this.btnFactura=true;
+      },(error)=>{
+        console.error('Error al guardar la reserva:', error);
+      }
+      );
+      console.log(this.reservaService.create(this.reserva));
+    }else{
+      Swal.fire('Llene los campos por favor',`Llenar campos...`,'error')
+    }
   }
 
   createEncabezado(){
@@ -148,5 +175,38 @@ export class FormReservasComponent implements OnInit {
       console.log(precio)
       console.log('TOTAL',this.total)
       this.reserva.total=this.total;
+  }
+
+  actualizarEstado():void{
+    this.habitaciones.estado="Ocupado";
+    this.habitacionesService.update(this.habitaciones).subscribe(
+      response => {
+        console.log('Update',this.habitacionesService.update);
+        console.log('Estado actualizado')
+      },
+      error => {
+        console.error('Error al actualizar:', error);
+      }
+    );
+  }
+
+  onSelectionChange(event: any) {
+    const value = (event.target as HTMLSelectElement).value;
+    this.pagoSeleccionado=value;
+    console.log('Valor seleccionado:', this.pagoSeleccionado);
+    switch(this.pagoSeleccionado){
+      case 'Tarjeta de Crédito':
+        this.reserva.idPago=1;
+        console.log('IdPAGO',this.reserva.idPago);
+        break;
+      case 'Transferencia Bancaria':
+        this.reserva.idPago=2;
+        console.log('IdPAGO',this.reserva.idPago);
+        break;
+      case 'Efectivo':
+        this.reserva.idPago=3;
+        console.log('IdPAGO',this.reserva.idPago);
+        break;
+    }
   }
 }
