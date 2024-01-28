@@ -1,14 +1,18 @@
 <div class="card border-primary mb-3">
-  <div class="card-header">Panel de Recepción</div>
+  <!-- <div class="card-header">Panel de Recepción</div>-->
 
   <div class="card-body text-primary">
     <h5 class="card-title">Listado</h5>
 
     <div class="my-2 text-left">
       <!--  <button class="btn btn-rounded btn-primary mr-5" (click)="cargarInformacion()" [routerLink]="['/habitaciones']">Recargar Habitaciones</button>-->
-      <button class="btn btn-rounded btn-primary mr-5" (click)="cargarInformacion()">Recargar Habitaciones</button>  
-      <button class="btn btn-rounded btn-primary mr-5" [routerLink]="['/recepcionistas']">Recepcionistas</button>
-      <button class="btn btn-rounded btn-primary mr-5">Reportes</button>
+   <!--   <button class="btn btn-rounded btn-primary mr-5" (click)="cargarInformacion()">Actualizar</button>  -->
+      <button class="btn btn-rounded btn-primary mr-5" (click)="cargarInformacion()" [disabled]="loading">
+        <span *ngIf="!loading">Actualizar</span>
+        <span *ngIf="loading">
+          <img src="https://iris.aerocivil.gov.co/Content/Images/loading-38.gif" alt="Cargando..." width="20" height="20">
+        </span>
+      </button>
       <button class="btn btn-rounded btn-primary mr-5" (click)="verificarOcupacionGeneral()">Ocupación General</button>
     </div> 
 

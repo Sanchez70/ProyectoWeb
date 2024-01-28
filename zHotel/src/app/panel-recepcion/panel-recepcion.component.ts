@@ -1,6 +1,6 @@
-// panel-recepcion.component.ts
+ // panel-recepcion.component.ts
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ServicioComunicacionService } from '../servicio-comunicacion.service';
 import { ServicioRecepcion } from './servicio-recepcion.service';
 import Swal from 'sweetalert2';
@@ -13,10 +13,12 @@ import { Subject } from 'rxjs';
   styleUrls: ['./panel-recepcion.component.css']
 })
 export class PanelRecepcionComponent implements OnInit {
+
   habitaciones: any[] = [];
   opcionSeleccionada: string = '';
   idABuscar: number = 0;
-  mostrarTabla = false;
+  mostrarTabla: boolean = false;
+  public loading: boolean = false;
 
   constructor(
     private servicioComunicacion: ServicioComunicacionService,
@@ -36,6 +38,7 @@ export class PanelRecepcionComponent implements OnInit {
         console.log('Datos de habitaciones:', habitaciones);
         this.habitaciones = habitaciones;
         this.opcionSeleccionada = 'Habitaciones';
+        this.mostrarTabla = true;
       },
       error => {
         console.error('Error al obtener habitaciones:', error);
@@ -92,16 +95,27 @@ export class PanelRecepcionComponent implements OnInit {
   }
 
   cargarInformacion(): void {
-    this.servicioRecepcion.getHabitaciones().subscribe(
-      (habitaciones: any[]) => {
-        this.habitaciones = habitaciones;
-        this.opcionSeleccionada = 'Habitaciones';
-        this.mostrarTabla = true;
-      },
-      error => {
-        console.error('Error al cargar las habitaciones:', error);
-      }
-    );
+    // Iniciar la carga
+    this.loading = true;
+
+    // Mostrar la animación durante 3 segundos
+    setTimeout(() => {
+      // Simula la carga de datos
+      this.servicioRecepcion.getHabitaciones().subscribe(
+        habitaciones => {
+          console.log('Datos de habitaciones:', habitaciones);
+          this.habitaciones = habitaciones;
+          this.opcionSeleccionada = 'Habitaciones';
+          this.mostrarTabla = true;
+        },
+        error => {
+          console.error('Error al obtener habitaciones:', error);
+        }
+      ).add(() => {
+        // Finalizar la carga, ya sea que haya tenido éxito o haya ocurrido un error
+        this.loading = false;
+      });
+    }, 1000); // 3000 milisegundos = 3 segundos
   }
 
   buscarPorId(): void {
