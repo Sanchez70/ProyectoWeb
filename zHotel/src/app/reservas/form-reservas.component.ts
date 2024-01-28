@@ -17,6 +17,7 @@ import { AuthService } from '../auth.service';
 @Component({
   selector: 'app-form-reservas',
   templateUrl: './form-reservas.component.html',
+  styleUrl: './form-reservas.component.css'
 })
 export class FormReservasComponent implements OnInit {
   idCliente:number = this.inicio.idUsuario;

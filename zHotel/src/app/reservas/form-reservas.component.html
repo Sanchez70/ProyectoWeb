@@ -54,11 +54,11 @@
             </div>          
         </div>
         <div class="d-flex justify-content-center">
-            <div class="form_group btn_reservar mr-2">
-                <button type="submit" class="btn btn-outline-dark">Reservar</button>
+            <div class="">
+                <button type="submit" class="btnAcept">Reservar</button>
             </div>
-            <div class="form_group btn_reservar ml-2" routerLinkActive="active">
-                <button *ngIf="btnFactura" type="button" class="btn btn-outline-dark" routerLink="/reservas/form-factura">Metodo</button>
+            <div class="" routerLinkActive="active">
+                <button *ngIf="btnFactura" type="button" class="btnFac" routerLink="/reservas/form-factura">Generar Factura</button>
             </div>
         </div>        
     </form> 

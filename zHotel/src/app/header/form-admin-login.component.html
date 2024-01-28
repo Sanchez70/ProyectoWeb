@@ -9,17 +9,14 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item active" routerLinkActive="active">
-            <a class="nav-link" aria-current="page" >ADMINISTRADOR</a>
-          </li>
-          <li class="nav-item">
-            <button class="btn btn-link text-dark" [routerLink]="['/panel-recepcion']">Habitaciones</button>
+          <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" [routerLink]="['/panel-recepcion']">Habitaciones</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" [routerLink]="['/recepcionistas']">Recepcionistas</a>
         </li>
         <li class="nav-item">
-            <button class="btn btn-link text-dark" [routerLink]="['/recepcionistas']">Recepcionistas</button>
-        </li>
-        <li class="nav-item">
-            <button class="btn btn-link text-dark">Reportes</button>
+            <a class="nav-link">Reportes</a>
         </li>
         </ul>
         <ul class="navbar-nav list-inline">
@@ -46,7 +43,7 @@
             </a>
           </li>
         </ul>
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-left: 250cap;">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="padding-left: 38%;">
           <li class="nav-item" >
             <button  class="btn" type="submit" (click)="apagar()" style="border: none;background-color: #F9F9F9;" >Cerrar Sesión</button>
           </li>
