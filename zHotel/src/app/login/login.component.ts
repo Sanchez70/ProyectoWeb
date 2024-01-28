@@ -56,12 +56,12 @@ export class LoginComponent  {
             this.inicio.login();
             this.inicio.setCliente();
             this.logeado='cliente'
-            this.inicio.cedulaUser = clienteEncontrado.cedula_persona;
+            this.inicio.setCedula(clienteEncontrado.cedula_persona);
             console.log(this.inicio.idUsuario);
             console.log(this.inicio.tipoUser);
             console.log(this.inicio.cedulaUser);
             Swal.fire(`Bienvenid@ ${usuario}`, 'Inicio de sesion correcto', 'success');
-            this.redirectToDashboard();
+
           } else {
             // La contraseña no coincide con ninguna en el array
             Swal.fire('Contraseña o usuario incorrectos', 'Cliente', 'error');
@@ -76,7 +76,7 @@ export class LoginComponent  {
               const adminEncontrado = adminEncontrados.find(admin => admin.contrasena === contraneusu);
               if (adminEncontrado) {
                 this.inicio.idUsuario = adminEncontrado.idAdmin;
-                this.inicio.cedulaUser = adminEncontrado.cedula_persona;
+                this.inicio.setCedula(adminEncontrado.cedula_persona);
                 this.router.navigate(['./carrucel']);
                 this.inicio.login();
                 this.inicio.setAdmin();
@@ -96,7 +96,7 @@ export class LoginComponent  {
                   const recepEncontrado = recepEcontrados.find(recep => recep.contrasena === contraneusu);
                   if (recepEncontrado) {
                     this.inicio.idUsuario = recepEncontrado.id_recepcionista;
-                    this.inicio.cedulaUser = recepEncontrado.cedula_persona;
+                    this.inicio.setCedula(recepEncontrado.cedula_persona);
                     this.router.navigate(['./carrucel']);
                     this.inicio.login();
                     this.inicio.setRecep();
@@ -123,23 +123,5 @@ export class LoginComponent  {
     // Puedes redirigir a la ruta deseada usando el router
     this.router.navigate(['/persona/form']);
   }
-  redirectToDashboard() {
-    switch (this.logeado) {
-      case 'cliente':
-        this.router.navigate(['./carrucel']);
-        break;
-      case 'admin':
-        // Ajusta la ruta según tu estructura para el dashboard de admin
-        this.router.navigate(['./admin-dashboard']);
-        break;
-      case 'recep':
-        // Ajusta la ruta según tu estructura para el dashboard de recepcionista
-        this.router.navigate(['./recep-dashboard']);
-        break;
-      // Agrega otros casos según los tipos de usuarios que tengas
-      default:
-        // Manejar caso no esperado
-        break;
-    }
-  }
+ 
 }

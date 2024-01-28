@@ -25,7 +25,7 @@ export class ClientesComponent implements OnInit{
     private personaService: PersonaService,
     private router:Router,
     private activatedRoute: ActivatedRoute,
-    private inicio: AuthService) {this.inicio.tipoUser='cliente'; }
+    private inicio: AuthService) { }
   
   ngOnInit(): void {
     
