@@ -55,6 +55,24 @@ button:hover {
   background-color: #3c78d8; 
 }
 .logo {
-  max-width: 200px; /* Ajusta el ancho máximo según tus necesidades */
-  margin-bottom: 20px; /* Ajusta el margen inferior según tus necesidades */
+  max-width: 200px; 
+  margin-bottom: 20px; 
+}
+
+.img-preview-container{
+  margin-top: 10px;
+  text-align: center;
+}
+
+.img-preview{
+  max-width: 150px;
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+}
+
+.file-imput-container {
+  display: flex;
+  align-items: center;
 }

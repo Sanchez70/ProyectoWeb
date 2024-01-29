@@ -39,67 +39,81 @@ export class FormRCComponent implements OnInit {
     });
   }
 
-  // registrarCliente(): void {
-  //   this.registroC = this.formRC.value;
-  //   this.registroC.cedula_persona = this.cedulaPersona;
-  //   this.registroCService.registrarCliente(this.registroC).subscribe(
-  //      () => {
-  //        Swal.fire('Registro exitoso', 'success');
-  //        this.router.navigate(['/']); 
-  //      },
-  //      (error) => {
-  //        console.error('Error al registrar cliente:', error);
-  //        Swal.fire('Error', 'Ocurrió un error al intentar registrar sus datos', 'error');
-  //      }
-  //   );
-  //  }
-
   registrarCliente(): void {
-    // Validar si se ha seleccionado una imagen
-    if (!this.previewImage) {
-      Swal.fire('Error', 'Por favor, seleccione una imagen', 'error');
-      return;
-    }
-
-    // Asignar la foto antes de enviarla al servicio
-    const base64String = this.previewImage.toString();
-    this.registroC.foto = base64String;
-
-    // Asignar otros valores del formulario
     this.registroC = this.formRC.value;
     this.registroC.cedula_persona = this.cedulaPersona;
-
-    // Llamar al servicio para registrar al cliente
+    
     this.registroCService.registrarCliente(this.registroC).subscribe(
       () => {
-        Swal.fire('Registro exitoso', 'success');
-        this.router.navigate(['/']);
+
+        Swal.fire({
+          icon: 'success',
+          title: 'Registro exitoso',
+          text: '¡Bienvenido a EzHotel!',
+          showConfirmButton: false,
+          timer: 2000  
+        });
+  
+        setTimeout(() => {
+          this.router.navigate(['/']); 
+        }, 2000);
       },
       (error) => {
         console.error('Error al registrar cliente:', error);
-        Swal.fire('Error', 'Ocurrió un error al intentar registrar sus datos', 'error');
+
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Ocurrió un error al intentar registrar los datos',
+          showConfirmButton: true
+        });
       }
     );
   }
-   
 
-  onFileSelected(event: any): void {
-    const file: File = event.target.files[0];
+ 
+  selectFile(event: any):void{
+    const file: File=
+    event.target.files[0];
     const reader = new FileReader();
 
-    reader.onload = (e: any) => {
+    reader.onload = (e:any)=>{
       this.previewImage = e.target.result;
     };
-
     reader.readAsDataURL(file);
+    this.convertirFoto();
   }
 
-  convertToBase64(): void {
-    if (this.previewImage) {
-      const base64String = this.previewImage.toString();
-      console.log(base64String);
+  // convertirFoto(event: any):void {
+  //   const file: File=
+  //   event.target.files[0];
+  //   const reader = new FileReader();
 
-      this.registroC.foto = base64String;
-    } 
+  //   reader.onload = (e: any)=> {
+
+  //     console.log(e.target.result);
+
+  //     this.registroC.foto = e.target.result;
+  //   };
+  //   reader.readAsDataURL(file);
+  // }
+  convertirFoto():void{
+    if(this.previewImage){
+      const img64= this.previewImage.toString();
+      console.log(img64);
+
+      this.registroC.foto=img64;
+    }
+  }
+
+  imagenPreview(event: any): void{
+    const file: File =
+    event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = (e: any)=> {
+      this.imagenPreview = e.target.result;
+    };
+    reader.readAsDataURL(file);
   }
 }
