@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Habitaciones } from './habitaciones';
 import Swal from 'sweetalert2';
 import { HabitacionesService } from './habitaciones.service';
+import { categorias } from './categorias';
 
 @Component({
   selector: 'app-habitaciones',
@@ -10,12 +11,17 @@ import { HabitacionesService } from './habitaciones.service';
 })
 export class HabitacionesComponent implements OnInit {
   habitaciones: Habitaciones[]=[ ];
+  Categoria: categorias= new categorias();
 
   constructor(private habitacionesService:HabitacionesService){}
 
     ngOnInit(): void{
       this.habitacionesService.getHabitaciones().subscribe(
-        Habitaciones => this.habitaciones =   Habitaciones
+        Habitaciones => {this.habitaciones =   Habitaciones;
+          for (const habitacion of this.habitaciones) {
+            this.buscarcategorias(habitacion.idCategoria);
+          }
+        }
       );
     }
 
@@ -44,5 +50,15 @@ export class HabitacionesComponent implements OnInit {
         }
       });
     }
+   
+  buscarcategorias(id:any){
+    this.habitacionesService.getCategoria(id).subscribe(
+      (categorias) => this.Categoria = categorias
+      );
+  }
+
+  habicate(){
+
+  }
 
 }

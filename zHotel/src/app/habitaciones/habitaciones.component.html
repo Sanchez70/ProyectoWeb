@@ -17,19 +17,19 @@
            
             <div
               class="relative flex flex-wrap items-baseline pb-6 before:bg-black-300 before:absolute before:-top-6 before:bottom-0 before:-left-60 before:-right-6">
-              <h1 class="relative w-full flex-none mb-2 text-2xl font-semibold text-white" style="left: 3rem;" >
-                {{habitaciones.nHabitacion}}
+              <h1 class="relative w-full flex-none mb-2 text-2xl font-semibold text-black " style="left: 3rem;" >
+                Categoria: {{Categoria.nombre}}
               </h1>
-              <div class="relative text-lg text-white" style="left: 3rem;">
-                ${{habitaciones.precio}}
+              <div class="relative text-lg text-black" style="left: 3rem;">
+                Precio: ${{habitaciones.precio}}
               </div>
               <div class="relative uppercase text-teal-400 ml-3" style="left: 3rem;">
-                {{habitaciones.estado}}dd
+                {{habitaciones.idCategoria}}
               </div>
             </div>
             <div class=" space-x-3 mx-10" style=" width: 300px; height: 30px;">
               <p class="text-xs leading-6 text-slate-500" >
-                 sadddddddddddddddddddddddddddddddddddddddddddddddddddddddddd{{habitaciones.descriphabi}}
+                 {{habitaciones.descriphabi}}
                </p>
              </div>
              <div> 
@@ -60,9 +60,9 @@
 
               </div>
             </div>
-              <div class="flex space-x-20 " routerLinkActive="active" style="margin-left: 24cap;">
+              <div class="flex space-x-20 " routerLinkActive="active" style="margin-left: 20cap;">
                 <button
-                  class="px-6 h-12 uppercase font-semibold tracking-wider border-2 border-black bg-white-400 text-black"
+                  class="btonReservas"
                   type="button" [routerLink]="['/reservas/form-reservas',habitaciones.idHabitaciones]" >
                   Reservar
                 </button>

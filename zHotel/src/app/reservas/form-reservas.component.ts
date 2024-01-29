@@ -14,6 +14,7 @@ import Swal from 'sweetalert2';
 import { switchMap } from 'rxjs';
 import { error } from 'console';
 import { AuthService } from '../auth.service';
+import { MetodopagoService } from './metodopago.service';
 @Component({
   selector: 'app-form-reservas',
   templateUrl: './form-reservas.component.html',
@@ -35,7 +36,7 @@ export class FormReservasComponent implements OnInit {
   preciohabi: number=0;
   opciones: number[] = [1,2,3,4];
   opcionSeleccionada: number=0;
-  pagoOpciones:string[]=['Tarjeta de Crédito','Transferencia Bancaria','Efectivo'];
+  pagoOpciones:string[]=[];
   pagoSeleccionado: string='';
   form!:FormGroup;
   btnFactura:boolean=false;
@@ -44,12 +45,13 @@ export class FormReservasComponent implements OnInit {
   public detalle:DetalleFactura = new DetalleFactura()
   public habitaciones: Habitaciones = new Habitaciones()
   constructor(private reservaService:ReservaService, private habitacionesService:HabitacionesService,private encabezadoService:EncabezadoFacturaService,private detalleService:DetalleFacturaService ,private router:Router,
-    private activatedRoute:ActivatedRoute,private inicio: AuthService,private fb: FormBuilder){
+    private activatedRoute:ActivatedRoute,private inicio: AuthService,private fb: FormBuilder,private pagoService:MetodopagoService){
       
     }
 
   ngOnInit(): void {
     this.cargarhabitacion()
+    this.cargarMetodopago()
     console.log('Id cliente en reserva',this.idCliente);
     console.log('Id cliente habitaciones',this.idHabitaciones);
     this.form=this.fb.group({
@@ -190,6 +192,13 @@ export class FormReservasComponent implements OnInit {
         console.error('Error al actualizar:', error);
       }
     );
+  }
+
+  cargarMetodopago():void{
+    this.pagoService.getPagoNombres().subscribe(
+      response=>this.pagoOpciones = response
+    );
+    
   }
 
   onSelectionChange(event: any) {

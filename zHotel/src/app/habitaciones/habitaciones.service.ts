@@ -3,6 +3,7 @@ import { Habitaciones } from './habitaciones';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { categorias } from './categorias';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,7 @@ import { map } from 'rxjs/operators';
 export class HabitacionesService {
   //private urlEndPoint: string = 'http://192.168.40.228:8081/api/habitaciones';
  private urlEndPoint: string = 'http://localhost:8081/api/habitaciones';
+ private urlEndPoint1: string = 'http://localhost:8081/api/categorias';
   private httpHeaders = new HttpHeaders({'Content-Type':'application/json'})
   constructor(private http:HttpClient) { }
 
@@ -33,5 +35,8 @@ export class HabitacionesService {
   update(habitaciones: Habitaciones): Observable<Habitaciones> {
     const url = `${this.urlEndPoint}/${habitaciones.idHabitaciones}`;
     return this.http.put<Habitaciones>(url, habitaciones,{headers: this.httpHeaders})
+  }
+  getCategoria(id: any): Observable<categorias>{
+    return this.http.get<categorias>(`${this.urlEndPoint1}/${id}`);
   }
 }
