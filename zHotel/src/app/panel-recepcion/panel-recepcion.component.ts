@@ -1,11 +1,12 @@
- // panel-recepcion.component.ts
+// panel-recepcion.component.ts
 
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ServicioComunicacionService } from '../servicio-comunicacion.service';
 import { ServicioRecepcion } from './servicio-recepcion.service';
 import Swal from 'sweetalert2';
-import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
-import { Subject } from 'rxjs';
+import { Recepcionista } from '../recepcionista/recepcionista';
+import { RecepcionistaService } from '../recepcionista/recepcionista.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-panel-recepcion',
@@ -15,21 +16,58 @@ import { Subject } from 'rxjs';
 export class PanelRecepcionComponent implements OnInit {
 
   habitaciones: any[] = [];
+ recepcionistas: Recepcionista[] = [];
   opcionSeleccionada: string = '';
   idABuscar: number = 0;
   mostrarTabla: boolean = false;
+  entidadSeleccionada: string = 'habitaciones';
+  
   public loading: boolean = false;
+  mostrarTablaHabitaciones: boolean = false;
+  mostrarTablaRecepcionistas: boolean = false;
 
   constructor(
     private servicioComunicacion: ServicioComunicacionService,
-    private servicioRecepcion: ServicioRecepcion
+    private servicioRecepcion: ServicioRecepcion,
+    private servicioRecepcionista: ServicioRecepcion,
+    private recepcionistaService: RecepcionistaService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
     this.servicioComunicacion.actualizarPanel$.subscribe(() => {
       console.log('Se recibió una notificación de actualización en Panel Recepción');
       this.mostrarHabitaciones();
+      this.cargarRecepcionistas();
+      this.cargarDatosSegunRuta();
     });
+  }
+
+  cargarRecepcionistas(): void {
+    this.recepcionistaService.getRecepcionistas().subscribe(
+      recepcionistas => {
+        console.log('Datos de recepcionistas:', recepcionistas);
+        this.recepcionistas = recepcionistas;
+        this.mostrarTablaRecepcionistas = true;
+      },
+      error => {
+        console.error('Error al obtener recepcionistas:', error);
+      }
+    );
+  }
+
+  cargarDatosSegunRuta() {
+    const rutaActual = this.route.snapshot.routeConfig?.path;
+  
+    if (rutaActual === 'panel-recepcion') {
+      this.mostrarTablaHabitaciones = false;
+      this.mostrarTablaRecepcionistas = true;
+      ////this.mostrarCreacionRecepcionista = false; // Asegúrate de ocultar la sección de creación
+    } else if (rutaActual === 'panel-recepcion/recepcionistas') {
+      this.mostrarTablaHabitaciones = false;
+      this.mostrarTablaRecepcionistas = true;
+      ///this.mostrarCreacionRecepcionista = false; // Asegúrate de ocultar la sección de creación
+    }
   }
 
   mostrarHabitaciones(): void {
@@ -38,7 +76,7 @@ export class PanelRecepcionComponent implements OnInit {
         console.log('Datos de habitaciones:', habitaciones);
         this.habitaciones = habitaciones;
         this.opcionSeleccionada = 'Habitaciones';
-        this.mostrarTabla = true;
+        this.mostrarTablaHabitaciones = true;
       },
       error => {
         console.error('Error al obtener habitaciones:', error);
@@ -141,27 +179,26 @@ export class PanelRecepcionComponent implements OnInit {
 
   buscarEnTiempoReal(): void {
     if (this.idABuscar) {
-      this.servicioRecepcion.getHabitacionById(this.idABuscar).subscribe(
-        (habitacion) => {
-          if (habitacion) {
-            this.habitaciones = [habitacion];
-            console.log('Habitación encontrada por ID:', habitacion);
-          } else {
-            this.servicioRecepcion.buscarHabitacion(this.idABuscar.toString()).subscribe(
-              (habitaciones) => {
-                this.habitaciones = habitaciones;
-                console.log('Habitaciones encontradas por número:', habitaciones);
-              },
-              (error) => {
-                console.error('Error al buscar habitación por número:', error);
-              }
-            );
+      if (this.entidadSeleccionada === 'habitaciones') {
+        // Lógica de búsqueda para habitaciones
+        this.servicioRecepcion.getHabitacionById(this.idABuscar).subscribe(
+          (habitacion) => {
+            if (habitacion) {
+              this.habitaciones = [habitacion];
+              console.log('Habitación encontrada por ID:', habitacion);
+            } else {
+              console.log('No se encontró ninguna habitación con ese ID.');
+              this.habitaciones = [];
+            }
+          },
+          (error) => {
+            console.error('Error al buscar habitación por ID:', error);
           }
-        },
-        (error) => {
-          console.error('Error al buscar habitación por ID:', error);
-        }
-      );
+        );
+      } else if (this.entidadSeleccionada === 'recepcionistas') {
+        // Lógica de búsqueda para recepcionistas
+        // Invoca tu servicio correspondiente para buscar recepcionistas
+      }
     } else {
       console.warn('Ingrese un ID antes de buscar.');
     }

@@ -3,7 +3,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map  } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root',
@@ -14,12 +15,24 @@ export class ServicioRecepcion {
   getHabitaciones(): Observable<any[]> {
     const apiUrl = 'http://localhost:8081/api/habitaciones';
     return this.http.get<any[]>(apiUrl).pipe(
+      map((habitaciones: any[]) => {
+        // Verifica si la propiedad 'estado' está presente en cada habitación,
+        // si no está presente, agrégala con un valor por defecto (puedes cambiar esto según tus necesidades).
+        return habitaciones.map(habitacion => ({ ...habitacion, estado: habitacion.estado || 'Sin Estado' }));
+      }),
       catchError(error => {
         console.error('Error en la solicitud de habitaciones:', error);
         return throwError(error);
       })
     );
   }
+  
+  getRecepcionistaById(): Observable<any> {
+    // Puedes modificar esta parte según tus necesidades.
+    return new Observable<any>();
+  }
+  
+  
 
   getHabitacionById(id: number): Observable<any> {
     const apiUrl = `http://localhost:8081/api/habitaciones/${id}`;

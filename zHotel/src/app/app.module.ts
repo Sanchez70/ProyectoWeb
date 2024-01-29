@@ -50,6 +50,8 @@ import { FormAdminLoginComponent } from './header/form-admin-login.component';
 import { FormFacturaComponent } from './reservas/form-factura.component';
 import { vigilanteGuard } from './vigilante.guard';
 import { AuthService } from './auth.service';
+import { FormRecepcionistaComponent } from './recepcionista/form-recepcionista.component';
+import { RecepcionistaComponent } from './recepcionista/recepcionista.component';
 
 
 const routes: Routes = [
@@ -80,6 +82,8 @@ const routes: Routes = [
   { path: 'cantones', component: CantonesComponent},
   {path: 'registroC', component: RegistroCComponent},
   //{path: 'registroC', component: FormRCComponent},
+  { path: 'recepcionista', component: RecepcionistaComponent},
+  { path: 'recepcionista/form', component: FormRecepcionistaComponent },
   {path: 'registroC/form/:cedula_persona', component: FormRCComponent}
 ];
 
