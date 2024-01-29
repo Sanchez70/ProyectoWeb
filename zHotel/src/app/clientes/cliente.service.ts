@@ -30,24 +30,7 @@ export class ClienteService {
     return this.http.post<Cliente>(this.urlEndPoint, cliente, {headers: this.httpHeaders})
   }
 
-  //addBF
-  createCliente(cliente: Cliente): Observable<Cliente> {
-    // Elimina el campo idCliente antes de enviar la solicitud
-    const { idCliente, ...clienteSinId } = cliente;
-  
-    return this.http.post<Cliente>(this.urlEndPoint, clienteSinId, { headers: this.httpHeaders })
-      .pipe(
-        catchError((error: any) => {
-          console.error('Error al crear cliente:', error);
-  
-          if (error.status === 500) {
-            throw new Error('Ocurrió un error interno en el servidor. Por favor, inténtalo nuevamente más tarde.');
-          } else {
-            throw new Error('Ocurrió un error. Por favor, verifica tus datos e inténtalo nuevamente.');
-          }
-        })
-      );
-  }
+
   
   
   
