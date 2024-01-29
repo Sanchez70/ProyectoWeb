@@ -67,25 +67,24 @@
   .selected-province-message {
     margin-top: 10px;
     font-size: 12px;
-    color: #888; /* Color gris */
+    color: #888; 
   }
   
   .filter-button-small {
-    /* Ajusta el tamaño del botón según tus preferencias */
     width: 30px;
     height: 30px;
-    padding: 4px; /* Ajusta el padding para centrar el ícono */
+    padding: 4px; 
   }
   
   
   .small-rounded-button {
-    background-color: #4285f4; /* Google Blue */
+    background-color: #4285f4; 
     color: #fff;
-    padding: 10px; /* Ajustado el padding para hacer el botón más pequeño */
+    padding: 10px; 
     border: none;
-    border-radius: 10px; /* Aumenta el radio para bordes más redondeados */
+    border-radius: 10px; 
     cursor: pointer;
-    width: 100%; /* Hace que el botón ocupe todo el ancho del contenedor */
+    width: 100%; 
   }
 
   .form-row {
@@ -94,7 +93,7 @@
   }
   
   .form-group {
-    width: 48%; /* Ajusta según tus necesidades, puede variar según el diseño deseado */
+    width: 48%; 
   }
   
   .form-group label {
@@ -109,13 +108,13 @@
   }
   
   .provincia-select {
-    width: 80%; /* Ajusta según tus necesidades */
+    width: 80%; 
   }
   
   .selected-province-message {
     margin-top: 10px;
     font-size: 12px;
-    color: #888; /* Color gris */
+    color: #888; 
   }
   
   .filter-button-small {
@@ -124,14 +123,13 @@
     padding: 4px;
   }
   .logo {
-    max-width: 200px; /* Ajusta el ancho máximo según tus necesidades */
-    margin-bottom: 20px; /* Ajusta el margen inferior según tus necesidades */
+    max-width: 200px;
+    margin-bottom: 20px; 
   }
 
   .date-input {
     flex-grow: 1;
-    width: 100%; /* Ajusta el ancho del campo de fecha considerando el margen inferior */
-    padding: 12px;
+    width: 100%; 
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;

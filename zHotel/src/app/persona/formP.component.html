@@ -1,5 +1,5 @@
 <div class="registration-container">
-  <img src="assets/imagen/logoLOG.png" alt="Logo" class="logo"> 
+  <img src="assets/imagen/logoLOG.png" alt="Logo" class="logo">
   <h2>{{titulo}}</h2>
 
   <form (ngSubmit)="crearEditarPersona()">
@@ -54,15 +54,15 @@
       </div>
 
 
-  <div class="form-group">
-    <label for="fechaNacimiento">Nacimiento:</label>
+      <div class="form-group">
+        <label for="fechaNacimiento">Nacimiento:</label>
 
-      <input type="date" id="fechaNacimiento" [(ngModel)]="persona.fechaNacimiento" name="fechaNacimiento" required
-             (change)="calcularEdad()" class="date-input">
+        <input type="date" id="fechaNacimiento" [(ngModel)]="persona.fechaNacimiento" name="fechaNacimiento" required
+          (change)="calcularEdad()" class="date-input">
 
 
-</div>
-      
+      </div>
+
     </div>
 
     <div class="form-row">
@@ -70,9 +70,11 @@
         <label for="id_provincia">Provincia:</label>
         <div class="provincia-container">
           <select id="id_provincia" [(ngModel)]="provinciaSeleccionada" name="id_provincia" class="provincia-select">
-            <option *ngFor="let provincia of provincias" [value]="provincia.id_provincia">{{ provincia.nombre }}</option>
+            <option *ngFor="let provincia of provincias" [value]="provincia.id_provincia">{{ provincia.nombre }}
+            </option>
           </select>
-          <button type="button" (click)="filtrarCantonesPorProvincia()" class="filter-button-small" [class.clicked]="isFilterClicked">
+          <button type="button" (click)="filtrarCantonesPorProvincia()" class="filter-button-small"
+            [class.clicked]="isFilterClicked">
             <i class="fas fa-search"></i>
             <span class="filter-indicator" *ngIf="provinciaSeleccionada">&#10004;</span>
           </button>
@@ -81,7 +83,8 @@
       </div>
       <div class="form-group">
         <label for="id_canton">Cantón:</label>
-        <select id="id_canton" [(ngModel)]="persona.id_canton" name="id_canton" [disabled]="!isProvinciaSelected" required>
+        <select id="id_canton" [(ngModel)]="persona.id_canton" name="id_canton" [disabled]="!isProvinciaSelected"
+          required>
           <option *ngFor="let canton of cantonesFiltrados" [value]="canton.id_canton">{{ canton.nombre }}</option>
         </select>
       </div>

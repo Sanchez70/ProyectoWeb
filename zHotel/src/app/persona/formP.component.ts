@@ -72,7 +72,7 @@ export class FormPComponent implements OnInit {
   
       if (provinciaSeleccionada) {
         this.selectedProvinceMessage = `Provincia ${provinciaSeleccionada.nombre} seleccionada`;
-        this.isProvinciaSelected = true; // Habilitar el combobox de cantones
+        this.isProvinciaSelected = true;
       }
   
       this.cantonesFiltrados = this.cantones.filter(
@@ -80,7 +80,7 @@ export class FormPComponent implements OnInit {
       );
     } else {
       this.selectedProvinceMessage = 'Ninguna provincia seleccionada';
-      this.isProvinciaSelected = false; // Deshabilitar el combobox de cantones
+      this.isProvinciaSelected = false;
     }
   
     this.isFilterClicked = true;
@@ -127,9 +127,8 @@ export class FormPComponent implements OnInit {
       const edadFecha = new Date(edadMilisegundos);
       this.persona.edad = Math.abs(edadFecha.getUTCFullYear() - 1970);
   
-      // Validar rango de edad
       if (this.persona.edad < 5 || this.persona.edad > 100) {
-        // Muestra un mensaje o realiza alguna acción si está fuera del rango
+      
         console.log('Edad fuera del rango permitido');
       }
     }

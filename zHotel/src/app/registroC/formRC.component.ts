@@ -15,14 +15,14 @@ export class FormRCComponent implements OnInit {
   @Input() formRC!: FormGroup;
   public cedulaPersona: string = '';
   public registroC: RegistroC = new RegistroC();
-  previewImage: string | ArrayBuffer = '';  
+  previewImage: string | ArrayBuffer = '';
 
   constructor(
     private fb: FormBuilder,
     private registroCService: RegistroCService,
     private route: ActivatedRoute,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.buildForm();
@@ -44,12 +44,12 @@ export class FormRCComponent implements OnInit {
   registrarCliente(): void {
     this.registroC.cedula_persona = this.cedulaPersona;
     const usuario = this.formRC.get('usuario')?.value;
-  const contrasena = this.formRC.get('contrasena')?.value;
+    const contrasena = this.formRC.get('contrasena')?.value;
 
-  this.registroC.usuario = usuario;
-  this.registroC.contrasena = contrasena;
-  this.registroC.cedula_persona = this.cedulaPersona;
-    
+    this.registroC.usuario = usuario;
+    this.registroC.contrasena = contrasena;
+    this.registroC.cedula_persona = this.cedulaPersona;
+
     this.registroCService.registrarCliente(this.registroC).subscribe(
       () => {
         Swal.fire({
@@ -57,16 +57,16 @@ export class FormRCComponent implements OnInit {
           title: 'Registro exitoso',
           text: '¡Bienvenido a EzHotel!',
           showConfirmButton: false,
-          timer: 2000  
+          timer: 2000
         });
-  
+
         setTimeout(() => {
-          this.router.navigate(['/']); 
+          this.router.navigate(['/']);
         }, 2000);
       },
       (error) => {
         console.error('Error al registrar cliente:', error);
-  
+
         Swal.fire({
           icon: 'error',
           title: 'Error',
@@ -76,21 +76,21 @@ export class FormRCComponent implements OnInit {
       }
     );
   }
-  
+
 
   selectFile(event: any): void {
     const file: File = event.target.files[0];
     const reader = new FileReader();
-  
+
     reader.onload = (e: any) => {
       this.previewImage = e.target.result;
-      this.registroC.foto = this.previewImage as string; 
+      this.registroC.foto = this.previewImage as string;
     };
-  
+
     reader.readAsDataURL(file);
   }
-  
-  
+
+
   convertirFoto(): void {
     if (typeof this.previewImage === 'string') {
 
@@ -102,12 +102,12 @@ export class FormRCComponent implements OnInit {
   }
 
 
-  imagenPreview(event: any): void{
+  imagenPreview(event: any): void {
     const file: File =
-    event.target.files[0];
+      event.target.files[0];
     const reader = new FileReader();
 
-    reader.onload = (e: any)=> {
+    reader.onload = (e: any) => {
       this.imagenPreview = e.target.result;
     };
     reader.readAsDataURL(file);
