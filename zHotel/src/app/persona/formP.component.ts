@@ -119,6 +119,20 @@ export class FormPComponent implements OnInit {
     );
   }
 
+  calcularEdad(): void {
+    if (this.persona.fechaNacimiento) {
+      const hoy = new Date();
+      const fechaNacimiento = new Date(this.persona.fechaNacimiento);
+      const edadMilisegundos = hoy.getTime() - fechaNacimiento.getTime();
+      const edadFecha = new Date(edadMilisegundos);
+      this.persona.edad = Math.abs(edadFecha.getUTCFullYear() - 1970);
   
+      // Validar rango de edad
+      if (this.persona.edad < 5 || this.persona.edad > 100) {
+        // Muestra un mensaje o realiza alguna acción si está fuera del rango
+        console.log('Edad fuera del rango permitido');
+      }
+    }
+  }
   
 }

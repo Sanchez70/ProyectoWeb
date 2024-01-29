@@ -39,13 +39,19 @@ export class FormRCComponent implements OnInit {
     });
   }
 
+
+
   registrarCliente(): void {
-    this.registroC = this.formRC.value;
     this.registroC.cedula_persona = this.cedulaPersona;
+    const usuario = this.formRC.get('usuario')?.value;
+  const contrasena = this.formRC.get('contrasena')?.value;
+
+  this.registroC.usuario = usuario;
+  this.registroC.contrasena = contrasena;
+  this.registroC.cedula_persona = this.cedulaPersona;
     
     this.registroCService.registrarCliente(this.registroC).subscribe(
       () => {
-
         Swal.fire({
           icon: 'success',
           title: 'Registro exitoso',
@@ -60,7 +66,7 @@ export class FormRCComponent implements OnInit {
       },
       (error) => {
         console.error('Error al registrar cliente:', error);
-
+  
         Swal.fire({
           icon: 'error',
           title: 'Error',
@@ -70,41 +76,31 @@ export class FormRCComponent implements OnInit {
       }
     );
   }
+  
 
- 
-  selectFile(event: any):void{
-    const file: File=
-    event.target.files[0];
+  selectFile(event: any): void {
+    const file: File = event.target.files[0];
     const reader = new FileReader();
-
-    reader.onload = (e:any)=>{
+  
+    reader.onload = (e: any) => {
       this.previewImage = e.target.result;
+      this.registroC.foto = this.previewImage as string; 
     };
+  
     reader.readAsDataURL(file);
-    this.convertirFoto();
   }
+  
+  
+  convertirFoto(): void {
+    if (typeof this.previewImage === 'string') {
 
-  // convertirFoto(event: any):void {
-  //   const file: File=
-  //   event.target.files[0];
-  //   const reader = new FileReader();
-
-  //   reader.onload = (e: any)=> {
-
-  //     console.log(e.target.result);
-
-  //     this.registroC.foto = e.target.result;
-  //   };
-  //   reader.readAsDataURL(file);
-  // }
-  convertirFoto():void{
-    if(this.previewImage){
-      const img64= this.previewImage.toString();
-      console.log(img64);
-
-      this.registroC.foto=img64;
+      const base64String = this.previewImage.replace(/^.*[\\\/]/, '');
+      this.registroC.foto = base64String;
+    } else {
+      console.error('Error al convertir la foto: previewImage no es un string.');
     }
   }
+
 
   imagenPreview(event: any): void{
     const file: File =
@@ -116,4 +112,5 @@ export class FormRCComponent implements OnInit {
     };
     reader.readAsDataURL(file);
   }
+
 }

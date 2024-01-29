@@ -52,10 +52,17 @@
         <label for="direccion">Dirección:</label>
         <input type="text" id="direccion" [(ngModel)]="persona.direccion" name="direccion" required>
       </div>
-      <div class="form-group">
-        <label for="edad">Edad:</label>
-        <input type="number" id="edad" [(ngModel)]="persona.edad" name="edad" required>
-      </div>
+
+
+  <div class="form-group">
+    <label for="fechaNacimiento">Nacimiento:</label>
+
+      <input type="date" id="fechaNacimiento" [(ngModel)]="persona.fechaNacimiento" name="fechaNacimiento" required
+             (change)="calcularEdad()" class="date-input">
+
+
+</div>
+      
     </div>
 
     <div class="form-row">

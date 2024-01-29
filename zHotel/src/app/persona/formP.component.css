@@ -127,3 +127,12 @@
     max-width: 200px; /* Ajusta el ancho máximo según tus necesidades */
     margin-bottom: 20px; /* Ajusta el margen inferior según tus necesidades */
   }
+
+  .date-input {
+    flex-grow: 1;
+    width: 100%; /* Ajusta el ancho del campo de fecha considerando el margen inferior */
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }

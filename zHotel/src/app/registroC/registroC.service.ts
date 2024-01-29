@@ -17,4 +17,5 @@ export class RegistroCService {
   registrarCliente(registroC: RegistroC): Observable<RegistroC> {
     return this.http.post<RegistroC>(this.urlEndPoint, registroC);
   }
+  
 }

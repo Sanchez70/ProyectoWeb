@@ -12,6 +12,7 @@ export class Persona {
   direccion!: string;
   edad!: number;
   id_canton!: string;
+  fechaNacimiento!: Date;
 
   cantones?: Cantones[]; 
 
