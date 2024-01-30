@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Renderer2, ElementRef } from '@angular/core';
 import { Persona } from './persona';
 import { Cantones } from '../cantones/canton';
 import { CantonService } from '../cantones/canton.service';
@@ -8,6 +8,7 @@ import { Subscription } from 'rxjs';
 import Swal from 'sweetalert2';
 import { Provincia } from '../provincias/provincia';
 import { ProvinciaService } from '../provincias/provincia.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-formP',
@@ -24,6 +25,7 @@ export class FormPComponent implements OnInit {
   public isFilterClicked: boolean = false;
   public selectedProvinceMessage: string = 'Ninguna provincia seleccionada';
   public isProvinciaSelected: boolean = false;
+
   
 
   constructor(
@@ -31,13 +33,18 @@ export class FormPComponent implements OnInit {
     private cantonesService: CantonService,
     private provinciasService: ProvinciaService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private fb: FormBuilder,
+    private renderer: Renderer2,
+    private el: ElementRef
   ) {}
 
   ngOnInit(): void {
     this.cargarPersona();
     this.cargarCantones();
     this.cargarProvincias();
+
+    
   }
 
 
@@ -132,6 +139,34 @@ export class FormPComponent implements OnInit {
         console.log('Edad fuera del rango permitido');
       }
     }
+  }
+
+  //VALIDACIONES
+  onKeyPress(event: any): void {
+    const inputElement = event.target;
+
+    if (!this.validarLetras(event.key)) {
+      event.preventDefault();
+    }
+  }
+
+  onKeyPressNumeros(event: KeyboardEvent): void {
+    const char = event.key;
+    if (event.ctrlKey || event.altKey || event.metaKey || char === 'Enter' || char === 'Tab' || char === 'Backspace') {
+      return;
+    }
+    if (!/^[0-9]*$/.test(char)) {
+      event.preventDefault();
+    }
+  }
+  
+
+  validarLetras(char: string): boolean {
+    
+    return /^[a-zA-Z\s]*$/.test(char);
+  }
+  validarNumeros(char: string): boolean {
+    return /^[0-9]*$/.test(char);
   }
   
 }
