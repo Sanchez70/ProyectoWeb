@@ -1,0 +1,37 @@
+
+<div style="background-color: #F9F9F9;">
+    <br>
+<div class="principal" style="margin-left: 15cap;">
+<main class="table">
+
+    <section class="table_body" *ngFor="let reservas of resevaHisto">
+        <table>
+            <thead>
+                <tr>
+                    <th>Codigo</th>
+                    <th>Foto</th>                    
+                    <th>Cliente</th>
+                    <th>Cedula</th>
+                    <th>Categoria</th>
+                    <th>Estado</th>
+                    <th>Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>{{reservas.idReserva}}</th>
+                    <th><img src="{{habitaciones.foto}}" alt="">{{clientesEncontrado.cedula_persona}}</th>
+                    <th>{{clientesEncontrado.cedula_persona}}</th>
+                    <th>Estado</th>
+                    <th>´{{Categoria.nombre}}</th>
+                    <th><p class="status {{habitaciones.estado}}">{{habitaciones.estado}}</p> </th>
+                    <th>Codigo</th>
+                </tr>                        
+            </tbody>
+        </table>
+    </section>
+
+</main>
+</div>
+<br>
+</div>
