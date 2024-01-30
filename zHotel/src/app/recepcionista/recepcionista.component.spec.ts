@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RecepcionistaComponent } from './recepcionista.component';
+ import { RecepcionistaComponent } from './recepcionista.component';
 
 describe('RecepcionistaComponent', () => {
   let component: RecepcionistaComponent;

@@ -1,0 +1,34 @@
+<!-- form-recepcionista.component.html -->
+<div class="card bg-dark text-white">
+  <div class="card-header">{{titulo}}</div>
+  <div class="card-body">
+    <form #recepcionistaForm="ngSubmit" (ngSubmit)="create()">
+      <!-- Campos de Persona (puedes personalizar según tu necesidad) -->
+      <div class="form-group row">
+        <label for="nombre" class="col-form-label col-sm-2">Nombre</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" [(ngModel)]="recepcionista.nombre" name="nombre" required>
+        </div>
+      </div>
+      <!-- Agrega los campos adicionales de Recepcionista -->
+      <div class="form-group row">
+        <label for="usuario" class="col-form-label col-sm-2">Usuario</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" [(ngModel)]="recepcionista.usuario" name="usuario" required>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="contrasena" class="col-form-label col-sm-2">Contraseña</label>
+        <div class="col-sm-6">
+          <input type="password" class="form-control" [(ngModel)]="recepcionista.contrasena" name="contrasena" required>
+        </div>
+      </div>
+      <!-- Puedes agregar más campos según sea necesario -->
+      <div class="form-group row">
+        <div class="col-sm-6">
+          <button type="submit" class="btn btn-primary" role="button">Crear</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

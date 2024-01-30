@@ -1,3 +1,5 @@
+<!-- panel-recepcion.component.html -->
+
 <div class="card border-primary mb-3">
   <!-- <div class="card-header">Panel de Recepción</div>-->
 
@@ -5,8 +7,6 @@
     <h5 class="card-title">Listado</h5>
 
     <div class="my-2 text-left">
-      <!--  <button class="btn btn-rounded btn-primary mr-5" (click)="cargarInformacion()" [routerLink]="['/habitaciones']">Recargar Habitaciones</button>-->
-   <!--   <button class="btn btn-rounded btn-primary mr-5" (click)="cargarInformacion()">Actualizar</button>  -->
       <button class="btn btn-rounded btn-primary mr-5" (click)="cargarInformacion()" [disabled]="loading">
         <span *ngIf="!loading">Actualizar</span>
         <span *ngIf="loading">
@@ -14,26 +14,57 @@
         </span>
       </button>
       <button class="btn btn-rounded btn-primary mr-5" (click)="verificarOcupacionGeneral()">Ocupación General</button>
+      
     </div> 
 
     <div class="my-2 text-left mr-auto mb-3">
       <label for="buscarId">Buscar por ID:</label>
       <input type="text" id="buscarId" [(ngModel)]="idABuscar" inputmode="numeric" pattern="[0-9]*" (input)="buscarEnTiempoReal()" (keydown)="onKeyDown($event)" />
+    
+      <select [(ngModel)]="entidadSeleccionada">
+        <option value="habitaciones">Habitaciones</option>
+        <option value="recepcionistas">Recepcionistas</option>
+      </select>
     </div>
 
-    <div class="my-2 text-left ">
-      <div class="row">
-        <div class="col-md-6">
-          <button type="button" [routerLink]="['/habitaciones/form']" class="btn btn-link">Crear Habitación</button>
-        </div>
-        <div class="col-md-6">
-          <button type="button" [routerLink]="['/recepcionistas/form']" class="btn btn-link">Crear Recepcionista</button>
-        </div>
-      </div>
-    </div>
     
+
+    
+    <div class="container" *ngIf="mostrarTabla">
+      <h2>Lista de Recepcionistas</h2>
+      <table class="table table-recepcionistas">
+        <!-- Cabecera de la tabla -->
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Usuario</th>
+            <th>Contraseña</th>
+            <th>Cédula Persona</th>
+            <!-- Otros atributos si los tienes -->
+          </tr>
+        </thead>
+        <!-- Cuerpo de la tabla -->
+        <tbody>
+          <!-- Filas de la tabla -->
+          <tr *ngFor="let recepcionista of recepcionistas">
+            <td>{{ recepcionista.id_recepcionista }}</td>
+            <td>{{ recepcionista.usuario }}</td>
+            <td>{{ recepcionista.contrasena }}</td>
+            <td>{{ recepcionista.cedula_persona }}</td>
+            <!-- Otros atributos si los tienes -->
+          </tr>
+        </tbody>
+      </table>
+    
+      <!-- Línea divisoria -->
+  <div class="table-divider"></div>
+      <!-- Botón para crear recepcionista -->
+      
+      <h2>Lista de Habitaciones</h2>
     <!-- Tabla de Habitaciones -->
+    
     <table class="table table-bordered table-striped" *ngIf="mostrarTabla">
+      <table class="table table-habitaciones"></table>
       <thead>
         <tr>
           <th style="color: black;">ID</th>
@@ -41,6 +72,7 @@
           <th style="color: black;">Piso</th>
           <th style="color: black;">Precio</th>
           <th style="color: black;">Descripción</th>
+          <th style="color: black;">Estado</th>
           <th style="color: black;" >Imagen</th>
           <!-- Agrega más columnas según tus necesidades -->
         </tr>
@@ -52,6 +84,7 @@
           <td>{{ habitacion.nPiso }}</td>
           <td>{{ habitacion.precio }}</td>
           <td>{{ habitacion.descriphabi }}</td>
+          <td>{{ habitacion.estado }}</td>
           <td>
             <img src="{{ habitacion.foto }}" alt="Imagen de la habitación" width="50" height="50">
           </td>
@@ -65,5 +98,5 @@
         </tr>
       </tbody>
     </table>
-  </div>
+  </div>
 </div>
