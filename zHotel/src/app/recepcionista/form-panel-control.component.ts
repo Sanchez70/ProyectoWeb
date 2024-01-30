@@ -53,14 +53,10 @@ export class FormPanelControlComponent implements OnInit{
                   this.clientesEncontrado =  clienteInfo;
                   this.personaService.getPersona(clienteInfo.cedula_persona).subscribe(
                     personaInf =>{
-                    
-
+                      
                     }
                   );
                   }
-
-                }
-
               }
             );
 
@@ -70,5 +66,6 @@ export class FormPanelControlComponent implements OnInit{
       );
 
     }
+  
 
 }
