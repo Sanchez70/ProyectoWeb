@@ -3,6 +3,7 @@ import { Habitaciones } from './habitaciones';
 import Swal from 'sweetalert2';
 import { HabitacionesService } from './habitaciones.service';
 import { categorias } from './categorias';
+import { Observable, forkJoin, map, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-habitaciones',
@@ -12,15 +13,35 @@ import { categorias } from './categorias';
 export class HabitacionesComponent implements OnInit {
   habitaciones: Habitaciones[]=[ ];
   Categoria: categorias= new categorias();
-
+  nomCat:any[] = [];
   constructor(private habitacionesService:HabitacionesService){}
 
     ngOnInit(): void{
       this.habitacionesService.getHabitaciones().subscribe(
-        Habitaciones => {this.habitaciones =   Habitaciones;
-          for (const habitacion of this.habitaciones) {
-            this.buscarcategorias(habitacion.idCategoria);
-          }
+        habitaciones => {
+          const habitacionesDisponibles = habitaciones.filter(habitacion => habitacion.estado === 'Disponible');
+    
+          const observables = habitacionesDisponibles.map(habitacion => {
+            return this.habitacionesService.getCategoria(habitacion.idCategoria).pipe(
+              map(categoria => ({
+                habitacion: habitacion,
+                nombreCategoria: categoria.nombre
+              }))
+            );
+          });
+    
+          forkJoin(observables).subscribe(
+            resultados => {
+              this.habitaciones = resultados.map(resultado => resultado.habitacion);
+              this.nomCat = resultados.map(resultado => resultado.nombreCategoria);
+            },
+            error => {
+              console.error('Error al cargar habitaciones con categorías:', error);
+            }
+          );
+        },
+        error => {
+          console.error('Error al cargar habitaciones disponibles:', error);
         }
       );
     }
@@ -57,8 +78,6 @@ export class HabitacionesComponent implements OnInit {
       );
   }
 
-  habicate(){
-
-  }
+  
 
 }

@@ -1,10 +1,8 @@
 <div style="background-color: #F9F9F9;">
-  <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/habitaciones/form']">Crear
-    habitaciones</button>
-
+  
   <div class="col" >
     <div class="card-container" style="display: flex; gap: 20px; overflow-x: auto; padding: 20px ;flex-wrap: wrap; margin-left: 8cap;">
-      <div class="card mb-3 rounded-lg" style="max-width: 640px;" *ngFor="let habitaciones of habitaciones">
+      <div class="card mb-3 rounded-lg" style="max-width: 640px;" *ngFor="let habitaciones of habitaciones; let i = index">
         <div class="flex p-6 font-mono">
           <div class="flex-none w-48 mb-10 relative z-10 before:absolute before:top-1 before:left-1 before:w-full before:h-full before:bg-white-400 rounded-lg">
             <div style="position: relative; overflow: hidden; border-radius: 1rem; width: 250px; height: 250px;">
@@ -18,13 +16,13 @@
             <div
               class="relative flex flex-wrap items-baseline pb-6 before:bg-black-300 before:absolute before:-top-6 before:bottom-0 before:-left-60 before:-right-6">
               <h1 class="relative w-full flex-none mb-2 text-2xl font-semibold text-black " style="left: 3rem;" >
-                Categoria: {{Categoria.nombre}}
+                Categoría: {{ nomCat[i] }}
               </h1>
               <div class="relative text-lg text-black" style="left: 3rem;">
                 Precio: ${{habitaciones.precio}}
               </div>
               <div class="relative uppercase text-teal-400 ml-3" style="left: 3rem;">
-                {{habitaciones.idCategoria}}
+                {{habitaciones.estado}}
               </div>
             </div>
             <div class=" space-x-3 mx-10" style=" width: 300px; height: 30px;">
