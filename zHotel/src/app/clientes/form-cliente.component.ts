@@ -34,7 +34,6 @@ export class FormClienteComponent implements OnInit{
   }
 
   cargarCliente(): void {
-
     this.clienteService.getCliente(this.id).subscribe(
       (cliente) => {
         this.cliente = cliente;
@@ -68,13 +67,7 @@ export class FormClienteComponent implements OnInit{
 
   public editPer(): void{
     this.personaService.updatePersona(this.persona)
-    .subscribe(persona => {
-      this.router.navigate(['/personas']);
-      this.cargarPersona();
-      },
-      (error) => {
-        console.error(error);
-      }
+    .subscribe(persona => {}
     )
   }
 
@@ -95,6 +88,6 @@ export class FormClienteComponent implements OnInit{
       console.log(base64String);
 
       this.cliente.foto = base64String;
-    } 
-  }
+    }
+  }
 }

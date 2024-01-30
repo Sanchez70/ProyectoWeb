@@ -10,7 +10,8 @@ import { map } from 'rxjs/operators';
 export class Servicio2Service {
 
  //private urlEndPoint: string = 'http://192.168.40.228:8081/api/servicio';
- private urlEndPoint: string = 'http://192.168.0.119:8081/api/servicio';
+ //private urlEndPoint: string = 'http://192.168.0.119:8081/api/servicio';
+ private urlEndPoint: string = 'http://localhost:8081/api/servicio';
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' })
   constructor(private http: HttpClient) { }
 
