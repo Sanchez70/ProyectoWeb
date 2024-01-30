@@ -16,7 +16,7 @@ import { ActivatedRoute } from '@angular/router';
 export class PanelRecepcionComponent implements OnInit {
 
   habitaciones: any[] = [];
- recepcionistas: Recepcionista[] = [];
+  public recepcionistas: any[] = [];
   opcionSeleccionada: string = '';
   idABuscar: number = 0;
   mostrarTabla: boolean = false;
@@ -40,8 +40,11 @@ export class PanelRecepcionComponent implements OnInit {
       this.mostrarHabitaciones();
       this.cargarRecepcionistas();
       this.cargarDatosSegunRuta();
+      this.cargarInformacion();
     });
   }
+
+  
 
   cargarRecepcionistas(): void {
     this.recepcionistaService.getRecepcionistas().subscribe(

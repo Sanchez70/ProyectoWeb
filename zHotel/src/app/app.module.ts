@@ -116,6 +116,7 @@ const routes: Routes = [
     FormRCComponent,
     FormrrcepcionistaComponent,
     FormAdminLoginComponent,
+    FormRecepcionistaComponent,
     FormFacturaComponent
   ],
   imports: [
