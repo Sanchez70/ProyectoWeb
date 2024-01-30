@@ -42,14 +42,25 @@ export class FormRCComponent implements OnInit {
 
 
   registrarCliente(): void {
+  
+    if (this.formRC.invalid) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Campos requeridos',
+        text: 'Por favor, complete todos los campos obligatorios.',
+        showConfirmButton: true
+      });
+      return;
+    }
+  
     this.registroC.cedula_persona = this.cedulaPersona;
     const usuario = this.formRC.get('usuario')?.value;
     const contrasena = this.formRC.get('contrasena')?.value;
-
+  
     this.registroC.usuario = usuario;
     this.registroC.contrasena = contrasena;
     this.registroC.cedula_persona = this.cedulaPersona;
-
+  
     this.registroCService.registrarCliente(this.registroC).subscribe(
       () => {
         Swal.fire({
@@ -59,23 +70,24 @@ export class FormRCComponent implements OnInit {
           showConfirmButton: false,
           timer: 2000
         });
-
+  
         setTimeout(() => {
           this.router.navigate(['/']);
         }, 2000);
       },
       (error) => {
-        console.error('Error al registrar cliente:', error);
-
+        console.error('Error al registrar sus datos:', error);
+  
         Swal.fire({
           icon: 'error',
           title: 'Error',
-          text: 'Ocurrió un error al intentar registrar los datos',
+          text: 'Ocurrió un error al intentar registrar los datos. Por favor, verifique que todos los datos sean válidos y que todos los campos estén llenos.',
           showConfirmButton: true
         });
       }
     );
   }
+  
 
 
   selectFile(event: any): void {

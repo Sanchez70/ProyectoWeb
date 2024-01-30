@@ -121,10 +121,16 @@ export class FormPComponent implements OnInit {
       },
       (error) => {
         console.error('Error al crear persona:', error);
-        Swal.fire('Error', 'Ocurrió un error', 'error');
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Ocurrió un error al intentar guardar sus datos. Por favor, datos erroneos o campos incompletos.',
+          confirmButtonText: 'OK',
+        });
       }
     );
   }
+  
 
   calcularEdad(): void {
     if (this.persona.fechaNacimiento) {
