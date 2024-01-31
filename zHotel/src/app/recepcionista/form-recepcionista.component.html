@@ -1,44 +1,51 @@
-<div class="container">
-    <div class="row">
-        <div class="col-sm-6">
-            <div class="card bg-light text-dark" style="height: 100%;">
-                <div class="card-header text-center">
-                    <h2>{{titulo}}</h2>
-                </div>
-                <form #recepcionistaForm="ngForm" (ngSubmit)="create()" class="p-2">
+<div style="width: 100%; height: 100%;">  
+    <div class="container" >
+      <div class="row">
+          <div class="col-sm-6">
+              <div class="card bg-light text-dark" style="height: 100%;">
+                  <div class="card-header text-center">
+                      <h2>{{titulo}}</h2>
+                  </div>
+                  <form #recepcionistaForm="ngForm" (ngSubmit)="create()" class="p-2">
                     <div class="form-group row">
-                        <label for="usuario" class="col-form-label col-sm-3"><strong>Usuario</strong></label>
+                        <label for="nombre_persona" class="col-form-label col-sm-3"><strong>Nombre Persona</strong></label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" [(ngModel)]="recepcionista.usuario" name="usuario"
-                                placeholder="Ingrese el usuario" required>
+                            
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label for="contrasena" class="col-form-label col-sm-3"><strong>Contraseña</strong></label>
-                        <div class="col-sm-9">
-                            <input type="password" class="form-control" [(ngModel)]="recepcionista.contrasena"
-                                name="contrasena" placeholder="Ingrese la contraseña" required>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="cedula_persona" class="col-form-label col-sm-3"><strong>Cédula de
-                                Persona</strong></label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" [(ngModel)]="recepcionista.cedula_persona"
-                                name="cedula_persona" placeholder="Ingrese la cédula de la persona" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <div class="col-sm-10">
-                            <button type="submit" class="btn btn-primary" role="button">Crear</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div class="col-sm-6 d-flex align-items-center justify-content-center">
-        </div>
-          
+                      <div class="form-group row">
+                          <label for="usuario" class="col-form-label col-sm-3"><strong>Usuario</strong></label>
+                          <div class="col-sm-9">
+                              <input type="text" class="form-control" [(ngModel)]="recepcionista.usuario" name="usuario" placeholder="Ingrese el usuario" required>
+                          </div>
+                      </div>
+                      <div class="form-group row">
+                          <label for="contrasena" class="col-form-label col-sm-3"><strong>Contraseña</strong></label>
+                          <div class="col-sm-9">
+                              <input type="password" class="form-control" [(ngModel)]="recepcionista.contrasena" name="contrasena" placeholder="Ingrese la contraseña" required>
+                          </div>
+                      </div>
+                      <div class="form-group row">
+                          <label for="cedula_persona" class="col-form-label col-sm-3"><strong>Cédula de Persona</strong></label>
+                          <div class="col-sm-9">
+                              <input type="text" class="form-control" [(ngModel)]="recepcionista.cedula_persona" name="cedula_persona" placeholder="Ingrese la cédula de la persona" required>
+                          </div>
+                      </div>
+                      <!-- Agrega más campos según tus necesidades -->
+    
+                      <div class="form-group row">
+                          <div class="col-sm-10">
+                              <button type="submit" class="btn btn-primary" role="button">Crear</button>
+                          </div>
+                      </div>
+                  </form>
+              </div>
+          </div>
+          <div class="col-sm-6 d-flex align-items-center justify-content-center">
+              <!-- Puedes colocar una imagen de fondo o algún otro elemento visual aquí -->
+          </div>
+      </div>
     </div>
-</div>
+    </div>
+    
+    

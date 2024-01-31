@@ -49,4 +49,6 @@ export class RecepcionistaComponent implements OnInit {
 
   editarRecepcionista(idRecepcionista: number): void {
   }
+
+  
 }

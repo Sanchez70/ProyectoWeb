@@ -95,7 +95,7 @@ export class LoginComponent {
                   const recepEcontrados = resultRecep as Recepcionista[];
                   const recepEncontrado = recepEcontrados.find(recep => recep.contrasena === contraneusu);
                   if (recepEncontrado) {
-                    this.inicio.idUsuario = recepEncontrado.id_recepcionista;
+                    this.inicio.idUsuario = recepEncontrado.idRecepcionista ;
                     this.inicio.setCedula(recepEncontrado.cedula_persona);
                     this.router.navigate(['./carrucel']);
                     this.inicio.login();

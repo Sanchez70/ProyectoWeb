@@ -16,9 +16,7 @@ export class RecepcionistaService {
 
   constructor(private http: HttpClient) { }
 
-  getRecepcionistas(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.urlEndPoint}`);
-  }
+ 
 
   create(recepcionista: Recepcionista): Observable<Recepcionista> {
     return this.http.post<Recepcionista>(this.urlEndPoint, recepcionista, { headers: this.httpHeaders });
@@ -35,6 +33,14 @@ export class RecepcionistaService {
   createRecepcionista(recepcionista: any): Observable<any> {
     return this.http.post(`${this.urlEndPoint}/recepcionistas`, recepcionista);
   }
+
+  getRecepcionistas(): Observable<Recepcionista[]> {
+   
+    return this.http.get<Recepcionista[]>(`${this.urlEndPoint}`);
+   
+         
+    }
+    
 
 
 }

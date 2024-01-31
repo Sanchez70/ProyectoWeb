@@ -1,4 +1,4 @@
-// panel-recepcion.component.ts
+ // panel-recepcion.component.ts
 
 import { Component, OnInit } from '@angular/core';
 import { ServicioComunicacionService } from '../servicio-comunicacion.service';
@@ -17,12 +17,12 @@ import { Router } from '@angular/router';
 export class PanelRecepcionComponent implements OnInit {
 
   habitaciones: any[] = [];
-  public recepcionistas: any[] = [];
+  public recepcionistas: Recepcionista[] = [];
   opcionSeleccionada: string = '';
   idABuscar: number = 0;
   mostrarTabla: boolean = false;
   entidadSeleccionada: string = 'habitaciones';
-
+  
   public loading: boolean = false;
   mostrarTablaHabitaciones: boolean = false;
   mostrarTablaRecepcionistas: boolean = false;
@@ -30,7 +30,7 @@ export class PanelRecepcionComponent implements OnInit {
   constructor(
     private servicioComunicacion: ServicioComunicacionService,
     private servicioRecepcion: ServicioRecepcion,
-
+    
     private recepcionistaService: RecepcionistaService,
     private route: ActivatedRoute,
     private router: Router
@@ -38,7 +38,7 @@ export class PanelRecepcionComponent implements OnInit {
 
   ngOnInit(): void {
     this.servicioComunicacion.actualizarPanel$.subscribe(() => {
-      //console.log('Se recibió una notificación de actualización en Panel Recepción');
+      console.log('Se recibió una notificación de actualización en Panel Recepción');
       this.mostrarHabitaciones();
       this.cargarRecepcionistas();
       this.cargarDatosSegunRuta();
@@ -46,13 +46,12 @@ export class PanelRecepcionComponent implements OnInit {
     });
   }
 
-
   eliminarRecepcionista(idRecepcionista: number): void {
     if (idRecepcionista === undefined || idRecepcionista === null) {
-      //console.error('ID del recepcionista no definido');
+      console.error('ID del recepcionista no definido');
       return;
     }
-
+  
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: 'btn btn-success',
@@ -60,7 +59,7 @@ export class PanelRecepcionComponent implements OnInit {
       },
       buttonsStyling: false,
     });
-
+  
     swalWithBootstrapButtons.fire({
       title: '¿Estás seguro?',
       text: 'No se puede revertir',
@@ -73,7 +72,7 @@ export class PanelRecepcionComponent implements OnInit {
       if (result.isConfirmed) {
         this.recepcionistaService.eliminarRecepcionista(idRecepcionista).subscribe(
           () => {
-            //console.log('Recepcionista eliminado con éxito');
+            console.log('Recepcionista eliminado con éxito');
             swalWithBootstrapButtons.fire({
               title: 'Borrado',
               text: 'El recepcionista fue borrado con éxito',
@@ -82,7 +81,7 @@ export class PanelRecepcionComponent implements OnInit {
             this.cargarRecepcionistas();
           },
           (error) => {
-            //console.error('Error al eliminar el recepcionista', error);
+            console.error('Error al eliminar el recepcionista', error);
             swalWithBootstrapButtons.fire({
               title: 'Error',
               text: 'Ha ocurrido un error al eliminar el recepcionista',
@@ -99,50 +98,55 @@ export class PanelRecepcionComponent implements OnInit {
       }
     });
   }
+  
 
-
+ 
   editarRecepcionista(recepcionista: any): void {
-
-    //console.log('Editar recepcionista:', recepcionista);
+    // Aquí puedes implementar la lógica para la edición del recepcionista
+    console.log('Editar recepcionista:', recepcionista);
+    // Puedes redirigir a la página de edición o mostrar un modal, según tus necesidades.
+    // Por ejemplo, podrías navegar a la página de edición con el ID del recepcionista
     this.router.navigate(['/recepcionistas/editar', recepcionista.id_recepcionista]);
   }
 
   cargarRecepcionistas(): void {
     this.recepcionistaService.getRecepcionistas().subscribe(
-      recepcionistas => {
-        //console.log('Datos de recepcionistas:', recepcionistas);
-        this.recepcionistas = recepcionistas;
+      recepcionistas1 => {
+        console.log('Datos de recepcionistas:', recepcionistas1);
+        this.recepcionistas = recepcionistas1;
         this.mostrarTablaRecepcionistas = true;
       },
       error => {
-        //console.error('Error al obtener recepcionistas:', error);
-
+        console.error('Error al obtener recepcionistas:', error);
+        // Agrega aquí el manejo de errores (mensaje al usuario, registro, etc.).
       }
     );
   }
 
   cargarDatosSegunRuta() {
     const rutaActual = this.route.snapshot.routeConfig?.path;
-
+  
     if (rutaActual === 'panel-recepcion') {
       this.mostrarTablaHabitaciones = false;
       this.mostrarTablaRecepcionistas = true;
+      ////this.mostrarCreacionRecepcionista = false; // Asegúrate de ocultar la sección de creación
     } else if (rutaActual === 'panel-recepcion/recepcionistas') {
       this.mostrarTablaHabitaciones = false;
       this.mostrarTablaRecepcionistas = true;
+      ///this.mostrarCreacionRecepcionista = false; // Asegúrate de ocultar la sección de creación
     }
   }
 
   mostrarHabitaciones(): void {
     this.servicioRecepcion.getHabitaciones().subscribe(
       habitaciones => {
-        //console.log('Datos de habitaciones:', habitaciones);
+        console.log('Datos de habitaciones:', habitaciones);
         this.habitaciones = habitaciones;
         this.opcionSeleccionada = 'Habitaciones';
         this.mostrarTablaHabitaciones = true;
       },
       error => {
-        //console.error('Error al obtener habitaciones:', error);
+        console.error('Error al obtener habitaciones:', error);
       }
     );
   }
@@ -168,7 +172,7 @@ export class PanelRecepcionComponent implements OnInit {
       if (result.isConfirmed) {
         this.servicioRecepcion.eliminarHabitacion(id).subscribe(
           () => {
-            //console.log('Habitación eliminada con éxito');
+            console.log('Habitación eliminada con éxito');
             swalWithBootstrapButtons.fire({
               title: 'Borrado',
               text: 'La habitación fue borrada con éxito',
@@ -177,7 +181,7 @@ export class PanelRecepcionComponent implements OnInit {
             this.cargarInformacion();
           },
           (error) => {
-            // console.error('Error al eliminar la habitación', error);
+            console.error('Error al eliminar la habitación', error);
             swalWithBootstrapButtons.fire({
               title: 'Error',
               text: 'Ha ocurrido un error al eliminar la habitación',
@@ -196,23 +200,27 @@ export class PanelRecepcionComponent implements OnInit {
   }
 
   cargarInformacion(): void {
+    // Iniciar la carga
     this.loading = true;
 
+    // Mostrar la animación durante 3 segundos
     setTimeout(() => {
+      // Simula la carga de datos
       this.servicioRecepcion.getHabitaciones().subscribe(
         habitaciones => {
-          //console.log('Datos de habitaciones:', habitaciones);
+          console.log('Datos de habitaciones:', habitaciones);
           this.habitaciones = habitaciones;
           this.opcionSeleccionada = 'Habitaciones';
           this.mostrarTabla = true;
         },
         error => {
-          //console.error('Error al obtener habitaciones:', error);
+          console.error('Error al obtener habitaciones:', error);
         }
       ).add(() => {
+        // Finalizar la carga, ya sea que haya tenido éxito o haya ocurrido un error
         this.loading = false;
       });
-    }, 1000);
+    }, 1000); // 3000 milisegundos = 3 segundos
   }
 
   buscarPorId(): void {
@@ -221,43 +229,45 @@ export class PanelRecepcionComponent implements OnInit {
         (habitacion) => {
           if (habitacion) {
             this.habitaciones = [habitacion];
-            //console.log('Habitación encontrada por ID:', habitacion);
+            console.log('Habitación encontrada por ID:', habitacion);
           } else {
-            //console.log('No se encontró ninguna habitación con ese ID.');
+            console.log('No se encontró ninguna habitación con ese ID.');
             this.habitaciones = [];
           }
         },
         (error) => {
-          //console.error('Error al buscar habitación por ID:', error);
+          console.error('Error al buscar habitación por ID:', error);
         }
       );
     } else {
-      //console.warn('Ingrese un ID antes de buscar.');
+      console.warn('Ingrese un ID antes de buscar.');
     }
   }
 
   buscarEnTiempoReal(): void {
     if (this.idABuscar) {
       if (this.entidadSeleccionada === 'habitaciones') {
+        // Lógica de búsqueda para habitaciones
         this.servicioRecepcion.getHabitacionById(this.idABuscar).subscribe(
           (habitacion) => {
             if (habitacion) {
               this.habitaciones = [habitacion];
-              //console.log('Habitación encontrada por ID:', habitacion);
+              console.log('Habitación encontrada por ID:', habitacion);
             } else {
-              //console.log('No se encontró ninguna habitación con ese ID.');
+              console.log('No se encontró ninguna habitación con ese ID.');
               this.habitaciones = [];
             }
           },
           (error) => {
-            //console.error('Error al buscar habitación por ID:', error);
+            console.error('Error al buscar habitación por ID:', error);
           }
         );
       } else if (this.entidadSeleccionada === 'recepcionistas') {
-
+        // Lógica de búsqueda para recepcionistas
+        // Invoca tu servicio correspondiente para buscar recepcionistas
       }
     } else {
-      //console.warn('Ingrese un ID antes de buscar.');
+      console.warn('Ingrese un ID antes de buscar.');
     }
   }
 
@@ -289,3 +299,5 @@ export class PanelRecepcionComponent implements OnInit {
     }, 2000);
   }
 }
+
+
