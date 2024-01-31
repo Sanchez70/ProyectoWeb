@@ -1,4 +1,12 @@
+import { OperatorFunction, Subscription } from "rxjs";
+
 export class Reserva {
+    pipe(arg0: OperatorFunction<unknown, Subscription>) {
+      throw new Error('Method not implemented.');
+    }
+    map(arg0: (habitacion: any) => void) {
+      throw new Error('Method not implemented.');
+    }
     idReserva : number=0;
     idPago : number=0;
     fechaSalida : String='';

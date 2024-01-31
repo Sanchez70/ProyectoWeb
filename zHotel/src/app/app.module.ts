@@ -52,6 +52,7 @@ import { vigilanteGuard } from './vigilante.guard';
 import { AuthService } from './auth.service';
 import { FormRecepcionistaComponent } from './recepcionista/form-recepcionista.component';
 import { RecepcionistaComponent } from './recepcionista/recepcionista.component';
+import { FilterPipe } from './filter.pipe';
 
 
 const routes: Routes = [
@@ -119,7 +120,8 @@ const routes: Routes = [
     FormrrcepcionistaComponent,
     FormAdminLoginComponent,
     FormRecepcionistaComponent,
-    FormFacturaComponent
+    FormFacturaComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
@@ -143,7 +145,9 @@ const routes: Routes = [
     ProvinciaService,
     CantonService,
     RegistroCService,
+    FilterPipe,
     provideClientHydration()
+
   ],
   bootstrap: [AppComponent]
 })

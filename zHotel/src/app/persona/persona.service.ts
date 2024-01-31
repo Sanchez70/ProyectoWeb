@@ -57,5 +57,9 @@ export class PersonaService {
     return this.http.get<Provincia[]>('http://localhost:8081/api/provincias');
   }
 
+  getPersonaID(cedula: string): Observable<Persona[]> {
+    return this.http.get<Persona[]>(`${this.urlEndPoint}/${cedula}`);
+  }   
+
   
 }

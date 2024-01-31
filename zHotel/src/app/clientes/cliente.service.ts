@@ -30,7 +30,10 @@ export class ClienteService {
     return this.http.post<Cliente>(this.urlEndPoint, cliente, {headers: this.httpHeaders})
   }
 
-
+  getClienteId(id: number): Observable<Cliente[]> {
+    const url = `${this.urlEndPoint}/${id}`;
+    return this.http.get<Cliente[]>(url);
+  }
   
   
   
