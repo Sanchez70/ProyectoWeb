@@ -102,18 +102,6 @@ export class FormRCComponent implements OnInit {
     reader.readAsDataURL(file);
   }
 
-
-  convertirFoto(): void {
-    if (typeof this.previewImage === 'string') {
-
-      const base64String = this.previewImage.replace(/^.*[\\\/]/, '');
-      this.registroC.foto = base64String;
-    } else {
-      console.error('Error al convertir la foto: previewImage no es un string.');
-    }
-  }
-
-
   imagenPreview(event: any): void {
     const file: File =
       event.target.files[0];
