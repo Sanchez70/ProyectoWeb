@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import { Recepcionista } from '../recepcionista/recepcionista';
 import { RecepcionistaService } from '../recepcionista/recepcionista.service';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-panel-recepcion',
@@ -29,9 +30,10 @@ export class PanelRecepcionComponent implements OnInit {
   constructor(
     private servicioComunicacion: ServicioComunicacionService,
     private servicioRecepcion: ServicioRecepcion,
-    private servicioRecepcionista: ServicioRecepcion,
+    
     private recepcionistaService: RecepcionistaService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -44,7 +46,69 @@ export class PanelRecepcionComponent implements OnInit {
     });
   }
 
-  
+
+  eliminarRecepcionista(idRecepcionista: number): void {
+    if (idRecepcionista === undefined || idRecepcionista === null) {
+        console.error('ID del recepcionista no definido');
+        return;
+    }
+
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: 'btn btn-success',
+            cancelButton: 'btn btn-danger',
+        },
+        buttonsStyling: false,
+    });
+
+    swalWithBootstrapButtons.fire({
+        title: '¿Estás seguro?',
+        text: 'No se puede revertir',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonAriaLabel: 'Sí, borrar',
+        cancelButtonText: 'No, cancelar',
+        reverseButtons: true,
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Llamada al servicio para eliminar el recepcionista
+            this.recepcionistaService.eliminarRecepcionista(idRecepcionista).subscribe(
+                () => {
+                    console.log('Recepcionista eliminado con éxito');
+                    swalWithBootstrapButtons.fire({
+                        title: 'Borrado',
+                        text: 'El recepcionista fue borrado con éxito',
+                        icon: 'success',
+                    });
+                    this.cargarRecepcionistas();
+                },
+                (error) => {
+                    console.error('Error al eliminar el recepcionista', error);
+                    swalWithBootstrapButtons.fire({
+                        title: 'Error',
+                        text: 'Ha ocurrido un error al eliminar el recepcionista',
+                        icon: 'error',
+                    });
+                }
+            );
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+            swalWithBootstrapButtons.fire({
+                title: 'Cancelado',
+                text: 'Has cancelado la operación',
+                icon: 'error',
+            });
+        }
+    });
+}
+
+ 
+  editarRecepcionista(recepcionista: any): void {
+    // Aquí puedes implementar la lógica para la edición del recepcionista
+    console.log('Editar recepcionista:', recepcionista);
+    // Puedes redirigir a la página de edición o mostrar un modal, según tus necesidades.
+    // Por ejemplo, podrías navegar a la página de edición con el ID del recepcionista
+    this.router.navigate(['/recepcionistas/editar', recepcionista.id_recepcionista]);
+  }
 
   cargarRecepcionistas(): void {
     this.recepcionistaService.getRecepcionistas().subscribe(
@@ -55,6 +119,7 @@ export class PanelRecepcionComponent implements OnInit {
       },
       error => {
         console.error('Error al obtener recepcionistas:', error);
+        // Agrega aquí el manejo de errores (mensaje al usuario, registro, etc.).
       }
     );
   }

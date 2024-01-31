@@ -20,7 +20,7 @@ export class RecepcionistaComponent implements OnInit {
     );
   }
 
-  eliminarRecepcionista(id: number): void {
+  eliminarRecepcionista(idRecepcionista: number): void {
     Swal.fire({
       title: '¿Estás seguro?',
       text: 'No podrás revertir esto',
@@ -31,7 +31,7 @@ export class RecepcionistaComponent implements OnInit {
       confirmButtonText: 'Sí, borrarlo'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.recepcionistaService.eliminarRecepcionista(id).subscribe(
+        this.recepcionistaService.eliminarRecepcionista(idRecepcionista).subscribe(
           () => {
             Swal.fire(
               'Borrado',
@@ -48,7 +48,7 @@ export class RecepcionistaComponent implements OnInit {
     });
   }
 
-  editarRecepcionista(id: number): void {
+  editarRecepcionista(idRecepcionista: number): void {
     // Lógica para editar al recepcionista
   }
 }

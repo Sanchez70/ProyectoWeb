@@ -10,7 +10,7 @@ import { Recepcionista } from './recepcionista';
 })
 export class RecepcionistaService {
 
-  private urlEndPoint: string = 'http://localhost:8080/api/recepcionistas';
+  private urlEndPoint: string = 'http://localhost:8081/api/recepcionistas';
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
 
   constructor(private http: HttpClient) { }

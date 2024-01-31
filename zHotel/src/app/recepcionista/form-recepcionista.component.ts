@@ -1,7 +1,9 @@
 // form-recepcionista.component.ts
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Recepcionista } from './recepcionista';
 import { RecepcionistaService } from './recepcionista.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 
 
@@ -12,12 +14,15 @@ import Swal from 'sweetalert2';
 export class FormRecepcionistaComponent implements OnInit {
   public recepcionista: Recepcionista = new Recepcionista();
   public titulo: string = 'Crear Recepcionista';
+  //public recepcionistaForm: FormGroup;
 
   constructor(
     private recepcionistaService: RecepcionistaService
   ) {}
 
   ngOnInit(): void {
+    this.recepcionista.usuario = 'NombreUsuario';
+    this.recepcionista.contrasena = 'ContrasenaSecreta';
     // Puedes agregar lógica de inicialización si es necesario
   }
 
@@ -33,4 +38,6 @@ export class FormRecepcionistaComponent implements OnInit {
       }
     );
   }
+
+  
 }

@@ -27,11 +27,15 @@ export class ServicioRecepcion {
     );
   }
   
-  getRecepcionistaById(): Observable<any> {
-    // Puedes modificar esta parte según tus necesidades.
-    return new Observable<any>();
+  getRecepcionistasList(): Observable<any[]> {
+    const apiUrl = 'http://localhost:8081/api/recepcionistas'; // Ajusta la URL según tu backend
+    return this.http.get<any[]>(apiUrl).pipe(
+      catchError(error => {
+        console.error('Error en la solicitud de recepcionistas:', error);
+        return throwError(error);
+      })
+    );
   }
-  
   
 
   getHabitacionById(id: number): Observable<any> {
