@@ -4,11 +4,10 @@
     <div class="principal" style="margin-left: 15cap;">
 
         <main class="table">
-
+            
             <section class="table_body">
                 <br>
-                <div class="busqueda">BUSQUEDA POR CEDULA &nbsp;&nbsp;&nbsp;<input type="text" class="imput"
-                        [(ngModel)]="buscar" placeholder="CEDULA CLIENTE" name="buscar"></div>
+                <div  class="busqueda">BUSQUEDA POR CEDULA &nbsp;&nbsp;&nbsp;<input type="text" class="imput" [(ngModel)]="buscar" placeholder="CEDULA CLIENTE" name="buscar"></div>
                 <br>
                 <table>
                     <thead>
@@ -22,7 +21,7 @@
                         </tr>
                     </thead>
                     <tbody *ngFor="let combinedData of resultadosCombinados |filter:buscar">
-                        <tr>
+                        <tr >
                             <td>{{ combinedData?.reservaInfo?.idReserva }}</td>
                             <td><img src="{{combinedData?.clienteInfo?.foto}}" alt="">{{
                                 combinedData?.personaInfor?.nombre}}</td>
@@ -30,12 +29,13 @@
                             <td>{{combinedData.reservaInfo?.fechaEntrada}}</td>
                             <td>{{combinedData.reservaInfo?.fechaSalida}}</td>
                             <td>
-                                <button class="status {{ combinedData?.reservaInfo?.estado }}" type="button"
+                                <button class="status {{ combinedData?.reservaInfo?.estado }}"  type="button"
                                     (click)="cmabiarEstado(combinedData?.reservaInfo?.idReserva)">{{
                                     combinedData?.reservaInfo?.estado }}</button>
                             </td>
                         </tr>
                     </tbody>
+                    
                 </table>
             </section>
 

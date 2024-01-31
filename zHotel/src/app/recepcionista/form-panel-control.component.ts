@@ -17,7 +17,7 @@ import Swal from 'sweetalert2';
   styleUrl: './form-panel-control.component.css'
 })
 export class FormPanelControlComponent implements OnInit {
-
+  
   buscar: any = '';
   resultadosCombinados: any[] = [];
   habitaciones: Habitaciones = new Habitaciones();
@@ -50,13 +50,13 @@ export class FormPanelControlComponent implements OnInit {
                         personaInfor: personaInfor
                       };
                     } else {
-                      //console.error(`No se encontró información de persona para la cédula ${clienteInfo.cedula_persona}`);
+                      console.error(`No se encontró información de persona para la cédula ${clienteInfo.cedula_persona}`);
                       return null;
                     }
                   })
                 );
               } else {
-                //console.error(`No se encontró información de cliente para el ID de cliente ${reservaInfo.idCliente}`);
+                console.error(`No se encontró información de cliente para el ID de cliente ${reservaInfo.idCliente}`);
                 return of(null);
               }
             })
@@ -64,7 +64,7 @@ export class FormPanelControlComponent implements OnInit {
         });
 
         forkJoin(observables).subscribe(results => {
-          //console.log(results); // Verifica si los resultados están llegando aquí
+          console.log(results); // Verifica si los resultados están llegando aquí
           this.resultadosCombinados = results.filter(result => result !== null);
         });
       }
@@ -85,13 +85,13 @@ export class FormPanelControlComponent implements OnInit {
       cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.reservas.estado = 'Disponible';
+        this.reservas.estado = 'Finalizado';
         this.reservas.idReserva = id;
         this.reservaService.update(this.reservas).subscribe(
           (response) => {
+            // Verifica la estructura de la respuesta antes de intentar acceder a sus propiedades
             if (response && response.idHabitaciones) {
               this.habitaciones.idHabitaciones = response.idHabitaciones;
-              this.habitaciones.estado = 'Disponible';
               this.habitacionesService.getHabitacionesid(response.idHabitaciones).subscribe(respuestaHabi => {
                 this.habitaciones.idHabitaciones = respuestaHabi.idHabitaciones;
                 this.habitaciones.estado = 'Disponible';
@@ -104,6 +104,7 @@ export class FormPanelControlComponent implements OnInit {
                   (habitacionResponse) => {
                     Swal.fire('Reserva Finalizada', `Reserva ${response.idReserva} finalizada con exito`, 'success');
                     this.bucarReserva();
+                   
                   },
                   (errorHabitacion) => {
 
@@ -112,13 +113,13 @@ export class FormPanelControlComponent implements OnInit {
               });
 
             } else {
-              //console.error('La respuesta no contiene la propiedad esperada.');
+              console.error('La respuesta no contiene la propiedad esperada.');
             }
 
 
           },
           (errorReserva) => {
-            //console.error('Error al actualizar estado de la reserva:', errorReserva);
+            console.error('Error al actualizar estado de la reserva:', errorReserva);
           }
         );
       }
@@ -126,4 +127,7 @@ export class FormPanelControlComponent implements OnInit {
 
   }
 
-}
+    
+  }
+
+
