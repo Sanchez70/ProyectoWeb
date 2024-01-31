@@ -1,48 +1,44 @@
-// servicio-recepcion.service.ts
-
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError, map  } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 
 
 @Injectable({
   providedIn: 'root',
 })
 export class ServicioRecepcion {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getHabitaciones(): Observable<any[]> {
     const apiUrl = 'http://localhost:8081/api/habitaciones';
     return this.http.get<any[]>(apiUrl).pipe(
       map((habitaciones: any[]) => {
-        // Verifica si la propiedad 'estado' está presente en cada habitación,
-        // si no está presente, agrégala con un valor por defecto (puedes cambiar esto según tus necesidades).
         return habitaciones.map(habitacion => ({ ...habitacion, estado: habitacion.estado || 'Sin Estado' }));
       }),
       catchError(error => {
-        console.error('Error en la solicitud de habitaciones:', error);
+        //console.error('Error en la solicitud de habitaciones:', error);
         return throwError(error);
       })
     );
   }
-  
+
   getRecepcionistasList(): Observable<any[]> {
     const apiUrl = 'http://localhost:8081/api/recepcionistas'; // Ajusta la URL según tu backend
     return this.http.get<any[]>(apiUrl).pipe(
       catchError(error => {
-        console.error('Error en la solicitud de recepcionistas:', error);
+        //console.error('Error en la solicitud de recepcionistas:', error);
         return throwError(error);
       })
     );
   }
-  
+
 
   getHabitacionById(id: number): Observable<any> {
     const apiUrl = `http://localhost:8081/api/habitaciones/${id}`;
     return this.http.get<any>(apiUrl).pipe(
       catchError(error => {
-        console.error(`Error al obtener la habitación con ID ${id}:`, error);
+        //console.error(`Error al obtener la habitación con ID ${id}:`, error);
         return throwError(error);
       })
     );
@@ -52,7 +48,7 @@ export class ServicioRecepcion {
     const apiUrl = `http://localhost:8081/api/habitaciones/${id}`;
     return this.http.delete<void>(apiUrl).pipe(
       catchError(error => {
-        console.error(`Error al eliminar la habitación con ID ${id}:`, error);
+        //console.error(`Error al eliminar la habitación con ID ${id}:`, error);
         return throwError(error);
       })
     );
@@ -62,7 +58,7 @@ export class ServicioRecepcion {
     const apiUrl = `http://localhost:8081/api/habitaciones/buscar/${term}`;
     return this.http.get<any[]>(apiUrl).pipe(
       catchError(error => {
-        console.error(`Error al realizar la búsqueda:`, error);
+        //console.error(`Error al realizar la búsqueda:`, error);
         return throwError(error);
       })
     );

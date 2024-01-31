@@ -9,8 +9,8 @@ import { AuthService } from '../auth.service';
   styleUrl: './formrrcepcionista.component.css'
 })
 export class FormrrcepcionistaComponent {
-  constructor(private  inicio: AuthService, private router: Router){}
-  apagar(){
+  constructor(private inicio: AuthService, private router: Router) { }
+  apagar() {
     this.router.navigate(['./login']);
     this.inicio.logout()
   }

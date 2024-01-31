@@ -1,23 +1,24 @@
 <div class="card border-primary mb-3">
-  <!-- <div class="card-header">Panel de Recepción</div>-->
-
   <div class="card-body text-primary">
     <h5 class="card-title">Listado</h5>
 
     <div class="my-2 text-left">
-      <button class="btn btn-rounded btn-primary mr-5" (click)="cargarInformacion(); cargarRecepcionistas()" [disabled]="loading">
+      <button class="btn btn-rounded btn-primary mr-5" (click)="cargarInformacion(); cargarRecepcionistas()"
+        [disabled]="loading">
         <span *ngIf="!loading">Actualizar</span>
         <span *ngIf="loading">
-          <img src="https://iris.aerocivil.gov.co/Content/Images/loading-38.gif" alt="Cargando..." width="20" height="20">
+          <img src="https://iris.aerocivil.gov.co/Content/Images/loading-38.gif" alt="Cargando..." width="20"
+            height="20">
         </span>
       </button>
       <button class="btn btn-rounded btn-primary mr-5" (click)="verificarOcupacionGeneral()">Ocupación General</button>
-    </div> 
+    </div>
 
     <div class="my-2 text-left mr-auto mb-3">
       <label for="buscarId">Buscar por ID:</label>
-      <input type="text" id="buscarId" [(ngModel)]="idABuscar" inputmode="numeric" pattern="[0-9]*" (input)="buscarEnTiempoReal()" (keydown)="onKeyDown($event)" />
-    
+      <input type="text" id="buscarId" [(ngModel)]="idABuscar" inputmode="numeric" pattern="[0-9]*"
+        (input)="buscarEnTiempoReal()" (keydown)="onKeyDown($event)" />
+
       <select [(ngModel)]="entidadSeleccionada">
         <option value="habitaciones">Habitaciones</option>
         <option value="recepcionistas">Recepcionistas</option>
@@ -27,42 +28,40 @@
     <div class="container" *ngIf="mostrarTabla">
       <h2>Lista de Recepcionistas</h2>
       <table class="table table-recepcionistas">
-        <!-- Cabecera de la tabla -->
+
         <thead>
           <tr>
             <th>ID</th>
             <th>Usuario</th>
             <th>Contraseña</th>
             <th>Cédula Persona</th>
-            <!-- Otros atributos si los tienes -->
           </tr>
         </thead>
-        <!-- Cuerpo de la tabla -->
+
         <tbody>
-          <!-- Filas de la tabla -->
+
           <tr *ngFor="let recepcionista of recepcionistas">
             <td>{{ recepcionista.id_recepcionista }}</td>
             <td>{{ recepcionista.usuario }}</td>
             <td>{{ recepcionista.contrasena }}</td>
             <td>{{ recepcionista.cedula_persona }}</td>
-            <!-- Otros atributos si los tienes -->
+
             <td class="text-center">
-              <button type="button" [routerLink]="['/recepcionistas/form', recepcionista.id_recepcionista]" class="btn btn-info btn-sm">Editar</button>
+              <button type="button" [routerLink]="['/recepcionistas/form', recepcionista.id_recepcionista]"
+                class="btn btn-info btn-sm">Editar</button>
             </td>
             <td class="text-center">
-              <button type="button" class="btn btn-danger btn-sm" (click)="eliminarRecepcionista(recepcionista.id_recepcionista)">Eliminar</button>
+              <button type="button" class="btn btn-danger btn-sm"
+                (click)="eliminarRecepcionista(recepcionista.id_recepcionista)">Eliminar</button>
             </td>
           </tr>
         </tbody>
       </table>
-    
-      <!-- Línea divisoria -->
+
       <div class="table-divider"></div>
-      <!-- Botón para crear recepcionista -->
-      
+
       <h2>Lista de Habitaciones</h2>
-      <!-- Tabla de Habitaciones -->
-    
+
       <div class="table-responsive">
         <table class="table table-bordered table-striped" *ngIf="mostrarTabla">
           <thead>
@@ -74,7 +73,6 @@
               <th style="color: black;">Descripción</th>
               <th style="color: black;">Estado</th>
               <th style="color: black;">Imagen</th>
-              <!-- Agrega más columnas según tus necesidades -->
             </tr>
           </thead>
           <tbody>
@@ -89,12 +87,13 @@
                 <img src="{{ habitacion.foto }}" alt="Imagen de la habitación" width="50" height="50">
               </td>
               <td class="text-center">
-                <button type="button" name="button" [routerLink]="['/habitaciones/form', habitacion.idHabitaciones]" class="btn btn-info">Editar</button>
+                <button type="button" name="button" [routerLink]="['/habitaciones/form', habitacion.idHabitaciones]"
+                  class="btn btn-info">Editar</button>
               </td>
               <td class="text-center">
-                <button type="button" (click)="eliminarHabitacion(habitacion.idHabitaciones)" class="btn btn-danger">Eliminar</button>
+                <button type="button" (click)="eliminarHabitacion(habitacion.idHabitaciones)"
+                  class="btn btn-danger">Eliminar</button>
               </td>
-              <!-- Agrega más celdas según tus necesidades -->
             </tr>
           </tbody>
         </table>

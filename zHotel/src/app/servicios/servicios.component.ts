@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-servicios',
   templateUrl: './servicios.component.html',
-  styleUrls: ['./servicios.component.css'] // Asegúrate de que tu archivo CSS esté aquí
+  styleUrls: ['./servicios.component.css']
 })
 
 export class ServiciosComponent implements OnInit {
@@ -46,5 +46,5 @@ export class ServiciosComponent implements OnInit {
       }
     });
   }
-  
+
 }

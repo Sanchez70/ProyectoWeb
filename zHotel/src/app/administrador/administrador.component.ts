@@ -7,6 +7,6 @@ import { Administrador } from './administrador';
   styleUrl: './administrador.component.css'
 })
 export class AdministradorComponent {
-  public admin:Administrador = new Administrador()
-  administrador: Administrador[]=[];
+  public admin: Administrador = new Administrador()
+  administrador: Administrador[] = [];
 }

@@ -10,8 +10,8 @@ describe('ReservasComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ReservasComponent]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(ReservasComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

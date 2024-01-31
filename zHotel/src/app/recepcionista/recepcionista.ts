@@ -4,5 +4,5 @@ export class Recepcionista extends Persona {
     id_recepcionista: number = 0;
     usuario: string = '';
     contrasena: string = '';
-     
+
 }

@@ -40,7 +40,7 @@ export class FormClienteComponent implements OnInit{
         this.cargarPersona()
       },
       (error) => {
-        console.error(error);
+        //console.error(error);
       }
     );
   } 
@@ -51,7 +51,7 @@ export class FormClienteComponent implements OnInit{
         this.persona = persona;
       },
       (error) => {
-        console.error(error);
+       // console.error(error);
       }
     )
   }
@@ -85,7 +85,7 @@ export class FormClienteComponent implements OnInit{
   convertToBase64(): void {
     if (this.previewImage) {
       const base64String = this.previewImage.toString();
-      console.log(base64String);
+     // console.log(base64String);
 
       this.cliente.foto = base64String;
     }

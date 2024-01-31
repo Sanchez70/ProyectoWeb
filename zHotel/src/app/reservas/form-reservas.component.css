@@ -1,5 +1,5 @@
-.btnAcept{
-  background-color: #4285f4; 
+.btnAcept {
+  background-color: #4285f4;
   color: #fff;
   padding: 12px;
   border: none;
@@ -14,8 +14,8 @@
   transition-property: box-shadow, transform;
 }
 
-.btnFac{
-  background-color: #cf212f; 
+.btnFac {
+  background-color: #cf212f;
   color: #fff;
   padding: 12px;
   border: none;
@@ -31,15 +31,18 @@
   transition-property: box-shadow, transform;
 }
 
-.btnAcept:hover, .btnAcept:focus, .btnAcept:active{
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1);
+.btnAcept:hover,
+.btnAcept:focus,
+.btnAcept:active {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
 }
 
-.btnFac:hover, .btnFac:focus, .btnFac:active{
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1);
+.btnFac:hover,
+.btnFac:focus,
+.btnFac:active {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
 }
-

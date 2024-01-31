@@ -48,7 +48,7 @@ export class FormComponentServi {
   public create(): void {
     this.servicio2.idHabitaciones = this.habitacion.idHabitaciones;
     this.servicio2.estado = 'Pendiente';
-    this.servicio2.idTipo_servicio=this.servicio.idTipo_servicio
+    this.servicio2.idTipo_servicio = this.servicio.idTipo_servicio
     this.servicio2Service.create(this.servicio2)
       .subscribe(servicio2 => {
         this.router.navigate(['/servicios'])

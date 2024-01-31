@@ -41,7 +41,7 @@ export class ClientesComponent implements OnInit{
         this.cargarPersona();
       },
       (error) => {
-        console.error(error);
+       // console.error(error);
       }
     );
   }
@@ -52,7 +52,7 @@ export class ClientesComponent implements OnInit{
         this.persona = persona;
       },
       (error) => {
-        console.error(error);
+       // console.error(error);
       }
     )
   }

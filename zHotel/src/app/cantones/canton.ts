@@ -1,7 +1,6 @@
 export interface Cantones {
-    id_canton: string;
-    nombre: string;
-    id_provincia: string;
-    persona: any[]; 
-  }
-  
+  id_canton: string;
+  nombre: string;
+  id_provincia: string;
+  persona: any[];
+}

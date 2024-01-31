@@ -10,7 +10,7 @@ import { PersonaService } from './persona.service';
 export class PersonaComponent implements OnInit {
   personas: Persona[] = [];
 
-  constructor(private personaService: PersonaService) {}
+  constructor(private personaService: PersonaService) { }
 
   ngOnInit(): void {
     this.cargarPersonas();

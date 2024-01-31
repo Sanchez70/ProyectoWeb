@@ -17,7 +17,7 @@ export class RegistroCComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private registroCService: RegistroCService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -31,11 +31,11 @@ export class RegistroCComponent implements OnInit {
     this.registroCService.registrarCliente(this.registroC).subscribe(
       () => {
         Swal.fire('Cliente registrado', 'El cliente se ha registrado con éxito.', 'success');
-     
-        this.router.navigate(['/']); 
+
+        this.router.navigate(['/']);
       },
       (error) => {
-        console.error('Error al registrar cliente:', error);
+        //console.error('Error al registrar cliente:', error);
         Swal.fire('Error', 'Ocurrió un error al intentar registrar al cliente.', 'error');
       }
     );

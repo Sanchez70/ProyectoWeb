@@ -11,59 +11,59 @@ import { HabitacionesService } from './habitaciones.service';
 })
 export class FormHbitacionesComponent {
 
-    previewImage: string | ArrayBuffer = '';
-    public habitaciones: Habitaciones = new Habitaciones()
-    public titulo: string = "Crear Habitacion"
-    constructor(private habitacionService: HabitacionesService, private router1: Router, private activateRoute: ActivatedRoute) { }
-  
-    ngOnInit(): void {
-      this.cargarhabitacion()
+  previewImage: string | ArrayBuffer = '';
+  public habitaciones: Habitaciones = new Habitaciones()
+  public titulo: string = "Crear Habitacion"
+  constructor(private habitacionService: HabitacionesService, private router1: Router, private activateRoute: ActivatedRoute) { }
+
+  ngOnInit(): void {
+    this.cargarhabitacion()
+  }
+
+  cargarhabitacion(): void {
+    this.activateRoute.params.subscribe(params => {
+      let id = params['id']
+      if (id) {
+        this.habitacionService.getHabitacionesid(id).subscribe((habitacion) => this.habitaciones = habitacion)
+      }
+    })
+  }
+
+
+  public createHabitacion(): void {
+    this.habitacionService.create(this.habitaciones).subscribe(
+      habitacion => {
+        this.router1.navigate(['/provedores'])
+
+        Swal.fire('Habitacion guardado', `Habitacion ${habitacion.idHabitaciones} guardado con exito`, 'success')
+      }
+    )
+
+
+  }
+
+
+
+  onFileSelected(event: any): void {
+    const file: File = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = (e: any) => {
+      this.previewImage = e.target.result;
+    };
+
+    reader.readAsDataURL(file);
+  }
+
+  convertToBase64(): void {
+    if (this.previewImage) {
+      const base64String = this.previewImage.toString();
+      //console.log(base64String);
+
+      this.habitaciones.foto = base64String;
     }
-  
-    cargarhabitacion(): void {
-      this.activateRoute.params.subscribe(params => {
-        let id = params['id']
-        if (id) {
-          this.habitacionService.getHabitacionesid(id).subscribe((habitacion) => this.habitaciones = habitacion)
-        }
-      })
-    }
-  
-  
-    public createHabitacion(): void {
-      this.habitacionService.create(this.habitaciones).subscribe(
-        habitacion => {
-          this.router1.navigate(['/provedores'])
-  
-          Swal.fire('Habitacion guardado', `Habitacion ${habitacion.idHabitaciones} guardado con exito`, 'success')
-        }
-      )
-  
-  
-    }
-   
-    
-  
-    onFileSelected(event: any): void {
-      const file: File = event.target.files[0];
-      const reader = new FileReader();
-  
-      reader.onload = (e: any) => {
-        this.previewImage = e.target.result;
-      };
-  
-      reader.readAsDataURL(file);
-    }
-  
-    convertToBase64(): void {
-      if (this.previewImage) {
-        const base64String = this.previewImage.toString();
-        console.log(base64String);
-  
-        this.habitaciones.foto = base64String;
-      } 
-    }
-  
-  
-  
+  }
+
+
+
 }

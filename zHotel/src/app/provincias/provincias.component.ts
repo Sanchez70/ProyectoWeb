@@ -15,7 +15,7 @@ export class ProvinciasComponent implements OnInit {
   constructor(
     private provinciaService: ProvinciaService,
     private cantonService: CantonService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.loadProvincias();
@@ -28,7 +28,7 @@ export class ProvinciasComponent implements OnInit {
         this.loadCantones();
       },
       (error) => {
-        console.error('Error loading provinces', error);
+        //console.error('Error loading provinces', error);
       }
     );
   }
@@ -40,11 +40,11 @@ export class ProvinciasComponent implements OnInit {
         this.mapCantonesToProvincias();
       },
       (error) => {
-        console.error('Error loading cantones', error);
+        //console.error('Error loading cantones', error);
       }
     );
   }
-  
+
 
   mapCantonesToProvincias() {
 

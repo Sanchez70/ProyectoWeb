@@ -10,8 +10,8 @@ describe('AdministradorComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [AdministradorComponent]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(AdministradorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

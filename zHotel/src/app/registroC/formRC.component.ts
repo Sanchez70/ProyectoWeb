@@ -42,7 +42,7 @@ export class FormRCComponent implements OnInit {
 
 
   registrarCliente(): void {
-  
+
     if (this.formRC.invalid) {
       Swal.fire({
         icon: 'error',
@@ -52,15 +52,15 @@ export class FormRCComponent implements OnInit {
       });
       return;
     }
-  
+
     this.registroC.cedula_persona = this.cedulaPersona;
     const usuario = this.formRC.get('usuario')?.value;
     const contrasena = this.formRC.get('contrasena')?.value;
-  
+
     this.registroC.usuario = usuario;
     this.registroC.contrasena = contrasena;
     this.registroC.cedula_persona = this.cedulaPersona;
-  
+
     this.registroCService.registrarCliente(this.registroC).subscribe(
       () => {
         Swal.fire({
@@ -70,14 +70,14 @@ export class FormRCComponent implements OnInit {
           showConfirmButton: false,
           timer: 2000
         });
-  
+
         setTimeout(() => {
           this.router.navigate(['/']);
         }, 2000);
       },
       (error) => {
-        console.error('Error al registrar sus datos:', error);
-  
+        // console.error('Error al registrar sus datos:', error);
+
         Swal.fire({
           icon: 'error',
           title: 'Error',
@@ -87,7 +87,7 @@ export class FormRCComponent implements OnInit {
       }
     );
   }
-  
+
 
 
   selectFile(event: any): void {

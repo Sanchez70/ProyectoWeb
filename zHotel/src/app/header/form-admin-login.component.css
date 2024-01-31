@@ -1,4 +1,4 @@
-nav{
+nav {
     margin: auto;
     background: #F9F9F9;
     border-radius: 8px;
@@ -10,7 +10,7 @@ nav{
     height: 80px;
 }
 
-.nav-link{
+.nav-link {
     font-size: 15px;
     text-transform: uppercase;
     color: black;
@@ -23,11 +23,11 @@ nav{
     margin: 10px;
 }
 
-.nav-link:hover{
+.nav-link:hover {
     color: rgb(55, 52, 90);
 }
 
-.nav-link::after{
+.nav-link::after {
     content: '';
     height: 6px;
     width: 100%;
@@ -35,25 +35,15 @@ nav{
     display: block;
     position: absolute;
     left: 0;
-    
+
     pointer-events: none;
     transform: scaleX(0);
     transform-origin: right;
     transition: transform .3s;
 }
 
-.nav-link:hover::after{
+.nav-link:hover::after {
     transform-origin: left;
     transform: scaleX(1);
-    
+
 }
-
-
-
-
-
-
-
-
-
-

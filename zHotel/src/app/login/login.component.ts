@@ -19,7 +19,7 @@ import { AuthService } from '../auth.service';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent  {
+export class LoginComponent {
 
   public searchForm: FormGroup;
   logeado: any;
@@ -34,7 +34,7 @@ export class LoginComponent  {
     this.inicio.tipoUser = '';
     this.searchForm = this.fb.group({
       usuario: [''],
-      contraneusu: [''] // Este campo se relaciona con el nombre que deseas buscar
+      contraneusu: ['']
     });
   }
 
@@ -43,23 +43,23 @@ export class LoginComponent  {
 
     const usuario = this.searchForm.value.usuario;
     const contraneusu = this.searchForm.value.contraneusu;
-    //hola
+
     this.loginService.buscarCliente(usuario).subscribe(
       (result) => {
         if (Array.isArray(result) && result.length > 0) {
           const clientesEncontrados = result as Cliente[];
           const clienteEncontrado = clientesEncontrados.find(cliente => cliente.contrasena === contraneusu);
           if (clienteEncontrado) {
-            // Asignar el idCliente al atributo usuario de AppComponent
+
             this.inicio.idUsuario = clienteEncontrado.idCliente;
             this.router.navigate(['./carrucel']);
             this.inicio.login();
             this.inicio.setCliente();
-            this.logeado='cliente'
+            this.logeado = 'cliente'
             this.inicio.setCedula(clienteEncontrado.cedula_persona);
-            console.log(this.inicio.idUsuario);
-            console.log(this.inicio.tipoUser);
-            console.log(this.inicio.cedulaUser);
+            //console.log(this.inicio.idUsuario);
+            //console.log(this.inicio.tipoUser);
+            //console.log(this.inicio.cedulaUser);
             Swal.fire(`Bienvenid@ ${usuario}`, 'Inicio de sesion correcto', 'success');
 
           } else {
@@ -80,7 +80,7 @@ export class LoginComponent  {
                 this.router.navigate(['./carrucel']);
                 this.inicio.login();
                 this.inicio.setAdmin();
-                console.log(this.inicio.tipoUser);
+                //console.log(this.inicio.tipoUser);
                 Swal.fire(`Bienvenid@ ${usuario}`, 'Inicio de sesion correcto', 'success');
               } else {
                 Swal.fire('Contraseña  incorrectos', 'Cliente', 'error');
@@ -100,7 +100,7 @@ export class LoginComponent  {
                     this.router.navigate(['./carrucel']);
                     this.inicio.login();
                     this.inicio.setRecep();
-                    console.log(this.inicio.tipoUser);
+                    //console.log(this.inicio.tipoUser);
                     Swal.fire(`Bienvenid@ ${usuario}`, 'Inicio de sesion correcto', 'success');
                   } else {
                     Swal.fire('Contraseña  incorrectos', 'Cliente', 'error');
@@ -120,8 +120,8 @@ export class LoginComponent  {
   }
 
   redirectA() {
-    // Puedes redirigir a la ruta deseada usando el router
+
     this.router.navigate(['/persona/form']);
   }
- 
+
 }

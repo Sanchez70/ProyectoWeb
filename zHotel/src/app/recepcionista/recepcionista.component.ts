@@ -1,4 +1,3 @@
-// recepcionista.component.ts
 import { Component, OnInit } from '@angular/core';
 import { Recepcionista } from './recepcionista';
 import { RecepcionistaService } from './recepcionista.service';
@@ -12,7 +11,7 @@ import Swal from 'sweetalert2';
 export class RecepcionistaComponent implements OnInit {
   recepcionistas: Recepcionista[] = [];
 
-  constructor(private recepcionistaService: RecepcionistaService) {}
+  constructor(private recepcionistaService: RecepcionistaService) { }
 
   ngOnInit() {
     this.recepcionistaService.getRecepcionistas().subscribe(
@@ -40,7 +39,7 @@ export class RecepcionistaComponent implements OnInit {
             );
           },
           (error) => {
-            console.error('Error al eliminar al recepcionista', error);
+            //console.error('Error al eliminar al recepcionista', error);
             Swal.fire('Error', 'Hubo un error al eliminar al recepcionista', 'error');
           }
         );
@@ -49,6 +48,5 @@ export class RecepcionistaComponent implements OnInit {
   }
 
   editarRecepcionista(idRecepcionista: number): void {
-    // Lógica para editar al recepcionista
   }
 }

@@ -58,10 +58,10 @@ import { FilterPipe } from './filter.pipe';
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'habitaciones', component: HabitacionesComponent },
-  { path: 'recepcionista/form-panel-control', component: FormPanelControlComponent },
+  { path: 'recepcionista/form-panel-control', component: FormPanelControlComponent },
   { path: 'panel-recepcion', component: PanelRecepcionComponent },
   { path: 'reservas/form-factura', component: FormFacturaComponent },
-  { path: 'panel-servicios-reservas', component: PanelServiciosReservasComponent },
+  { path: 'panel-servicios-reservas', component: PanelServiciosReservasComponent },
   { path: 'habitaciones/form/:id', component: FormHbitacionesComponent },
   { path: 'habitaciones/form', component: FormHbitacionesComponent },
   { path: 'carrucel', component: CarrucelComponent },
@@ -76,17 +76,16 @@ const routes: Routes = [
   { path: 'clientes/:id', component: ClientesComponent },
   { path: 'clientes/form', component: FormClienteComponent },
   { path: 'clientes/form/:id', component: FormClienteComponent },
-  { path: 'login', component: LoginComponent, canActivate:[vigilanteGuard]},
-  { path: 'persona', component: PersonaComponent},
+  { path: 'login', component: LoginComponent, canActivate: [vigilanteGuard] },
+  { path: 'persona', component: PersonaComponent },
   { path: 'persona/form', component: FormPComponent },
   { path: 'persona/form/:id', component: FormPComponent },
-  { path: 'provincias', component: ProvinciasComponent},
-  { path: 'cantones', component: CantonesComponent},
-  {path: 'registroC', component: RegistroCComponent},
-  //{path: 'registroC', component: FormRCComponent},
-  { path: 'recepcionista', component: RecepcionistaComponent},
+  { path: 'provincias', component: ProvinciasComponent },
+  { path: 'cantones', component: CantonesComponent },
+  { path: 'registroC', component: RegistroCComponent },
+  { path: 'recepcionista', component: RecepcionistaComponent },
   { path: 'recepcionista/form', component: FormRecepcionistaComponent },
-  {path: 'registroC/form/:cedula_persona', component: FormRCComponent}
+  { path: 'registroC/form/:cedula_persona', component: FormRCComponent }
 ];
 
 

@@ -19,8 +19,6 @@ export class PanelServiciosReservasComponent implements OnInit {
   }
 
   cargarInformacion(): void {
-    // Llamada a los servicios para obtener reservas pendientes y servicios solicitados
-    // Aquí debes usar los métodos correspondientes de tu servicio
     this.servicioReservas.getReservasPendientes().subscribe(reservas => {
       this.reservasPendientes = reservas;
     });
@@ -30,20 +28,15 @@ export class PanelServiciosReservasComponent implements OnInit {
     });
   }
 
-  // Puedes implementar métodos adicionales para editar y eliminar reservas o servicios según necesidades
   editarReserva(reserva: any): void {
-    // Lógica para editar reserva
   }
 
   eliminarReserva(reserva: any): void {
-    // Lógica para eliminar reserva
   }
 
   editarServicio(servicio: any): void {
-    // Lógica para editar servicio
   }
 
   eliminarServicio(servicio: any): void {
-    // Lógica para eliminar servicio
   }
 }

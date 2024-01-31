@@ -27,11 +27,11 @@ export class FormFacturaComponent implements OnInit {
   constructor(private inicio: AuthService, private sevicePersona: PersonaService, private serviceReserva: ReservaService, private seviceEncabezado: EncabezadoFacturaService,
     private serviceDetalle: DetalleFacturaService, private serviceClietne: ClienteService, private serviceHabitacion: HabitacionesService) { }
   public cliente: Cliente = new Cliente();
-  public persona: Persona=new Persona();
-  public reserva: Reserva=new Reserva();
-  public encabezado:EncabezadoFactura= new EncabezadoFactura();
-  public habitacion: Habitaciones= new Habitaciones();
-  public detallet:DetalleFactura=new DetalleFactura();
+  public persona: Persona = new Persona();
+  public reserva: Reserva = new Reserva();
+  public encabezado: EncabezadoFactura = new EncabezadoFactura();
+  public habitacion: Habitaciones = new Habitaciones();
+  public detallet: DetalleFactura = new DetalleFactura();
 
   ngOnInit(): void {
     this.cargar(),
@@ -43,24 +43,24 @@ export class FormFacturaComponent implements OnInit {
   }
   cargar(): void {
 
-    console.log('IDCLIENTE' + this.inicio.idUsuario)
-    console.log('IDRESERVA' + this.inicio.idReserva)
-    console.log('IDENCABEZADO' + this.inicio.idEncabezado)
-    console.log('IDETALLE' + this.inicio.idDetalle)
+    // console.log('IDCLIENTE' + this.inicio.idUsuario)
+    // console.log('IDRESERVA' + this.inicio.idReserva)
+    // console.log('IDENCABEZADO' + this.inicio.idEncabezado)
+    // console.log('IDETALLE' + this.inicio.idDetalle)
 
   }
 
   cargarUsuario(): void {
     this.serviceClietne.getCliente(this.inicio.idUsuario).subscribe(
       (response) => {
-        console.log('IDETALLE' + response)
+        //console.log('IDETALLE' + response)
         this.cliente = response;
-        console.log('IDETALLE' + this.cliente)
+        // console.log('IDETALLE' + this.cliente)
         this.cedula_persona = response.cedula_persona;
         this.cargarPersona();
       },
       (error) => {
-        console.error(error);
+        // console.error(error);
       }
     );
   }
@@ -68,84 +68,80 @@ export class FormFacturaComponent implements OnInit {
   cargarPersona(): void {
     this.sevicePersona.getPersona(this.cedula_persona).subscribe(
       (response) => {
-        console.log('IDETALLE' + response)
+        // console.log('IDETALLE' + response)
         this.persona = response;
-        console.log('IDETALLE' + this.cliente)
+        // console.log('IDETALLE' + this.cliente)
       },
       (error) => {
-        console.error(error);
+        // console.error(error);
       }
     );
   }
 
-  cargarReserva():void{
+  cargarReserva(): void {
     this.serviceReserva.getreserva(this.inicio.idReserva).subscribe(
       (response) => {
-        console.log('IDETALLE'+response)
-        this.reserva=response;
-    
+        // console.log('IDETALLE'+response)
+        this.reserva = response;
+
       },
       (error) => {
-        console.error(error);
+        // console.error(error);
       }
     );
   }
 
-  cargarEncabezado():void{
+  cargarEncabezado(): void {
     this.seviceEncabezado.getreserva(this.inicio.idEncabezado).subscribe(
       (response) => {
-        this.encabezado=response;
+        this.encabezado = response;
       },
       (error) => {
-        console.error(error);
+        // console.error(error);
       }
     );
   }
-  cargarDetalle():void{
+  cargarDetalle(): void {
     this.serviceDetalle.getreserva(this.inicio.idDetalle).subscribe(
       (response) => {
-        this.detallet=response;
+        this.detallet = response;
       },
       (error) => {
-        console.error(error);
+        // console.error(error);
       }
     );
   }
-  cargarHabitacion():void{
+  cargarHabitacion(): void {
     this.serviceHabitacion.getHabitacionesid(this.inicio.idHabitacion).subscribe(
       (response) => {
-        this.habitacion=response;
+        this.habitacion = response;
       },
       (error) => {
-        console.error(error);
+        // console.error(error);
       }
     );
   }
   downloadPDF() {
-    // Extraemos el
-    const DATA:any = document.getElementById('htmlData');
+    const DATA: any = document.getElementById('htmlData');
     const doc = new jsPDF('p', 'pt', 'a4');
     const options = {
       background: 'white',
       scale: 3
     };
     html2canvas(DATA, options).then((canvas) => {
-  
+
       const img = canvas.toDataURL('image/PNG');
-  
-      // Add image Canvas to PDF
       const bufferX = 15;
       const bufferY = 15;
       const imgProps = (doc as any).getImageProperties(img);
       const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
       const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
       doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
-  
-      // Guardar el documento con un nombre de archivo
+
       const fileName = `${new Date().toISOString()}_zhotel.pdf`;
       doc.save(fileName);
     });
   }
-  
+
 
 }

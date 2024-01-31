@@ -1,4 +1,4 @@
 export class Metodopago {
-    idPago:number=0;
-    nombre:string='';
+    idPago: number = 0;
+    nombre: string = '';
 }

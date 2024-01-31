@@ -25,7 +25,7 @@ export class FormComponent {
       let id = params['id']
       if (id) {
         this.servicioService.getServicioid(id).subscribe((servicio) => {
-          console.log(servicio);
+          // console.log(servicio);
           this.servicio = servicio;
         })
       }
@@ -57,7 +57,7 @@ export class FormComponent {
   convertfoto(): void {
     if (this.previewImage) {
       const base64String = this.previewImage.toString();
-      console.log(base64String);
+      //console.log(base64String);
       this.servicio.foto = base64String;
     }
   }

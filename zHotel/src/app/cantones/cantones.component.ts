@@ -13,10 +13,10 @@ export class CantonesComponent implements OnInit {
   constructor(
     private cantonService: CantonService,
     private provinciaService: ProvinciaService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
-    console.log("OnInit - Loading Cantones");
+    //console.log("OnInit - Loading Cantones");
     this.loadCantones();
   }
 
@@ -24,10 +24,10 @@ export class CantonesComponent implements OnInit {
     this.cantonService.getCantones().subscribe(
       (data) => {
         this.cantones = data;
-        this.loadProvincias(); 
+        this.loadProvincias();
       },
       (error) => {
-        console.error('Error loading cantones', error);
+        // console.error('Error loading cantones', error);
       }
     );
   }
@@ -43,7 +43,7 @@ export class CantonesComponent implements OnInit {
         });
       },
       (error) => {
-        console.error('Error loading provincias', error);
+        //console.error('Error loading provincias', error);
       }
     );
   }

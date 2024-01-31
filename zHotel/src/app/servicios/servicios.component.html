@@ -1,7 +1,6 @@
 <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/servicios/form']">Crear Servicios</button>
 <div class="container">
-  <section class="mx-auto my-4"
-    style="max-width: 99%; display: flex; flex-wrap: wrap; justify-content: space-between;">
+  <section class="mx-auto my-4" style="max-width: 99%; display: flex; flex-wrap: wrap; justify-content: space-between;">
     <div *ngFor="let servicio of Servicios" style="flex: 1 0 30%; margin: 1%;">
       <div class="card">
         <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
@@ -49,7 +48,8 @@
               <div class="chip me-0">9:00PM</div>
             </li>
           </ul>
-          <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/servicios2/form',servicio.idTipo_servicio]">Solicitar</button>
+          <button class="btn btn-rounded btn-primary" type="button"
+            [routerLink]="['/servicios2/form',servicio.idTipo_servicio]">Solicitar</button>
         </div>
       </div>
     </div>

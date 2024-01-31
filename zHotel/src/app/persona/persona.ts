@@ -14,7 +14,7 @@ export class Persona {
   id_canton!: string;
   fechaNacimiento!: Date;
 
-  cantones?: Cantones[]; 
+  cantones?: Cantones[];
 
   constructor() {
     this.cantones = [];

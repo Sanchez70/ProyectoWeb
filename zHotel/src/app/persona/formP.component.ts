@@ -20,13 +20,13 @@ export class FormPComponent implements OnInit {
   public titulo: string = 'REGISTRO';
   public cantones: Cantones[] = [];
   public cantonesFiltrados: Cantones[] = [];
-  public provincias: Provincia[] = []; 
+  public provincias: Provincia[] = [];
   public provinciaSeleccionada: string | undefined;
   public isFilterClicked: boolean = false;
   public selectedProvinceMessage: string = 'Ninguna provincia seleccionada';
   public isProvinciaSelected: boolean = false;
 
-  
+
 
   constructor(
     private personaService: PersonaService,
@@ -37,14 +37,14 @@ export class FormPComponent implements OnInit {
     private fb: FormBuilder,
     private renderer: Renderer2,
     private el: ElementRef
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.cargarPersona();
     this.cargarCantones();
     this.cargarProvincias();
 
-    
+
   }
 
 
@@ -73,15 +73,15 @@ export class FormPComponent implements OnInit {
 
   filtrarCantonesPorProvincia(): void {
     this.cantonesFiltrados = [];
-  
+
     if (this.provinciaSeleccionada) {
       const provinciaSeleccionada = this.provincias.find(provincia => provincia.id_provincia === this.provinciaSeleccionada);
-  
+
       if (provinciaSeleccionada) {
         this.selectedProvinceMessage = `Provincia ${provinciaSeleccionada.nombre} seleccionada`;
         this.isProvinciaSelected = true;
       }
-  
+
       this.cantonesFiltrados = this.cantones.filter(
         (canton) => canton.id_provincia === this.provinciaSeleccionada
       );
@@ -89,7 +89,7 @@ export class FormPComponent implements OnInit {
       this.selectedProvinceMessage = 'Ninguna provincia seleccionada';
       this.isProvinciaSelected = false;
     }
-  
+
     this.isFilterClicked = true;
     setTimeout(() => {
       this.isFilterClicked = false;
@@ -103,7 +103,7 @@ export class FormPComponent implements OnInit {
         Swal.fire('Persona guardada', `Persona ${persona.nombre} guardada con éxito formPPPP`, 'success');
       },
       (error) => {
-        console.error('Error al crear persona:PPPPP', error);
+        //console.error('Error al crear persona:PPPPP', error);
         Swal.fire('Error', 'Ocurrió un error al intentar guardar la persona PPPPPPP', 'error');
       }
     );
@@ -120,7 +120,7 @@ export class FormPComponent implements OnInit {
         this.router.navigate(['/registroC/form', persona.cedula_persona]);
       },
       (error) => {
-        console.error('Error al crear persona:', error);
+        //console.error('Error al crear persona:', error);
         Swal.fire({
           icon: 'error',
           title: 'Error',
@@ -130,7 +130,7 @@ export class FormPComponent implements OnInit {
       }
     );
   }
-  
+
 
   calcularEdad(): void {
     if (this.persona.fechaNacimiento) {
@@ -139,10 +139,10 @@ export class FormPComponent implements OnInit {
       const edadMilisegundos = hoy.getTime() - fechaNacimiento.getTime();
       const edadFecha = new Date(edadMilisegundos);
       this.persona.edad = Math.abs(edadFecha.getUTCFullYear() - 1970);
-  
+
       if (this.persona.edad < 5 || this.persona.edad > 100) {
-      
-        console.log('Edad fuera del rango permitido');
+
+        //console.log('Edad fuera del rango permitido');
       }
     }
   }
@@ -165,14 +165,14 @@ export class FormPComponent implements OnInit {
       event.preventDefault();
     }
   }
-  
+
 
   validarLetras(char: string): boolean {
-    
+
     return /^[a-zA-Z\s]*$/.test(char);
   }
   validarNumeros(char: string): boolean {
     return /^[0-9]*$/.test(char);
   }
-  
+
 }

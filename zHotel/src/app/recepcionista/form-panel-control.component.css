@@ -44,7 +44,7 @@
         border-radius: 5rem;
         background-color: #090909;
         scrollbar-width: thin;
-     
+
     }
 
     table {
@@ -59,16 +59,17 @@
         margin: .8rem auto;
         border-radius: .6rem;
         overflow: auto;
-        
+
     }
+
     .table_body::-webkit-scrollbar {
         height: 8px;
-      }
+    }
 
     table,
     th,
     td {
-        
+
         padding: 0.3rem;
         border-collapse: collapse;
         text-align: left;
@@ -105,7 +106,7 @@
         width: 100%;
     }
 
-    
+
 
     .status.Disponible {
         background-color: #b9ecb8;
@@ -126,16 +127,13 @@
         height: 0.5rem;
     }
 
-    .imput{
+    .imput {
         border-radius: 2rem;
         text-align: center;
     }
-    .busqueda{
+
+    .busqueda {
         display: flex;
         justify-content: center;
         align-items: center;
     }
-  
-   
-   
-

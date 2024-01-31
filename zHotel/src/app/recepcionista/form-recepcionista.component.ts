@@ -1,4 +1,3 @@
-// form-recepcionista.component.ts
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Recepcionista } from './recepcionista';
@@ -14,30 +13,27 @@ import Swal from 'sweetalert2';
 export class FormRecepcionistaComponent implements OnInit {
   public recepcionista: Recepcionista = new Recepcionista();
   public titulo: string = 'Crear Recepcionista';
-  //public recepcionistaForm: FormGroup;
 
   constructor(
     private recepcionistaService: RecepcionistaService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.recepcionista.usuario = 'NombreUsuario';
     this.recepcionista.contrasena = 'ContrasenaSecreta';
-    // Puedes agregar lógica de inicialización si es necesario
   }
 
   create(): void {
     this.recepcionistaService.create(this.recepcionista).subscribe(
       (recepcionista) => {
-        // Puedes agregar lógica después de la creación del recepcionista
         Swal.fire('Recepcionista guardado', `Recepcionista ${recepcionista.usuario} guardado con éxito`, 'success');
       },
       (error) => {
-        console.error('Error al crear el recepcionista', error);
+        //console.error('Error al crear el recepcionista', error);
         Swal.fire('Error', 'Hubo un error al crear el recepcionista', 'error');
       }
     );
   }
 
-  
+
 }

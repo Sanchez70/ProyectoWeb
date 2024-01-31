@@ -6,11 +6,11 @@ import { Servicios2 } from './servicios2';
   selector: 'app-servicios2',
   templateUrl: './servicios2.component.html',
 })
-export class Servicios2Component implements OnInit{
+export class Servicios2Component implements OnInit {
 
-  Servicios2: Servicios2[]=[]
+  Servicios2: Servicios2[] = []
 
-  constructor(private servicio2service: Servicio2Service){}
+  constructor(private servicio2service: Servicio2Service) { }
 
   ngOnInit(): void {
     this.servicio2service.getServicios2().subscribe(

@@ -10,15 +10,15 @@ import { Reserva } from '../reservas/reserva';
   providedIn: 'root',
 })
 export class ServicioReservas {
-  private apiUrl = 'http://localhost:8081/api/reservas';  // Ajusta la URL según tu backend
+  private apiUrl = 'http://localhost:8081/api/reservas';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getReservasPendientes(): Observable<Reserva[]> {
     const url = `${this.apiUrl}/pendientes`;
     return this.http.get<Reserva[]>(url).pipe(
       catchError(error => {
-        console.error('Error en la solicitud de reservas pendientes:', error);
+        //console.error('Error en la solicitud de reservas pendientes:', error);
         return throwError(error);
       })
     );
@@ -28,11 +28,11 @@ export class ServicioReservas {
     const url = `${this.apiUrl}/solicitados`;
     return this.http.get<Reserva[]>(url).pipe(
       catchError(error => {
-        console.error('Error en la solicitud de servicios solicitados:', error);
+        //console.error('Error en la solicitud de servicios solicitados:', error);
         return throwError(error);
       })
     );
   }
 
-  
+
 }

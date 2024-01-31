@@ -53,7 +53,8 @@
   border-radius: 10px;
   margin-top: 20px;
   padding: 20px;
-  overflow: hidden; /* Esto evita que los bordes redondeados se extiendan más allá del contenido */
+  overflow: hidden;
+  /* Esto evita que los bordes redondeados se extiendan más allá del contenido */
 }
 
 .table-container h2 {
@@ -66,7 +67,8 @@
   border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
   border: 1px solid #ddd;
   padding: 20px;
   text-align: left;
@@ -78,7 +80,8 @@ th {
   color: #fff;
 }
 
-.btn-info, .btn-danger {
+.btn-info,
+.btn-danger {
   padding: 12px 18px;
   margin: 2px;
   cursor: pointer;
@@ -92,15 +95,18 @@ th {
 }
 
 .table-divider {
-  border-top: 2px solid #1f1919; /* Cambia el color y estilo del borde según tus preferencias */
+  border-top: 2px solid #1f1919;
+  /* Cambia el color y estilo del borde según tus preferencias */
   margin-top: 20px;
   padding-top: 20px;
 }
 
 .table-recepcionistas {
-  margin-bottom: 20px; /* Ajusta el margen inferior según tus preferencias */
+  margin-bottom: 20px;
+  /* Ajusta el margen inferior según tus preferencias */
 }
 
 .table-habitaciones {
-  margin-top: 20px; /* Ajusta el margen superior según tus preferencias */
+  margin-top: 20px;
+  /* Ajusta el margen superior según tus preferencias */
 }

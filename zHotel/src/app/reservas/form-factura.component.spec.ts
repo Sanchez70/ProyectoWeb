@@ -10,8 +10,8 @@ describe('FormFacturaComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [FormFacturaComponent]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(FormFacturaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

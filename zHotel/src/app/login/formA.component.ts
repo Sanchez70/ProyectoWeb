@@ -5,14 +5,14 @@ import { Component } from '@angular/core';
   templateUrl: './formA.component.html',
 })
 export class FormAComponent {
-  usuario: string = ''; // Inicializamos con un valor por defecto
+  usuario: string = ''; 
   contrasena: string = '';
 
   constructor() { }
 
   onSubmit() {
-    console.log('Usuario:', this.usuario);
-    console.log('Contraseña:', this.contrasena);
+    //console.log('Usuario:', this.usuario);
+    //console.log('Contraseña:', this.contrasena);
   }
 }
 
