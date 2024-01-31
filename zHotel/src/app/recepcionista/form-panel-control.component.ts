@@ -10,6 +10,7 @@ import { Cliente } from '../clientes/cliente';
 import { Persona } from '../persona/persona';
 import { forkJoin, map, of, switchMap } from 'rxjs';
 import { subscribe } from 'diagnostics_channel';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-form-panel-control',
   templateUrl: './form-panel-control.component.html',
@@ -75,42 +76,55 @@ export class FormPanelControlComponent implements OnInit {
   }
 
   cmabiarEstado(id: any) {
-    this.reservas.estado = 'Disponible';
-    this.reservas.idReserva = id;
-    this.reservaService.update(this.reservas).subscribe(
-      (response) => {
-        // Verifica la estructura de la respuesta antes de intentar acceder a sus propiedades
-        if (response && response.idHabitaciones) {
-          this.habitaciones.idHabitaciones = response.idHabitaciones;
-          this.habitaciones.estado = 'Disponible';
-          this.habitacionesService.getHabitacionesid(response.idHabitaciones).subscribe(respuestaHabi => {
-            this.habitaciones.idHabitaciones = respuestaHabi.idHabitaciones;
-            this.habitaciones.estado = 'Disponible';
-            this.habitaciones.descriphabi=respuestaHabi.descriphabi;
-            this.habitaciones.foto = respuestaHabi.foto;
-            this.habitaciones.nHabitacion = respuestaHabi.nHabitacion;
-            this.habitaciones.nPiso= respuestaHabi.nPiso;
-            this.habitaciones.precio= respuestaHabi.precio;
-            this.habitacionesService.update(this.habitaciones).subscribe(
-              (habitacionResponse) => {
-                console.log('Estado de habitación cambiado correctamente');
-              },
-              (errorHabitacion) => {
-                console.error('Error al actualizar estado de la habitación:', errorHabitacion);
-              }
-            );
-          });
-
-        } else {
-          console.error('La respuesta no contiene la propiedad esperada.');
-        }
-
-
-      },
-      (errorReserva) => {
-        console.error('Error al actualizar estado de la reserva:', errorReserva);
-      }
-    );
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: `¿Quieres actualizar el Estado de la Reserva?`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, actualizar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.reservas.estado = 'Disponible';
+        this.reservas.idReserva = id;
+        this.reservaService.update(this.reservas).subscribe(
+          (response) => {
+            // Verifica la estructura de la respuesta antes de intentar acceder a sus propiedades
+            if (response && response.idHabitaciones) {
+              this.habitaciones.idHabitaciones = response.idHabitaciones;
+              this.habitaciones.estado = 'Disponible';
+              this.habitacionesService.getHabitacionesid(response.idHabitaciones).subscribe(respuestaHabi => {
+                this.habitaciones.idHabitaciones = respuestaHabi.idHabitaciones;
+                this.habitaciones.estado = 'Disponible';
+                this.habitaciones.descriphabi=respuestaHabi.descriphabi;
+                this.habitaciones.foto = respuestaHabi.foto;
+                this.habitaciones.nHabitacion = respuestaHabi.nHabitacion;
+                this.habitaciones.nPiso= respuestaHabi.nPiso;
+                this.habitaciones.precio= respuestaHabi.precio;
+                this.habitacionesService.update(this.habitaciones).subscribe(
+                  (habitacionResponse) => {
+                    Swal.fire('Reserva Finalizada', `Reserva ${response.idReserva} finalizada con exito`, 'success');
+                    this.bucarReserva();
+                  },
+                  (errorHabitacion) => {
+                    
+                  }
+                );
+              });
+    
+            } else {
+              console.error('La respuesta no contiene la propiedad esperada.');
+            }
+    
+    
+          },
+          (errorReserva) => {
+            console.error('Error al actualizar estado de la reserva:', errorReserva);
+          }
+        );
+      }
+    });
+  
   }
 
 }
