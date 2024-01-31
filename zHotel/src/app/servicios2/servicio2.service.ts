@@ -10,7 +10,6 @@ import { map } from 'rxjs/operators';
 export class Servicio2Service {
 
   //private urlEndPoint: string = 'http://192.168.40.228:8081/api/servicio';
-  //private urlEndPoint: string = 'http://192.168.0.119:8081/api/servicio';
   private urlEndPoint: string = 'http://localhost:8081/api/servicio';
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' })
   constructor(private http: HttpClient) { }
@@ -32,4 +31,11 @@ export class Servicio2Service {
   deleteServicios2id(id: any): Observable<Servicios2> {
     return this.http.delete<Servicios2>(`${this.urlEndPoint}/${id}`);
   }
+
+  actualizarEstado(id: number, nuevoEstado: string): Observable<Servicios2> {
+    const url = `${this.urlEndPoint}/${id}`;
+    const body = { estado: nuevoEstado };
+    return this.http.put<Servicios2>(url, body, { headers: this.httpHeaders });
+  }
+  
 }

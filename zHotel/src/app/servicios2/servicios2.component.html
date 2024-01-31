@@ -1,37 +1,36 @@
+<div style="width: 100%; height: 100%;">
 <div class="my-2 text-left">
-  <div class="card-header">Servicios</div>
-  <div>
-    <h6 class="card-title">Servicios Solicitados </h6>
-  </div>
+  <div class="card-header">Servicios Solicitados</div>
+    
   <table class="table align-middle mb-0 bg-white">
-    <thead class="bg-light">
-      <th>Tipo de servicio</th>
-      <th>Número de habitación</th>
-      <th>Descripción</th>
-      <th>Estado</th>
-    </thead>
-    <tbody>
-      <tr *ngFor="let servicios2 of Servicios2">
-        <td>
-          <div class="ms-3">
-            <p class="fw-bold mb-1">{{servicios2.idTipo_servicio}}</p>
-          </div>
-        </td>
-        <td>
-          <p class="fw-normal mb-1">{{servicios2.idHabitaciones}}</p>
-        </td>
-        <td>
-          <p class="fw-normal mb-1">{{servicios2.descripcion}}</p>
-        </td>
-        <td>
-          <button type="button" name="estado"
-            [ngClass]="{'badge-warning': servicios2.estado === 'Pendiente', 'badge-success': servicios2.estado === 'Realizado'}"
-            class="badge rounded-pill d-inline">
-            {{servicios2.estado}}
-          </button>
-        </td>
-      </tr>
-    </tbody>
-
-  </table>
+      <thead class="bg-light">
+        <th>Tipo de servicio</th>
+        <th>Número de habitación</th>
+        <th>Descripción</th>
+        <th>Estado</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let servicio2 of servicios2">
+          <td>
+            <div class="ms-3">
+              <p class="fw-bold mb-1">{{ obtenerTipoServicio(servicio2.idTipo_servicio) }}</p>
+            </div>
+          </td>
+          <td>
+            <p class="fw-normal mb-1">{{ obtenerNumeroHabitacion(servicio2.idHabitaciones) }}</p>
+          </td>
+          <td>
+            <p class="fw-normal mb-1">{{ servicio2.descripcion }}</p>
+          </td>
+          <td>
+            <button type="button" name="estado"
+              [ngClass]="{'badge-warning': servicio2.estado === 'Pendiente', 'badge-success': servicio2.estado === 'Realizado'}"
+              class="badge rounded-pill d-inline" (click)="cambiarEstado(servicio2)">
+              {{ servicio2.estado }}
+            </button>
+          </td>
+        </tr>        
+      </tbody>
+    </table>
+</div>
 </div>

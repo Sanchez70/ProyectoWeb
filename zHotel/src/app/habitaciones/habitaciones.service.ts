@@ -10,6 +10,7 @@ import { categorias } from './categorias';
 })
 export class HabitacionesService {
   //private urlEndPoint: string = 'http://192.168.40.228:8081/api/habitaciones';
+  //private urlEndPoint1: string = 'http://192.168.40.228:8081/api/categorias';
   private urlEndPoint: string = 'http://localhost:8081/api/habitaciones';
   private urlEndPoint1: string = 'http://localhost:8081/api/categorias';
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' })
