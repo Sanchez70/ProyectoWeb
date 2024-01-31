@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
 })
 export class RecepcionistaComponent implements OnInit {
   recepcionistas: Recepcionista[] = [];
+  
 
   constructor(private recepcionistaService: RecepcionistaService) { }
 

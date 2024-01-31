@@ -13,7 +13,6 @@ export class Persona {
   edad!: number;
   id_canton!: string;
   fechaNacimiento!: Date;
-
   cantones?: Cantones[];
 
   constructor() {

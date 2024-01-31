@@ -4,4 +4,5 @@ export class RegistroC {
   usuario!: string;
   contrasena!: string;
   foto!: string;
+  
 }
