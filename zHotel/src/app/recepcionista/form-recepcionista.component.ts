@@ -14,6 +14,7 @@ import { ProvinciaService } from '../provincias/provincia.service';
 @Component({
   selector: 'app-form-recepcionista',
   templateUrl: './form-recepcionista.component.html',
+  styleUrl: './form-recepcionista.component.css'
 })
 export class FormRecepcionistaComponent implements OnInit {
   public persona: Persona = new Persona();
@@ -93,7 +94,8 @@ export class FormRecepcionistaComponent implements OnInit {
       this.recepcionista.cedula_persona = personaCreada.cedula_persona;
       this.recepcionistaService.create(this.recepcionista).subscribe((recepcionistaCreado) => {
       this.router.navigate(['/panel-recepcion'])
-      Swal.fire('Servicio guardado', `Servicio Guardado con exito`, 'success')
+      Swal.fire('Recepcionista guardado', `Recepcionista ${this.persona.nombre} Guardado con exito`, 'success')
+      //Swal.fire('Recepcionista', `Recepcionista Guardado con exito`, 'success')
       }, (error) => {
         console.error('Error al guardar el recepcionista: ', error);
       });

@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
+  styleUrl:'form.component.css'
 })
 export class FormComponent {
 

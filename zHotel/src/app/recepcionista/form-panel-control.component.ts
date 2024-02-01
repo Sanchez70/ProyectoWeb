@@ -30,8 +30,6 @@ export class FormPanelControlComponent implements OnInit {
     this.bucarReserva();
   }
 
-
-
   bucarReserva() {
     this.reservaService.getReserva().subscribe(
       reservaInd => {
