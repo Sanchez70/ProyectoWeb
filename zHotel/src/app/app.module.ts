@@ -53,6 +53,8 @@ import { AuthService } from './auth.service';
 import { FormRecepcionistaComponent } from './recepcionista/form-recepcionista.component';
 import { RecepcionistaComponent } from './recepcionista/recepcionista.component';
 import { FilterPipe } from './filter.pipe';
+import { FormhistorialComponent } from './reservas/formhistorial.component';
+import { FormFacturaHistorialComponent } from './reservas/form-factura-historial.component';
 
 
 const routes: Routes = [
@@ -72,6 +74,8 @@ const routes: Routes = [
   { path: 'servicios2/form', component: Servicios2FormComponent },
   { path: 'servicios2/form/:id', component: Servicios2FormComponent },
   { path: 'reservas/form-reservas/:id', component: FormReservasComponent },
+  { path: 'reservas/form-factura-historial', component: FormFacturaHistorialComponent },
+  { path: 'reservas/formhistorial', component: FormhistorialComponent },
   { path: 'clientes', component: ClientesComponent },
   { path: 'clientes/:id', component: ClientesComponent },
   { path: 'clientes/form', component: FormClienteComponent },
@@ -120,7 +124,9 @@ const routes: Routes = [
     FormAdminLoginComponent,
     FormRecepcionistaComponent,
     FormFacturaComponent,
-    FilterPipe
+    FilterPipe,
+    FormhistorialComponent,
+    FormFacturaHistorialComponent
   ],
   imports: [
     BrowserModule,
