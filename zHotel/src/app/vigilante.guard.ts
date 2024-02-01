@@ -12,8 +12,7 @@ export class vigilanteGuard implements CanActivate {
 
   canActivate(): boolean {
     if (this.inicio.isLoggedIn) {
-      // Si el usuario está autenticado, no permitir acceder a la página de inicio de sesión
-      this.router.navigate(['/carrucel']); // Ajusta la ruta según tu estructura
+      this.router.navigate(['/carrucel']); 
       return false;
     }
     return true;

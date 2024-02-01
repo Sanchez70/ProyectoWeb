@@ -25,7 +25,12 @@ export class FormHbitacionesComponent {
     this.activateRoute.params.subscribe(params => {
       let id = params['id']
       if (id) {
-        this.habitacionService.getHabitacionesid(id).subscribe((habitacion) => this.habitaciones = habitacion)
+        this.habitacionService.getHabitacionesid(id).subscribe((habitacion) => this.habitaciones = habitacion);
+        if (this.habitaciones.foto == '') {
+          this.previewImage='';
+        }else{
+          this.previewImage= this.habitaciones.foto;
+        }
       }
     })
   }

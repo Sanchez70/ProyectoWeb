@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
 export class FormComponent {
 
   public servicio: Servicio = new Servicio()
-  public titulo: String = "SOLICITAR SERVICIO"
+  public titulo: String = "CREAR SERVICIO"
 
   constructor(private servicioService: ServicioService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
@@ -36,7 +36,7 @@ export class FormComponent {
   public create(): void {
     this.servicioService.create(this.servicio)
       .subscribe(servicio => {
-        this.router.navigate(['/servicios'])
+        this.router.navigate(['/'])
         Swal.fire('Servicio guardado', `Servicio ${servicio.titulo} Guardado con exito`, 'success')
       }
       )

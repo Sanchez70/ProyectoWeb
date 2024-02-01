@@ -83,7 +83,7 @@ export class LoginComponent {
                 //console.log(this.inicio.tipoUser);
                 Swal.fire(`Bienvenid@ ${usuario}`, 'Inicio de sesion correcto', 'success');
               } else {
-                Swal.fire('Contraseña  incorrectos', 'Cliente', 'error');
+                Swal.fire('Contraseña  incorrectos', 'Administrador', 'error');
               }
 
             }
@@ -103,13 +103,13 @@ export class LoginComponent {
                     //console.log(this.inicio.tipoUser);
                     Swal.fire(`Bienvenid@ ${usuario}`, 'Inicio de sesion correcto', 'success');
                   } else {
-                    Swal.fire('Contraseña  incorrectos', 'Cliente', 'error');
+                    Swal.fire('Contraseña  incorrectos', 'Recepcionista', 'error');
                   }
 
                 }
               },
               (error) => {
-                Swal.fire('Usuario incorrectos', 'Cliente', 'error');
+                Swal.fire('Usuario incorrectos', 'Usuario', 'error');
               }
             );
 
