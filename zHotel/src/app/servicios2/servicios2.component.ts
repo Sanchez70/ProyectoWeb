@@ -5,10 +5,12 @@ import { ServicioService } from '../servicios/servicio.service';
 import { Servicio } from '../servicios/servicio';
 import { Habitaciones } from '../habitaciones/habitaciones';
 import { HabitacionesService } from '../habitaciones/habitaciones.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-servicios2',
   templateUrl: './servicios2.component.html',
+  styleUrl: './servicios2.component.css'
 })
 export class Servicios2Component implements OnInit {
 
@@ -20,7 +22,7 @@ export class Servicios2Component implements OnInit {
     private servicio2service: Servicio2Service,
     private tipoServicioService: ServicioService,
     private habitacionesService: HabitacionesService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.cargarServicios2();
@@ -72,23 +74,30 @@ export class Servicios2Component implements OnInit {
   }
 
   cambiarEstado(servicio: Servicios2): void {
-    // Verificar si el estado actual es 'Pendiente' antes de cambiarlo
     if (servicio.estado === 'Pendiente') {
-      // Cambiar el estado a 'Realizado'
-      servicio.estado = 'Realizado';
-  
-      // Aquí deberías llamar a tu servicio para actualizar el estado en la base de datos
-      this.servicio2service.actualizarEstado(servicio.idServicio, 'Realizado').subscribe(
-        () => {
-          console.log('Estado actualizado exitosamente.');
-          // Puedes realizar otras acciones después de actualizar el estado si es necesario
-        },
-        (error) => {
-          console.error('Error al actualizar el estado:', error);
-          // Puedes manejar el error de manera apropiada
+      Swal.fire({
+        title: '¿Estás seguro?',
+        text: `¿Quieres actualizar el Estado de la Reserva?`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, actualizar',
+        cancelButtonText: 'Cancelar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+
+          servicio.estado = 'Realizado';
+          this.servicio2service.actualizarEstado(servicio.idServicio, 'Realizado').subscribe(
+            () => {
+              Swal.fire('Servicio Finalizada', `Servicio ${servicio.idServicio} finalizada con exito`, 'success');
+            },
+            (error) => {
+              Swal.fire('Error al Actualizar', `Reserva ${servicio.idServicio} finalizada con exito`, 'success');
+            }
+          );
+
+
         }
-      );
+      });
     }
   }
-  
 }
