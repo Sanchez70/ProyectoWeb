@@ -30,17 +30,14 @@ export class FormHbitacionesComponent {
     })
   }
 
-
   public createHabitacion(): void {
+    this.habitaciones.estado = 'Disponible';
     this.habitacionService.create(this.habitaciones).subscribe(
       habitacion => {
         this.router1.navigate(['/provedores'])
-
         Swal.fire('Habitacion guardado', `Habitacion ${habitacion.idHabitaciones} guardado con exito`, 'success')
       }
     )
-
-
   }
 
 
@@ -48,19 +45,15 @@ export class FormHbitacionesComponent {
   onFileSelected(event: any): void {
     const file: File = event.target.files[0];
     const reader = new FileReader();
-
     reader.onload = (e: any) => {
       this.previewImage = e.target.result;
     };
-
     reader.readAsDataURL(file);
   }
 
   convertToBase64(): void {
     if (this.previewImage) {
       const base64String = this.previewImage.toString();
-      //console.log(base64String);
-
       this.habitaciones.foto = base64String;
     }
   }
