@@ -25,7 +25,7 @@ import { AuthService } from '../auth.service';
 export class FormFacturaComponent implements OnInit {
   cedula_persona: any;
   constructor(private inicio: AuthService, private sevicePersona: PersonaService, private serviceReserva: ReservaService, private seviceEncabezado: EncabezadoFacturaService,
-    private serviceDetalle: DetalleFacturaService, private serviceClietne: ClienteService, private serviceHabitacion: HabitacionesService) { }
+  private serviceDetalle: DetalleFacturaService, private serviceClietne: ClienteService, private serviceHabitacion: HabitacionesService) { }
   public cliente: Cliente = new Cliente();
   public persona: Persona = new Persona();
   public reserva: Reserva = new Reserva();

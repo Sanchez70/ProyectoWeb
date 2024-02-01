@@ -9,7 +9,6 @@ import { Recepcionista } from './recepcionista';
   providedIn: 'root'
 })
 export class RecepcionistaService {
-
   //private urlEndPoint: string = 'http://192.168.40.228:8081/api/recepcionistas';
   private urlEndPoint: string = 'http://localhost:8081/api/recepcionistas';
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });

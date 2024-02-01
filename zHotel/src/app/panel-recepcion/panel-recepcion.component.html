@@ -48,9 +48,6 @@
               <td>{{ recepcionista.cedula_persona }}</td>
               <!-- Otros atributos si los tienes -->
               <td class="text-center">
-                <button type="button" [routerLink]="['/recepcionistas/form', recepcionista.idRecepcionista ]" class="btn btn-info btn-sm">Editar</button>
-              </td>
-              <td class="text-center">
                 <button type="button" class="btn btn-danger btn-sm" (click)="eliminarRecepcionista(recepcionista.idRecepcionista )">Eliminar</button>
               </td>
             </tr>
