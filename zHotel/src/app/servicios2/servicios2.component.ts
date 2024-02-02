@@ -77,7 +77,7 @@ export class Servicios2Component implements OnInit {
     if (servicio.estado === 'Pendiente') {
       Swal.fire({
         title: '¿Estás seguro?',
-        text: `¿Quieres actualizar el Estado de la Reserva?`,
+        text: `¿Quieres actualizar el Estado del Servicio?`,
         icon: 'warning',
         showCancelButton: true,
         confirmButtonText: 'Sí, actualizar',
@@ -88,10 +88,10 @@ export class Servicios2Component implements OnInit {
           servicio.estado = 'Realizado';
           this.servicio2service.actualizarEstado(servicio.idServicio, 'Realizado').subscribe(
             () => {
-              Swal.fire('Servicio Finalizada', `Servicio ${servicio.idServicio} finalizada con exito`, 'success');
+              Swal.fire('Servicio Finalizado', `Servicio ${servicio.idServicio} finalizado con exito`, 'success');
             },
             (error) => {
-              Swal.fire('Error al Actualizar', `Reserva ${servicio.idServicio} finalizada con exito`, 'success');
+              Swal.fire('Error al Actualizar', `Servicio ${servicio.idServicio} finalizado con exito`, 'success');
             }
           );
 
